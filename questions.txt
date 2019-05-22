@@ -1,25 +1,25 @@
 William Ritson Questions
 // This is my first take on questions, they may not be of the right format.
-1. How many GEs do I have to take?
-2. What GEs satisfy Area <X>?
+1. How many GEs do I have to take? | You need to take [GE-Units] units.
+2. What GEs satisfy Area [GE-Area]? | 
 3. How many units of electives do I need?
 4. How many units of electives do I have to take?
-5. What courses can I take instead of <Some course name>?
-6. Are there any alternatives to <some course name?>
+5. What courses can I take instead of [CSC-Course]? | The alternatives are [CSC]
+6. Are there any alternatives to [CSC-Course]?
 7. What are the major courses?
 8. What are the support courses?
-9. What are the life science elective courses?
-10. What are the mathematics or statistics elective courses?
-11. What are the physical science elective courses?
-12. What are the general education requirements?
-13. What are the major requirements?
+9. What are the [Major-Area] courses?
+10. 
+11. 
+12. 
+13. 
 14. How many units do I need to graduate?
 15. What classes do I have to take in order to graduate?
 16. Can I double count electives?
 17. What classes can I double count?
-18. When is <class> offered?
+18. When is [class] offered?
 19. What concentrations are available?
-20. How many units of <elective area> do I have to take?
+20. How many units of [elective area] do I have to take?
 21. How many classes do I have to take?
 22. What are the learning outcomes?
 23. What are the program learning outcomes?
