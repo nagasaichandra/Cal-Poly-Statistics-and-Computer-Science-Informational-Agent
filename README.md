@@ -4,4 +4,4 @@ Assignment Instructions: https://docs.google.com/document/d/1dsXrq8HctifWmir2qv8
 
 Group Members: William Ritson
 
-Area of expertise: TBD
+Area of expertise: CSSE Majors, Minors, Concentrations, Curricula
