@@ -1,35 +1,35 @@
 William Ritson Questions
 // This is my first take on questions, they may not be of the right format.
 1. How many GEs do I have to take? | You need to take [GE-Units] units.
-2. What GEs satisfy Area [GE-Area]? | 
-3. How many units of electives do I need?
-4. How many units of electives do I have to take?
-5. What courses can I take instead of [CSC-Course]? | The alternatives are [CSC]
-6. Are there any alternatives to [CSC-Course]?
-7. What are the major courses?
-8. What are the support courses?
-9. What are the [Major-Area] courses?
+2. What GEs satisfy Area [GE-Area]? | These courses [GE-Course-List] satisfy the [GE-Area] area.
+3. How many units of electives do I need? | You need [GE-Elective-Units] to graduate.
+4. How many units of electives do I have to take? | You need [GE-Elective-Units] to graduate. 
+5. What courses can I take instead of [Course]? | You could take any of [Course-alternatives-list] instead of [Course].
+6. Are there any alternatives to [Course]? | You could take any of [Course-alternatives-list] instead of [Course].
+7. What are the [Major-Area] courses? The CSSE [Major-Area] courses are [major-courses]
+8.
+9.
 10. 
 11. 
 12. 
 13. 
-14. How many units do I need to graduate?
-15. What classes do I have to take in order to graduate?
-16. Can I double count electives?
-17. What classes can I double count?
-18. When is [class] offered?
-19. What concentrations are available?
-20. How many units of [elective area] do I have to take?
-21. How many classes do I have to take?
-22. What are the learning outcomes?
-23. What are the program learning outcomes?
-24. What GPA do I need to graduate?
-25. What is the minimum GPA?
-26. Can I take classes as credit/no credit?
-27. Can I take classes as pass/no pass.
-28. What classes do I need for the CSC minor?
-29. What are the steps to apply for the CSC minor?
-30. What GPA do I need to attain an honor?
+14. How many units do I need to graduate? | You need [Graduation-Units] total units to graduate.
+15. What classes do I have to take in order to graduate? | You need to take [All-Required-Course-List] to graduate.
+16. Can I double count the [Elective-Name] elective? | Yes you can double count [Elective-Name]. | No, you may not double count [Elective-Name].
+17. What classes can I double count? | The following classes [Double-Countable-Classes] may be double counted
+18. When is [Class-Name] offered? | [Class-Name] is typically offered in [Class-Offered-Quarters]. | It has not yet been determined when [Class-Name] will be offered.
+19. What concentrations are available? | The following concentrations are available [Concentration-List].
+20. How many units of [elective area] do I have to take? | You need to take [elective-area-units] in [elective-area].
+21. How many classes do I have to take? | You need to take [total-units] worth of classes. The total number of classes may vary.
+22. What are the learning outcomes? | The learned out comes for the CSSE major are [Learning-Outcomes-List].
+23. What are the program learning outcomes? | The learned out comes for the CSSE major are [Learning-Outcomes-List].
+24. What GPA do I need to graduate? | You need a GPA of at least [Minimum-Grad-GPA] to graduate as a CSSE major.
+25. What is the minimum GPA? | You need a GPA of at least [Minimum-Grad-GPA]  to graduate as a CSSE major.
+26. Can I take classes as credit/no credit? | You may not take any major classes as credit/no credit.
+27. Can I take classes as pass/no pass. | You may not take any major classes as credit/no credit.
+28. What classes do I need for the CSC minor? | You need [CSC-Minor-classes] to attain a CSC minor.
+29. What are the steps to apply for the CSC minor? | You need [CSC-Minor-classes] to attain a CSC minor.
+30. What GPA do I need to attain an honor? | The following Honors are available [Honors-GPA-List].
 
 Group Member 2 Questions
 1.
