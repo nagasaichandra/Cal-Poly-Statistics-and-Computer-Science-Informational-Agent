@@ -6,7 +6,7 @@ class DataSustainer:
     def __init__():
         pass
 
-class TestKDataSustainer(unittest.TestCase):
+class TestDataSustainer(unittest.TestCase):
 
     def test_failure(self):
         # Replace this with actual tests
