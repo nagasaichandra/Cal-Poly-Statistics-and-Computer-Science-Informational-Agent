@@ -1,34 +1,35 @@
-William Ritson Questons
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18.
-19.
-20.
-21.
-22.
-23.
-24.
-25.
-26.
-27.
-28.
-29.
-30.
+William Ritson Questions
+// This is my first take on questions, they may not be of the right format.
+1. How many GEs do I have to take?
+2. What GEs satisfy Area <X>?
+3. How many units of electives do I need?
+4. How many units of electives do I have to take?
+5. What courses can I take instead of <Some course name>?
+6. Are there any alternatives to <some course name?>
+7. What are the major courses?
+8. What are the support courses?
+9. What are the life science elective courses?
+10. What are the mathematics or statistics elective courses?
+11. What are the physical science elective courses?
+12. What are the general education requirements?
+13. What are the major requirements?
+14. How many units do I need to graduate?
+15. What classes do I have to take in order to graduate?
+16. Can I double count electives?
+17. What classes can I double count?
+18. When is <class> offered?
+19. What concentrations are available?
+20. How many units of <elective area> do I have to take?
+21. How many classes do I have to take?
+22. What are the learning outcomes?
+23. What are the program learning outcomes?
+24. What GPA do I need to graduate?
+25. What is the minimum GPA?
+26. Can I take classes as credit/no credit?
+27. Can I take classes as pass/no pass.
+28. What classes do I need for the CSC minor?
+29. What are the steps to apply for the CSC minor?
+30. What GPA do I need to attain an honor?
 
 Group Member 2 Questions
 1.
