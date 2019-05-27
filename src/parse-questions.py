@@ -12,6 +12,12 @@ def normalize_variable_name(var):
 
 def get_all_variables(text):
     """ Returns all variables within a section of text (variables are denoted by brackets []) """
+    return re.findall(variable_regex, text)
+
+
+def get_all_variables_normalized(text):
+    """ Returns all variables within a section of text (variables are denoted by brackets [])
+    The variables will be normalized and duplicates removed, then sorted in order. """
     return sorted(set((normalize_variable_name(var) for var in re.findall(variable_regex, text))))
 
 
@@ -33,23 +39,31 @@ def reformat_file(input_filepath, output_filepath):
     """ Converts a file containing questions into a normalized output file with questions and variables """
     file_text = open(input_filepath).read()
     questions = diversify_questions(get_all_questions(file_text))
-    variables = get_all_variables(file_text)
+    variables = get_all_variables_normalized(file_text)
     open(output_filepath, 'w').write(reformat(questions, variables))
 
 synonyms_list = {
-    'GE': 'general education'
+    'GE': 'general education',
+    'CSSE': 'computer science and software engineering',
+    'CSC': 'Computer Science',
+    'SE': 'Software Engineering',
+    'CGPA': 'Cumulative Grade Point Average',
+    'MS': 'Masters Degree',
+    'BS': 'Bachelors Degree'
 }
 def diversify_questions(questions):
+    """ Creates alternative versions of questions by replacing terms with synonyms, then adds them to the list """
     results = []
     for question in questions:
         results.append(question)
         variables = get_all_variables(question)
+        adjusted = question
         for i, variable in enumerate(variables):
-            question.replace(variable, '{%d}' % i)
+            adjusted = adjusted.replace(variable, '{%d}' % i)
         for synonym in synonyms_list:
-            if synonym in question:
-                adjusted = re.sub(synonym, synonyms_list[synonym], question)
-                adjusted.format(*variables)
+            if synonym in adjusted:
+                adjusted = re.sub(synonym, synonyms_list[synonym], adjusted)
+                adjusted = adjusted.format(*variables)
                 results.append(adjusted)
 
     return results
