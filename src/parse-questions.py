@@ -2,7 +2,7 @@ import re
 import sys
 
 variable_regex = re.compile(r'\[([^\]]+)\]')
-question_regex = re.compile('[0-9]+\.\s*([^\n]+)')
+question_regex = re.compile('(?:[0-9]+\.\s*)?([^\n\|]+(?:\|\s*[^\n\|]+)+)')
 
 
 def normalize_variable_name(var):
@@ -32,9 +32,27 @@ def reformat(questions, variables):
 def reformat_file(input_filepath, output_filepath):
     """ Converts a file containing questions into a normalized output file with questions and variables """
     file_text = open(input_filepath).read()
-    questions = get_all_questions(file_text)
+    questions = diversify_questions(get_all_questions(file_text))
     variables = get_all_variables(file_text)
     open(output_filepath, 'w').write(reformat(questions, variables))
+
+synonyms_list = {
+    'GE': 'general education'
+}
+def diversify_questions(questions):
+    results = []
+    for question in questions:
+        results.append(question)
+        variables = get_all_variables(question)
+        for i, variable in enumerate(variables):
+            question.replace(variable, '{%d}' % i)
+        for synonym in synonyms_list:
+            if synonym in question:
+                adjusted = re.sub(synonym, synonyms_list[synonym], question)
+                adjusted.format(*variables)
+                results.append(adjusted)
+
+    return results
 
 
 def main():
