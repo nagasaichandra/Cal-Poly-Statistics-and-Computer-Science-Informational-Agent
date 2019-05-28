@@ -2,25 +2,33 @@ import unittest
 
 class CliChatInterface:
     def __init__(self):
-        self.name = 'bob'
+        self.name = 'StaCIA'
         self.on_message_callbacks = []
 
     def send_message(self, message):
         print(message)
 
     def get_message(self):
-        text = input()
-        if text[:len(self.name)] == self.name:
-            self.__on_messsage_received(text[:len(self.name) + 1])
+        message = input()
+        if self._is_message_for_me(message):
+            content = message[len(self.name) + 1:].strip()
+            responce = self._on_messsage_received(content)
+            self.send_message(responce)
+        self.get_message()
     
     def _is_message_for_me(self, message):
         return message[:len(self.name)] == self.name
     
     def _on_messsage_received(self, message):
+        print('*{}*'.format(message))
+        print(len(self.on_message_callbacks), )
         for callback in self.on_message_callbacks:
-            callback(message)
+            res = callback(message)
+            if res:
+                return res
+        return 'Sorry, I did not understand that.'
     
-    def add_message_callback(self, callback):
+    def add_message_receiver(self, callback):
         self.on_message_callbacks.append(callback)
 
 
@@ -32,7 +40,7 @@ class TestCliChatInterface(unittest.TestCase):
         call_count = {'calls': 0}
         def increment(msg):
             call_count['calls'] += 1
-        self.interface.add_message_callback(increment)
+        self.interface.add_message_receiver(increment)
         self.assertEqual(call_count['calls'], 0)
         self.interface._on_messsage_received('msg')
         self.assertEqual(call_count['calls'], 1)
