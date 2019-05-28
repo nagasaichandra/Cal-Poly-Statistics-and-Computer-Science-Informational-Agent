@@ -10,6 +10,7 @@ class DataSustainer:
     def create_tables(self):
         with connection.cursor() as cursor:
             cursor.execute(open('src/sql/createTables.sql').read())
+            conn.commit()
 
 class TestDataSustainer(unittest.TestCase):
 
