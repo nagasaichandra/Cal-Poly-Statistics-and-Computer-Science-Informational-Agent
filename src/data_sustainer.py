@@ -35,5 +35,6 @@ class TestDataSustainer(unittest.TestCase):
         self.assertEqual(True, False)
 
 if __name__ == "__main__":
+    DataSustainer().create_tables()
     DataSustainer().delete_all_tables()
     unittest.main()
