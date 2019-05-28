@@ -1,5 +1,7 @@
 import re
 import sys
+from database_connection import connection
+
 
 variable_regex = re.compile(r'\[([^\]]+)\]')
 question_regex = re.compile('(?:[0-9]+\.\s*)?([^\n\|]+(?:\|\s*[^\n\|]+)+)')
@@ -70,13 +72,24 @@ def diversify_questions(questions):
 
     return results
 
+def ingest_questions(questions):
+    with connection.cursor() as cursor:
+        rows = [q.split('|') for q in questions]
+        for row in rows:
+            cursor.execute("INSERT INTO question (question_text, response) VALUES (%s, %s);", row)
+        connection.commit()
 
 def main():
     args = sys.argv[1:]
     if not args or len(args)  < 2:
         print("usage: inputfile outputfile")
         sys.exit(1)
-    reformat_file(args[0], args[1])
+    if (args[0] == "--ingest"):
+        file_text = open(args[1]).read()
+        questions = get_all_questions(file_text)
+        ingest_questions(questions)
+    else:
+        reformat_file(args[0], args[1])
 
 if __name__ == '__main__':
     main()
