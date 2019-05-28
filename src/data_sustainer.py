@@ -10,7 +10,23 @@ class DataSustainer:
     def create_tables(self):
         with connection.cursor() as cursor:
             cursor.execute(open('src/sql/createTables.sql').read())
-            conn.commit()
+            connection.commit()
+
+    def delete_all_tables(self):
+        with connection.cursor() as cursor:
+            cursor.execute("""SELECT
+                    table_name
+                FROM
+                    information_schema.tables
+                WHERE
+                    table_schema = 'project3';""")
+            table_names = [row['TABLE_NAME'] for row in cursor.fetchall()]
+            deletors = ['DROP TABLE IF EXISTS {};'.format(table_name) for table_name in table_names]
+            query = """SET FOREIGN_KEY_CHECKS = 0;
+            {}
+            SET FOREIGN_KEY_CHECKS = 1;""".format('\n'.join(deletors))
+            print(query)
+            cursor.execute(query)
 
 class TestDataSustainer(unittest.TestCase):
 
@@ -19,5 +35,5 @@ class TestDataSustainer(unittest.TestCase):
         self.assertEqual(True, False)
 
 if __name__ == "__main__":
-    DataSustainer().create_tables()
+    DataSustainer().delete_all_tables()
     unittest.main()
