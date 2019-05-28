@@ -57,14 +57,16 @@ def diversify_questions(questions):
     for question in questions:
         results.append(question)
         variables = get_all_variables(question)
-        adjusted = question
+        parts = question.split('|')
+        adjusted = parts[0]
+        answer = parts[1]
         for i, variable in enumerate(variables):
             adjusted = adjusted.replace(variable, '{%d}' % i)
         for synonym in synonyms_list:
             if synonym in adjusted:
                 adjusted = re.sub(synonym, synonyms_list[synonym], adjusted)
                 adjusted = adjusted.format(*variables)
-                results.append(adjusted)
+                results.append(adjusted + '|' + answer)
 
     return results
 
