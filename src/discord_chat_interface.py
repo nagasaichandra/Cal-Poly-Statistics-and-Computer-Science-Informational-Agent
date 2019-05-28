@@ -1,7 +1,7 @@
 import unittest
 
 class DiscordChatInterface:
-    def __init__():
+    def __init__(self):
         pass
 
 class TestDiscordChatInterface(unittest.TestCase):

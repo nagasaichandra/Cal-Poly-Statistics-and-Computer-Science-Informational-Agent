@@ -3,7 +3,7 @@ import unittest
 class NativeResponder:
     """ Scrapes data from a source and puts in in the database"""
 
-    def __init__():
+    def __init__(self):
         pass
 
 class TestNativeResponder(unittest.TestCase):

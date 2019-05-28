@@ -1,7 +1,7 @@
 import unittest
 
 class CliChatInterface:
-    def __init__():
+    def __init__(self):
         pass
 
 class TestCliChatInterface(unittest.TestCase):

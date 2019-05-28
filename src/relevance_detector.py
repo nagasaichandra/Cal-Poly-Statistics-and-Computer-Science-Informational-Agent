@@ -3,7 +3,7 @@ import unittest
 class RelevanceDetector:
     """ Determines if a question can be answered and what query it most closely matches """
 
-    def __init__():
+    def __init__(self):
         pass
 
 class TestRelevanceDetector(unittest.TestCase):
