@@ -1,128 +1,253 @@
-William Ritson Questions
-// This is my first take on questions, they may not be of the right format.
-1. How many GEs do I have to take? | You need to take [GE-Units] units.
-2. What GEs satisfy Area [GE-Area]? | These courses [GE-Course-List] satisfy the [GE-Area] area.
-3. How many units of electives do I need? | You need [GE-Elective-Units] to graduate.
-4. How many units of electives do I have to take? | You need [GE-Elective-Units] to graduate. 
-5. What courses can I take instead of [Course]? | You could take any of [Course-alternatives-list] instead of [Course].
-6. Are there any alternatives to [Course]? | You could take any of [Course-alternatives-list] instead of [Course].
-7. What are the [Major-Area] courses? The CSSE [Major-Area] courses are [major-courses]
-8.
-9.
-10. 
-11. 
-12. 
-13. 
-14. How many units do I need to graduate? | You need [Graduation-Units] total units to graduate.
-15. What classes do I have to take in order to graduate? | You need to take [All-Required-Course-List] to graduate.
-16. Can I double count the [Elective-Name] elective? | Yes you can double count [Elective-Name]. | No, you may not double count [Elective-Name].
-17. What classes can I double count? | The following classes [Double-Countable-Classes] may be double counted
-18. When is [Class-Name] offered? | [Class-Name] is typically offered in [Class-Offered-Quarters]. | It has not yet been determined when [Class-Name] will be offered.
-19. What concentrations are available? | The following concentrations are available [Concentration-List].
-20. How many units of [elective area] do I have to take? | You need to take [elective-area-units] in [elective-area].
-21. How many classes do I have to take? | You need to take [total-units] worth of classes. The total number of classes may vary.
-22. What are the learning outcomes? | The learned out comes for the CSSE major are [Learning-Outcomes-List].
-23. What are the program learning outcomes? | The learned out comes for the CSSE major are [Learning-Outcomes-List].
-24. What GPA do I need to graduate? | You need a GPA of at least [Minimum-Grad-GPA] to graduate as a CSSE major.
-25. What is the minimum GPA? | You need a GPA of at least [Minimum-Grad-GPA]  to graduate as a CSSE major.
-26. Can I take classes as credit/no credit? | You may not take any major classes as credit/no credit.
-27. Can I take classes as pass/no pass. | You may not take any major classes as credit/no credit.
-28. What classes do I need for the CSC minor? | You need [CSC-Minor-classes] to attain a CSC minor.
-29. What are the steps to apply for the CSC minor? | You need [CSC-Minor-classes] to attain a CSC minor.
-30. What GPA do I need to attain an honor? | The following Honors are available [Honors-GPA-List].
+How many GEs do I have to take in [major]? | You need to take [major-ge-units] units to graduate in [major].
+How many general educations do I have to take in [major]? | You need to take [major-ge-units] units to graduate in [major].
+How many general education classes do I have to take in [major]? | You need to take [major-ge-units] units to graduate in [major].
+What GEs satisfy area [ge-area]? | GE area [ge-area] includes the following courses: [ge-area-course-names].
+What general educations satisfy area [ge-area]? | GE area [ge-area] includes the following courses: [ge-area-course-names].
+What courses are included in GE area [ge-area]? | GE area [ge-area] includes the following courses: [ge-area-course-names].
+What courses are included in general education area [ge-area]? | GE area [ge-area] includes the following courses: [ge-area-course-names].
+What is the subject of GE area [ge-area]? | The subject of GE area [ge-area] is [ge-area-subject].
+What is the subject of general education area [ge-area]? | The subject of GE area [ge-area] is [ge-area-subject].
+What are the general education areas? | The general education areas are [ge-area-list].
+What are the GE requirements? | The GE requirements are the following: [ge-requirements].
+What are the general education requirements? | The GE requirements are the following: [ge-requirements].
+What GE areas are considered [division-level]? | The following GE areas are considered [division-level]: [division-ge-area-list].
+What general education areas are considered [division-level]? | The following GE areas are considered [division-level]: [division-ge-area-list].
+How many units of electives do I need for [major]? | You need [ge-elective-units-major] of electives to graduate in [major].
+What is the total number of units of electives needed to graduate in [major]? | You need [ge-elective-units-major] of electives to graduate in [major].
+How many approved electives do I have to take for the [minor]? | You have to take [minor-approved-electives-units] approved electives for the [minor].
+What are the approved electives I can take for a [minor]? | The approved electives for a [minor] are [approved-electives-minor]
+What courses may I choose that satisfy the [elective-type] requirement? | In order to satisfy the [elective-type] requirement, you may choose from the following courses: [elective-type-course-names].
+What are the courses that help me satisfy the [elective-type] requirements? | In order to satisfy the [elective-type] requirement, you may choose from the following courses: [elective-type-course-names].
+How many units of [elective-type] do I have to take? | You need to take [elective-type-units] in [elective-type].
+What courses can I take instead of [course] for [major]? | You could take any of [major-course-alternatives-list] instead of [course] for [major].
+Are there any alternatives to [course] for [major]? | You could take any of [major-course-alternatives-list] instead of [course] for [major].
+What CSSE courses are offered in [season]? | The CSSE courses typically offered in [season] are [season-course-names].
+What computer science and software engineering courses are offered in [season]? | The CSSE courses typically offered in [season] are [season-course-names].
+How many CSSE courses will be available during the [season] quarter? | There are [number-season-courses] CSSE courses typically offered during [season] quarter.
+How many computer science and software engineering courses will be available during the [season] quarter? | There are [number-season-courses] CSSE courses typically offered during [season] quarter.
+What are the courses that are in both CSC and SE curriculum? | The courses that are common for both the departments are [overlapping-courses-list].
+What are the courses that are in both Computer Science and SE curriculum? | The courses that are common for both the departments are [overlapping-courses-list].
+What are the courses that are in both Computer Science and Software Engineering curriculum? | The courses that are common for both the departments are [overlapping-courses-list].
+What courses are cross listed as CSC and SE? | The courses that are common for both the departments are [overlapping-courses-list].
+What courses are cross listed as Computer Science and SE? | The courses that are common for both the departments are [overlapping-courses-list].
+What courses are cross listed as Computer Science and Software Engineering? | The courses that are common for both the departments are [overlapping-courses-list].
+How many courses are present in both CSC and SE? | The number of courses that are common in both the departments are [overlapping-courses-list].
+How many courses are present in both Computer Science and SE? | The number of courses that are common in both the departments are [overlapping-courses-list].
+How many courses are present in both Computer Science and Software Engineering? | The number of courses that are common in both the departments are [overlapping-courses-list].
+What are the graduate level courses? | The graduate level courses in CSC are [graduate-courses-list].
+What are all the courses in [major] that are of [course-units] units? | The following courses count for [course-units] units: [major-course-names-of-units].
+What is the CSSE mission statement? | The CSSE mission statement is [csse-mission-statement].
+What is the computer science and software engineering mission statement? | The CSSE mission statement is [csse-mission-statement].
+What are the program educational objectives for the [major]? | The program educational objectives for the [major] are [major-peos].
+What are the learning outcomes of [major]? | The learning outcomes for the [major] are [major-learning-outcomes-list].
+What are the learning outcomes of the GE program? | The GE program’s learning outcomes are the following: [ge-learning-outcomes].
+What are the learning outcomes of the general education program? | The GE program’s learning outcomes are the following: [ge-learning-outcomes].
+What are the general education learning outcomes? | The GE program’s learning outcomes are the following: [ge-learning-outcomes].
+What are the learning outcomes for [major]? | The learning outcomes for the [major] are [major-learning-outcomes-list].
+What are the learning objectives for the MS in Computer Science? | The learning objectives for the MS in Computer Science are [ms-learning-objectives].
+What are the learning objectives for the Masters Degree in Computer Science? | The learning objectives for the MS in Computer Science are [ms-learning-objectives].
+What are the [major] courses? | The [major] courses are [major-courses].
+What are the courses required for [major]? | The [major] courses are [major-courses].
+How many courses do we have in [major]? | The number of courses in [major] are: [total-num-of-courses].
+What courses are important to transfer into Computer Science? | In order to maximize your chance of election, you should take the following courses: [transfer-courses].
+What courses do I need to take to transfer into Computer Science? | In order to maximize your chance of election, you should take the following courses: [transfer-courses].
+What are some [major] resources that are available? | These are some that are available to you: [major-resources].
+What resources are there for [major]? | These are some resources that are available to you: [major-resources].
+Where can I get advising for a [major]? | These are some resources that are available to you: [major-resources].
+What are the course numbers that are considered independent study in [major]? | The courses that are considered independent study are: [independent-study-courses].
+What are some independent study course that I have available? | The courses that are considered independent study are: [independent-study-courses].
+What is the minimum number of upper division units needed to graduate with a BS in Computer Science? | The minimum number of upper division units need to graduate with a BS in Computer Science are [minimum-upper-division-units].
+What is the minimum number of upper division units needed to graduate with a Bachelors Degree in Computer Science? | The minimum number of upper division units need to graduate with a BS in Computer Science are [minimum-upper-division-units].
+How many [division-level] units are required for a [minor]? | The [minor] requires [minor-division-units] [division-level] units.
+How many [division-level] units does [minor] require? | The [minor] requires [minor-division-units] [division-level] units.
+How many units does the [minor] require? | The [minor] requires [minor-required-units] required units and [minor-approved-elective-units] approved elective units.
+How many units do I need for a [minor]? | The [minor] requires [minor-required-units] required units and [minor-approved-elective-units] approved elective units.
+What are the general requirements for a minor at Cal Poly? | The general requirements for a minor at Cal Poly are [minor-general-requirements]. 
+What are the steps to apply for the [minor]? | You need to take [minor-steps] to attain a  [minor].
+How do I apply for a [minor]? | You need to take [minor-steps] to attain a [minor].
+What are the required courses for the [minor]? | The required courses for the [minor] are: [required-minor-courses].
+What is the minimum CGPA required to apply for minor in Computer Science? | You have to maintain a CGPA of [minimum-gpa-minor] or higher to apply for a minor in Computer Science. 
+What is the minimum Cumulative Grade Point Average required to apply for minor in Computer Science? | You have to maintain a CGPA of [minimum-gpa-minor] or higher to apply for a minor in Computer Science. 
+What are the prerequisites for the [minor]? | You need to meet the following requirements to apply for the [minor]: [minor-prerequisites].
+Where can I get the application for the [minor]? | You can access the application for the [minor] in the following link: [minor-application-link].
+Where can I get the flowchart for the [minor]? | You can access the flowchart for CSSE students pursuing a [minor] in the following link: [minor-flowchart-link].
+What courses should I take each quarter for the [minor]? | In order to determine what courses you should take each quarter in order to pursue the [minor], you should visit the minor’s flowchart. You can access the flowchart for CSSE students pursuing a [minor] in the following link: [minor-flowchart-link].
+How many units do I need to graduate? | You need [graduation-units] total units to graduate.
+What are the mandatory classes that I have to take in order to graduate? | You need to take [all-required-course-list] to graduate.
+What classes do I have to take in order to graduate? | You need to take [all-required-course-list] to graduate.
+Can I double count the [elective-name] elective? | [elective-is-double-countable].
+What classes can I double count? | The classes: [double-countable-classes], may be double counted.
+How many classes do I have to take for [major]? | You need to take [total-units] units worth of classes for [major]. The total number of classes may vary.
+What is the total number of classes needed to graduate in [major]? | You need to take [total-units] units worth of classes for [major]. The total number of classes may vary.
+What concentrations are available? | The following concentrations are available [concentration-list].
+How do I declare [concentration] concentration? | You need to complete the following steps [concentration-type-steps]
+What are the required courses for the [concentration]? | The required courses for the [concentration] are [concentration-required-courses].
+What GPA do I need to graduate? | You need a GPA of at least [minimum-grad-gpa] to graduate as a CSSE major.
+What is the minimum GPA? | You need a GPA of at least [minimum-grad-gpa]  to graduate as a CSSE major.
+What GPA do I need to attain an honor? | The following Honors are available [honors-gpa-list].
+What honors are available? | The following Honors are available [honors-gpa-list].
+What GPA do I need to obtain [honor-name]? | The following Honors are available [honors-gpa-list].
+What honor am I eligible for with a GPA of [gpa-number]? | The following Honors are available [honors-gpa-list].
+Can I take classes as credit/no credit? | You may not take any major classes as credit/no credit.
+Can I take classes as pass/no pass? | You may not take any major classes as credit/no credit.
+How many units do I need to take to be considered a [class-level]? | In order to be considered a [class-level], you have to take [class-level-units].
+If I have taken [num-units], what class level am I considered? | If you have taken [num-units], you are considered a [class-level] student.
+If I have taken [num-units], what division level am I considered? | If you have taken [num-units], you would be considered a [division-level] student.
+How many units do I need to take to be considered [division-level]? | In order for you to be considered [division-level], you must take [division-level-units].
+How many units do transfer applicants need prior to transfer as a CSSE major? | Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
+How many units do transfer applicants need prior to transfer as a computer science and software engineering major? | Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
+What courses articulate to apply as a CSSE transfer student? | The courses that articulate are [transfer-articulate-courses].
+What courses articulate to apply as a computer science and software engineering transfer student? | The courses that articulate are [transfer-articulate-courses].
+What are some general guidelines for a CSSE transfer student? | The general guidelines are [csse-transfer-guidelines].
+What are some general guidelines for a computer science and software engineering transfer student? | The general guidelines are [csse-transfer-guidelines].
+What is the minimum amount of transferable units required to transfer as a CSSSE major? | Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
+What is the minimum amount of transferable units required to transfer as a CSSSoftware Engineering major? | Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
+What courses are desired but not required if I want to transfer as a CSSE major? | If you want to transfer as a CSSE major the following classes are desired: [major-transfer-course-list]
+What courses are desired but not required if I want to transfer as a computer science and software engineering major? | If you want to transfer as a CSSE major the following classes are desired: [major-transfer-course-list]
+What courses are required If I want to transfer as a CSSE major? | If you want to transfer as a CSSE major you need the following course: [major-transfer-course-list]
+What courses are required If I want to transfer as a computer science and software engineering major? | If you want to transfer as a CSSE major you need the following course: [major-transfer-course-list]
+Where can I get more information on [subject]? | We don’t have information about [subject] but please refer to [bot-name].
+How can I contact the CSSE department? | You can contact the CSSE department at [department-contact-info].
+How can I contact the computer science and software engineering department? | You can contact the CSSE department at [department-contact-info].
+What is the phone number of the CSSE department? | [phone-number] is the CSSE phone number
+What is the phone number of the computer science and software engineering department? | [phone-number] is the CSSE phone number
+How can I contact the CSSE department? | [phone-number] is the CSSE phone number.
+How can I contact the computer science and software engineering department? | [phone-number] is the CSSE phone number.
+Who are the minor advisors for [minor]? | The minor advisors for [minor] are [minor-advisors]. 
+Who can I contact to get more information about the [minor]? | You can contact [minor-advisors] to learn more about [minor].
+Who can I contact if I have questions about [minor]? | If you have questions about [minor], you may contact [contact-info].
+Who will help me if I have doubts about [minor]? | If you have questions about [minor], you may contact [contact-info].
+What steps do I need to follow to request a change of major? | In order to request a change in major, follow these steps: [change-major-steps].
+How can I request a change of major? | In order to request a change in major, follow these steps: [change-major-steps].
+What are the basic criteria when requesting a change of major? | The basic criteria to request a change of major are [change-major-criteria] .
+What conditions are part of the change of major agreement? | The conditions present in the ICMA (Individualized Change of Major Agreement) contract are the following: [icma-conditions].
+What is the minimum GPA to transfer into CSSE? | [minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
+What is the minimum GPA to transfer into computer science and software engineering? | [minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
+If my GPA is [gpa], can I transfer into CSSE? | [minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
+If my GPA is [gpa], can I transfer into computer science and software engineering? | [minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
+What are the minimum requirements if I want to change into CSSE? | [minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
+What are the minimum requirements if I want to change into computer science and software engineering? | [minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
+What is the flowchart for [major] in [year-range]? | In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
+According to the [year-range] flowchart, when should I take [course] for [major]? | In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
+Where can I get the flowchart for [major]? |  In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
+Who is eligible for the Blended BS + MS Computer Science Program? | You must be one of the following [blended-requirements].
+Who is eligible for the Blended BS + Masters Degree Computer Science Program? | You must be one of the following [blended-requirements].
+Who is eligible for the Blended Bachelors Degree + Masters Degree Computer Science Program? | You must be one of the following [blended-requirements].
+What do I need to get into the Blended BS + MS Computer Science Program? | You must be one of the following [blended-requirements].
+What do I need to get into the Blended BS + Masters Degree Computer Science Program? | You must be one of the following [blended-requirements].
+What do I need to get into the Blended Bachelors Degree + Masters Degree Computer Science Program? | You must be one of the following [blended-requirements].
+What is the Blended BS + MS Computer Science Program? | The Blended BS + MS Computer Science Program is [blended-description].
+What is the Blended BS + Masters Degree Computer Science Program? | The Blended BS + MS Computer Science Program is [blended-description].
+What is the Blended Bachelors Degree + Masters Degree Computer Science Program? | The Blended BS + MS Computer Science Program is [blended-description].
+Why should I take the Blended Program in Computer Science? | The B.S. and M.S. program offers the following benefits: [blended-benefits].
+What are some of the benefits from the Blended Program?  | The B.S. and M.S. program offers the following benefits: [blended-benefits].
+What benefits does the blended B.S. and M.S. program offer? | The B.S. and M.S. program offers the following benefits: [blended-benefits].
+How many additional units does the MS in Computer Science require? | The MS degree requires at least [ms-total-units] units beyond the undergraduate degree. [required-ms-units] units are from a required list, [approved-ms-elective-units] units are from approved electives, and there are [thesis-ms-units] units of thesis and seminar.
+How many additional units does the Masters Degree in Computer Science require? | The MS degree requires at least [ms-total-units] units beyond the undergraduate degree. [required-ms-units] units are from a required list, [approved-ms-elective-units] units are from approved electives, and there are [thesis-ms-units] units of thesis and seminar.
+How can I get a Masters in Computer Science degree after satisfying the requirements of BS? | The MS degree requires at least [ms-total-units] units beyond the undergraduate degree. [required-ms-units] units are from a required list, [approved-ms-elective-units] units are from approved electives, and there are [thesis-ms-units] units of thesis and seminar.
+How can I get a Masters in Computer Science degree after satisfying the requirements of Bachelors Degree? | The MS degree requires at least [ms-total-units] units beyond the undergraduate degree. [required-ms-units] units are from a required list, [approved-ms-elective-units] units are from approved electives, and there are [thesis-ms-units] units of thesis and seminar.
+How many units of graduate level courses are needed to get the MS in Computer Science degree? | At least [graduate-ms-units] units of courses higher than 500 must be fulfilled to get the MS in Computer Science degree.
+How many units of graduate level courses are needed to get the Masters Degree in Computer Science degree? | At least [graduate-ms-units] units of courses higher than 500 must be fulfilled to get the MS in Computer Science degree.
+What courses are included in the MS in Computer Science? | The MS in Computer Science includes the following courses: [ms-course-names].
+What courses are included in the Masters Degree in Computer Science? | The MS in Computer Science includes the following courses: [ms-course-names].
+What are the masters level courses in Computer Science? | The MS in Computer Science includes the following courses: [ms-course-names].
+When is a student placed on academic probation? | A student will be placed on academic probation if [probation-criteria].
+What is academic probation? | A student will be placed on academic probation if  [probation-criteria].
+What happens if I struggle with my grades? | A student is placed on academic disqualification status if [disqualification-criteria].
+When is a student placed on academic probation? | A student is placed on academic disqualification status if [disqualification-criteria].
+What is academic disqualification? | A student is placed on academic disqualification status if [disqualification-criteria].
+What is the difference between academic probation and academic disqualification? | An undergraduate student will be placed on academic probation if [probation-criteria]. A student is placed on academic disqualification status if [disqualification-criteria].
+What accreditation does the Computer Science program have? | The Computer Science program is accredited by the Computer Accreditation Commission of ABET. To read more, visit the following website:  http://www.abet.org/.
 
-Group Member 2 Questions
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18.
-19.
-20.
-21.
-22.
-23.
-24.
-25.
-26.
-27.
-28.
-29.
-30.
-
-Group Member 3 Questions
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18.
-19.
-20.
-21.
-22.
-23.
-24.
-25.
-26.
-27.
-28.
-29.
-30.
-
-Group Member 4 Questions
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
-16.
-17.
-18.
-19.
-20.
-21.
-22.
-23.
-24.
-25.
-26.
-27.
-28.
-29.
-30.
+[all-required-course-list]: A list of courses required for a major
+[approved-electives-minor]: A list of electives that are approved for a minor
+[approved-ms-elective-units]: A list of electives which count towards a masters degree
+[blended-benefits]: A list of benefits for the blended masters program
+[blended-description]: A description of the blended masters program
+[blended-requirements]: A list of requirements needed to join the blended masters program.
+[elective-is-double-countable]: A boolean indicating if a given elective may be double counted.
+[bot-name]: The name of a bot that is specialized in a different area (for referral).
+[change-major-criteria]: A list of criteria to change to a given major.
+[change-major-steps]: A list of steps to change to a given major
+[class-level]: A level of student such as Freshmen, Sophomore, Junior or Senior.
+[concentration]: A concentration such as data science 
+[concentration-list]: A list of all concentrations within CSSE
+[concentration-required-courses]: A list of courses required for a given concentration
+[concentration-type-steps]:  A list of steps to gain a certain concentration
+[contact-info]: The department contact info
+[course]: The name of a course
+[major-transfer-course-list]: A list of courses needed to transfer in a given major
+[major-course-names-of-units]: A list of courses in a given major with a specified number of units
+[csse-mission-statement]: The mission statement of the CSSE department.
+[csse-transfer-guidelines]: The guidelines to transfer into the CSSE department
+[department-contact-info]: Contact info for the department office.
+[disqualification-criteria]: The criteria that defines the disqualification of a student from cal poly
+[division-ge-area-list]: A list of areas within GE’s such as area upper/lower division A, B, C
+[division-level]: describes levels such as upper or lower division
+[double-countable-classes]: Classes that count for more than one graduation requirement at a time
+[elective-name]: The name of a specific elective
+[elective-type]: Elective types such as Life Science,Mathematics/Statistics Support Elective, Physical Science Support Elective etc.
+[elective-type-course-names]: A list of electives from a specific type such as Life Science,Mathematics/Statistics Support Elective, Physical Science Support Elective etc.
+[elective-type-units]: Units that are acquired from electives from a certain type
+[flowchart-link]: A link to direct the user to a flowchart website that will contain the pdf
+[ge-area]: Areas within a GE’s such as area A, B, C
+[ge-area-course-names]: A list of course names that are contained within a certain area
+[ge-area-list]: A list of a single GE area such as area A, B, C
+[ge-area-subject]: The subject that belongs to a specific GE area such a Communication Courses (GE Area A), Science and Mathematics Courses (GE Area B), Arts and Humanities Courses (GE Area C)
+[ge-elective-units-major]: GE units that are needed for a specific major
+[ge-learning-outcomes]: Learning outcomes that are to be acquired from CSSE GE’s
+[ge-requirements]: Required GE’s
+[gpa]: Grade point average
+[gpa-number]: Users grade point average
+[graduate-courses-list]: A list of graduate level courses 
+[graduate-ms-units]: Units that are to be acquired for a masters degree
+[graduation-units]:  Units that are to be acquired for graduation
+[honor-name]: Honor names such as Summa cum laude, Magna cum laude and Cum laude
+[honors-gpa-list]: A list of all honors that are available
+[icma-conditions]: Conditions that are to be met for the Individualized CHange of Major Agreement
+[independent-study-courses]: The courses involving individual research, project or thesis.
+[major]: Any major like CS, SE, CPE, etc.
+[major-course-alternatives-list]: A list of alternative courses that can be taken instead of a certain course of a major.
+[major-courses]: A list of courses of a specific major.
+[major-ge-units]: The number of General Education units needed to graduate in a certain major.
+[major-learning-outcomes-list]: A list of learning outcomes of a particular major.
+[major-peos]: A list of program educational objectives of a particular major.
+[major-resources]: A list of places where an advice regarding a particular major can be seeked.
+[minimum-gpa-change-major]: Minimum GPA needed to change major into CSSE.
+[minimum-gpa-minor]: Minimum GPA needed to do minor in CSSE.
+[minimum-grad-gpa]: Minimum GPA needed to graduate as a CSSE major.
+[minimum-upper-division-units]: The minimum number of upper division units needed to graduate with BS in Computer Science.
+[minor]: Any minor like minor in Computer Science, Statistics, Software Engineering, Data Science, etc.
+[minor-advisors]: List of names of advisors that assist when a student seeks advice for a particular minor.
+[minor-application-link]: A link that directs to the application for a minor.
+[minor-approved-elective-units]: Number of units of approved electives needed for a particular minor.
+[minor-division-units]: Number of units of either Upper-level or Lower-level courses of a particular minor.
+[minor-flowchart-link]: A link that directs to the page with a flowchart that has details about a minor.
+[minor-general-requirements]: A list of general requirements for a minor.
+[minor-prerequisites]: A list of prerequisites before applying for a particular minor.
+[minor-required-units]: Number of units of courses required to take for a particular minor.
+[minor-steps]: A guide on how to apply for a particular minor.
+[ms-course-names]: A list of graduate level course titles
+[ms-learning-objectives]: A list of learning objectives of Masters in CS program.
+[ms-total-units]: The total units that CS Masters program requires its students to take.
+[num-units]: The amount of units that a user specifies. 
+[course-units]: The number of units a course is listed for. 
+[minor-approved-electives-units]: The total number of approved elective units for a specific minor.
+[number-season-courses]: The number of CSSE courses typically offered in a specific quarter (fall, winter, spring or summer).
+[class-level-units]:The number of units a Cal Poly student has to take in order to be considered the class level (freshman, sophomore, junior or senior) that the user specified.
+[division-level-units]: The number of units that a Cal Poly student has to take in order to be considered the division level (upper division or lower division) that the user specified. 
+[overlapping-courses-list]: A list of courses that count towards both a Computer Science degree and a Software Engineering degree.
+[phone-number]: The phone number provided in order to contact the CSSE department.
+[probation-criteria]: The conditions on which a student is placed on academic probation.
+[required-minor-courses]: A list of courses that are required for the completion of the minor which the user specified. 
+[required-ms-units]: The number of required masters units in order to complete the Masters of Computer Science program.
+[season]: Fall, Winter, Spring or Summer. 
+[season-course-names]: A list of course names offered in a specific quarter (fall, winter, spring or summer).
+[subject]: This variable is used to indicate a topic which the user inquires about which is outside the scope of our team’s topics. 
+[thesis-ms-units]: The number of thesis units required for students pursuing a Masters in Computer Science.
+[total-num-of-courses]: The total number of courses offered in Cal Poly that are considered part of the major which the user specified. 
+[total-units]: The total number of units required to obtain a degree in the major that the user specified at Cal Poly.
+[transfer-articulate-courses]: A list of courses that articulate for transfers into the CSSE department.
+[transfer-courses]: A list of courses that students who want to transfer into the CSSE department should take in order to maximize the chances of them being admitted into the department.
+[transfer-min-units]: The minimum number of units that Cal Poly students need to have taken in order to transfer into the CSSE department.
+[year-range]: The range of years that a user specifies to obtain a flowchart of their curriculum.  
