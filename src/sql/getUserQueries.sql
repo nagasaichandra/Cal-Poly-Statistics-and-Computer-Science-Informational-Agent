@@ -1,0 +1,1 @@
+SELECT query_text, question_text, response, correct FROM user_query JOIN question WHERE  question.id = user_query.matched_question;
