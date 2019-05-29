@@ -14,7 +14,6 @@ class DiscordChatInterface(discord.Client):
     async def on_message(self, message):
         # don't respond to ourselves
         if message.author == self.user or not self._is_message_for_me(message.content):
-            print('ignored', message.content)
             return
 
         content = message.content[len(self.name) + 1:].strip()
@@ -31,7 +30,6 @@ class DiscordChatInterface(discord.Client):
         return message[:len(self.name)] == self.name
     
     def _on_messsage_received(self, message):
-        print(len(self.on_message_callbacks))
         for callback in self.on_message_callbacks:
             res = callback(message)
             if res:
@@ -40,7 +38,6 @@ class DiscordChatInterface(discord.Client):
     
     def add_message_receiver(self, callback):
         self.on_message_callbacks.append(callback)
-        print('addcallback', callback, len(self.on_message_callbacks))
 
 class TestDiscordChatInterface(unittest.TestCase):
     def test_failure(self):
