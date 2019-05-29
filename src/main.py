@@ -9,7 +9,10 @@ import sys
 rd = RelevanceDetector()
 
 def answer_query(query):
+    start_time = time.time()
     matched_question, matched_answer = rd.most_relevant_query(query)
+    print("Matched question in", time.time() - start_time)
+    start_time = time.time()
     with connection.cursor() as cursor:
         cursor.execute("""INSERT INTO user_query (query_text, matched_question)
     SELECT
@@ -18,11 +21,12 @@ def answer_query(query):
     FROM question 
     WHERE question.question_text = %s;""", (query, matched_question))
         connection.commit()
+    print("Saved query in", time.time() - start_time)
     return matched_answer
 
 def get_feedback(query):
     feeback_query = "UPDATE user_query SET correct = %s ORDER BY time_asked DESC LIMIT 1;"
-
+    query = query.lower().strip('.')
     if query == "yes" or query == "correct" or query == "right" or query == "good bot":
         with connection.cursor() as cursor:
             cursor.execute(feeback_query, True)
