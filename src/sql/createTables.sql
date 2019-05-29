@@ -3,7 +3,7 @@
 
 /* One of the questions we know how to answer */
 CREATE TABLE question (
-    id            INT PRIMARY KEY,
+    id            INT AUTO_INCREMENT PRIMARY KEY,
     question_text TEXT,
     area          TEXT,
     response      TEXT
@@ -11,14 +11,12 @@ CREATE TABLE question (
 
 /* Used to store a query that the user asked for debugging */
 CREATE TABLE user_query (
-    id                INT PRIMARY KEY,
+    id                INT AUTO_INCREMENT PRIMARY KEY,
     time_asked        TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     query_text        TEXT,
     matched_question  INT REFERENCES question(id),
     correct           BOOLEAN
 );
-
-
 
 /*
 Example Data Point (from website)
