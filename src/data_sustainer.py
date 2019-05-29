@@ -25,8 +25,8 @@ class DataSustainer:
             query = """SET FOREIGN_KEY_CHECKS = 0;
             {}
             SET FOREIGN_KEY_CHECKS = 1;""".format('\n'.join(deletors))
-            print(query)
             cursor.execute(query)
+            connection.commit()
 
 class TestDataSustainer(unittest.TestCase):
 
@@ -36,5 +36,4 @@ class TestDataSustainer(unittest.TestCase):
 
 if __name__ == "__main__":
     DataSustainer().create_tables()
-    DataSustainer().delete_all_tables()
     unittest.main()
