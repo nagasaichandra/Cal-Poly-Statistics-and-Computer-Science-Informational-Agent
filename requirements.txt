@@ -1,0 +1,4 @@
+nltk==3.4.1
+discord==1.0.1
+discord.py==1.1.1
+PyMySQL==0.9.3
