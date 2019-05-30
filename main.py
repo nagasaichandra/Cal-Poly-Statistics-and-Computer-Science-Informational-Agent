@@ -1,7 +1,7 @@
-from discord_chat_interface import DiscordChatInterface
-from cli_chat_interface import CliChatInterface
-from relevance_detector import RelevanceDetector
-from database_connection import connection
+from src.discord_chat_interface import DiscordChatInterface
+from src.cli_chat_interface import CliChatInterface
+from src.relevance_detector import RelevanceDetector
+from src.database_connection import connection
 import time
 
 import sys

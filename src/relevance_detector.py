@@ -3,8 +3,7 @@ import unittest
 
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import wordnet as wn
-from database_connection import connection
-
+from .database_connection import connection
 
 
 def penn_to_wn(tag):

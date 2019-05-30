@@ -12,8 +12,8 @@ class CliChatInterface:
         message = input()
         if self._is_message_for_me(message):
             content = message[len(self.name) + 1:].strip()
-            responce = self._on_messsage_received(content)
-            self.send_message(responce)
+            response = self._on_messsage_received(content)
+            self.send_message(response)
         self.get_message()
     
     def _is_message_for_me(self, message):
@@ -38,6 +38,7 @@ class TestCliChatInterface(unittest.TestCase):
     
     def test_callbacks(self):
         call_count = {'calls': 0}
+
         def increment(msg):
             call_count['calls'] += 1
         self.interface.add_message_receiver(increment)

@@ -1,7 +1,6 @@
 import re
 import sys
-from database_connection import connection
-
+from .database_connection import connection
 
 variable_regex = re.compile(r'\[([^\]]+)\]')
 question_regex = re.compile('(?:[0-9]+\.\s*)?([^\n\|]+(?:\|\s*[^\n\|]+)+)')
@@ -44,6 +43,7 @@ def reformat_file(input_filepath, output_filepath):
     variables = get_all_variables_normalized(file_text)
     open(output_filepath, 'w').write(reformat(questions, variables))
 
+
 synonyms_list = {
     'GE': 'general education',
     'CSSE': 'computer science and software engineering',
@@ -53,6 +53,8 @@ synonyms_list = {
     'MS': 'Masters Degree',
     'BS': 'Bachelors Degree'
 }
+
+
 def diversify_questions(questions):
     """ Creates alternative versions of questions by replacing terms with synonyms, then adds them to the list """
     results = []
@@ -72,24 +74,28 @@ def diversify_questions(questions):
 
     return results
 
+
 def ingest_questions(questions):
+    """ Stores a list of questions in the database """
     with connection.cursor() as cursor:
         rows = [q.split('|') for q in questions]
         for row in rows:
             cursor.execute("INSERT INTO question (question_text, response) VALUES (%s, %s);", row)
         connection.commit()
 
+
 def main():
     args = sys.argv[1:]
-    if not args or len(args)  < 2:
+    if not args or len(args) < 2:
         print("usage: inputfile outputfile")
         sys.exit(1)
-    if (args[0] == "--ingest"):
+    if args[0] == "--ingest":
         file_text = open(args[1]).read()
         questions = get_all_questions(file_text)
         ingest_questions(questions)
     else:
         reformat_file(args[0], args[1])
+
 
 if __name__ == '__main__':
     main()

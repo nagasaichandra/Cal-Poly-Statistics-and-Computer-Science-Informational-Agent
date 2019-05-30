@@ -1,6 +1,5 @@
 
 import pymysql.cursors
-import re
 import json
 import sys
 

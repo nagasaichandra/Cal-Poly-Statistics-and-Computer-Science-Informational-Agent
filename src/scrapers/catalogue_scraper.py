@@ -4,7 +4,7 @@ import re
 
 import sys
 sys.path.append('../')
-from database_connection import connection
+from ..database_connection import connection
 
 def parse_course(class_tag):
 	''' This function requires a tag for each class block and it returns 
