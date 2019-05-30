@@ -13,6 +13,7 @@ with open('db_config.json') as json_file:
 
 connection = pymysql.connect(host=config['host'],
                              user=config['user'],
+                             ssl={'ca': './cacert.pem'},
                              password=config['password'],
                              db=config['db'],
                              charset='utf8mb4',
