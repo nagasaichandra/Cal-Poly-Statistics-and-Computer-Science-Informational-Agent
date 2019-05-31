@@ -27,10 +27,11 @@ Prerequisite: CSC 141 or CSC 348; and CPE/CSC 357.
 Music-producing programs. Software synthesizers: oscillators, coupled oscillators, wavetable synthesis. Sound processing units/filters: LTI, FIR, IIR, nonlinear. Physics of sound, mathematical foundations of sound synthesis and filtering, existing sound formats (both sampled and MIDI). 3 lectures, 1 laboratory.
 */
 CREATE TABLE course (
-    course_number     SMALLINT,
-    course_area       VARCHAR(4),
-    course_descrption TEXT,
-    course_units      SMALLINT,
+    course_number      SMALLINT,
+    course_area        VARCHAR(4),
+    course_name        VARCHAR(150),
+    course_description TEXT,
+    course_units       SMALLINT,
     PRIMARY KEY(course_number, course_area)
 );
 
