@@ -18,6 +18,13 @@ CREATE TABLE user_query (
     correct           BOOLEAN
 );
 
+/* Table that stores where a variables values can be found */
+CREATE TABLE variable (
+    name             VARCHAR(30) PRIMARY KEY,
+    table_name       VARCHAR(30),
+    field_name       VARCHAR(32)
+);
+
 /*
 Example Data Point (from website)
 
