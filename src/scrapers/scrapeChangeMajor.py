@@ -1,16 +1,8 @@
-import os
-import sys
-import random
-import requests
+import requests, re, bleach, urllib3
 from bs4 import BeautifulSoup
-import re
-import bleach
-import pandas as pd
-import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
-# function that filters vowels
 def filterMinStandards(line):
     exclude = ['[', '', 'Minimum Standards']
     if (line not in exclude):
@@ -59,17 +51,19 @@ def scrapeChangeMajor():
     
     # print('\n'.join(list(minStandardsList)))
     # print(
-    tempList  ='\n'.join(list(processList))
+    tempList = '\n'.join(list(processList))
+    # print(tempList)
         # )
     # print(tempList)
     matchObj = re.search(r"\(all GPAs at least a (\d+\.\d+)\)", tempList)
     
     # if matchObj:
     #     print(matchObj.group(1))
+    # print('\n'.join(list(processList))
 
     # [change-major-steps], [change-major-criteria], [minimum-gpa-change-major]
     finalDict['change-major-criteria'] = '\n'.join(list(minStandardsList))
-    finalDict['change-major-steps'] = '\n'.join(list(processList))
+    finalDict['change-major-steps'] = tempList
     finalDict['minimum-gpa-change-major'] = matchObj.group(1)
 
     return finalDict
@@ -77,4 +71,3 @@ def scrapeChangeMajor():
 
 if __name__ == "__main__":
     print(scrapeChangeMajor())
-
