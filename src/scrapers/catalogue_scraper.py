@@ -2,8 +2,6 @@ import os, sys, random, requests
 from bs4 import BeautifulSoup
 import re
 
-import sys
-sys.path.append('../')
 from ..database_connection import connection
 
 def parse_course(class_tag):
@@ -28,7 +26,7 @@ def parse_course(class_tag):
 	if units_re:
 		units_num = units_re.group(1)
 		course_dict['units'] = units_num
-	seasons = class_tag.find('p', attrs = {'class': re.compile('noindent')}.text 
+	#seasons = class_tag.find('p', attrs = {'class': re.compile('noindent')}.text
 	
 	return course_dict
 

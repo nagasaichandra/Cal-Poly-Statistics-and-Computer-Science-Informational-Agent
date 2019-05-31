@@ -1,6 +1,5 @@
 import unittest
 
-
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import wordnet as wn
 from .database_connection import connection
@@ -63,7 +62,6 @@ def sentence_similarity(sentence1, sentence2):
     # Average the values
     score /= count
     return score
-
 
 
 class RelevanceDetector:
