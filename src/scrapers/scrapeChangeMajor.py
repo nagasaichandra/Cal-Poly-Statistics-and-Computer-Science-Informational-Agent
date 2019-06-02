@@ -49,17 +49,9 @@ def scrapeChangeMajor():
     processList = filter(
         filterProcess, processList.splitlines())
     
-    # print('\n'.join(list(minStandardsList)))
-    # print(
     tempList = '\n'.join(list(processList))
-    # print(tempList)
-        # )
-    # print(tempList)
     matchObj = re.search(r"\(all GPAs at least a (\d+\.\d+)\)", tempList)
     
-    # if matchObj:
-    #     print(matchObj.group(1))
-    # print('\n'.join(list(processList))
 
     # [change-major-steps], [change-major-criteria], [minimum-gpa-change-major]
     finalDict['change-major-criteria'] = '\n'.join(list(minStandardsList))
