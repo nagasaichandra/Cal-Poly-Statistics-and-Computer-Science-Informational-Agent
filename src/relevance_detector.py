@@ -2,8 +2,7 @@ import unittest
 
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import wordnet as wn
-from .database_connection import connection
-
+from .questions import get_questions, get_variable_values
 
 def penn_to_wn(tag):
     """ Convert between a Penn Treebank tag to a simplified Wordnet tag """
@@ -68,9 +67,7 @@ class RelevanceDetector:
     """ Determines if a question can be answered and what query it most closely matches """
 
     def __init__(self):
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT question_text, response FROM question;")
-            self.questions = [(row['question_text'], row['response']) for row in cursor.fetchall()]
+        self.questions = get_questions()
 
     def most_relevant_query(self, query):
         return max(self.questions, key=lambda question: sentence_similarity(query, question[0]))
