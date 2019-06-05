@@ -1,7 +1,7 @@
 from .catalogue_scraper import scrape_catalog
 from .scrapeChangeMajor import scrapeChangeMajor
 from .scrapeCSMinor import scrapecsminor
-from .scrapeMasters import scrapeMasters
+from .scrape_masters import scrape_masters
 from .scrapeObjectivesandMissions import scrapeObjectivesandMissions
 from .scrapeTransfer import scrapeTransfer
 
@@ -11,7 +11,7 @@ def scrape_all():
     scrape_catalog()
     scrapeChangeMajor()
     scrapecsminor()
-    scrapeMasters()
+    scrape_masters()
     scrapeObjectivesandMissions()
     scrapeTransfer()
 

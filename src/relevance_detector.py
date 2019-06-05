@@ -3,6 +3,7 @@ import unittest
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import wordnet as wn
 from .questions import get_questions, get_variable_values
+from .query_scanner import QueryScanner
 
 def penn_to_wn(tag):
     """ Convert between a Penn Treebank tag to a simplified Wordnet tag """
@@ -70,7 +71,9 @@ class RelevanceDetector:
         self.questions = get_questions()
 
     def most_relevant_query(self, query):
-        return max(self.questions, key=lambda question: sentence_similarity(query, question[0]))
+        query_scanner = QueryScanner()
+        reformat_query = query_scanner.clean_user_question(query)[0]
+        return max(self.questions, key=lambda question: sentence_similarity(reformat_query, question[0]))
 
 
 class TestRelevanceDetector(unittest.TestCase):
