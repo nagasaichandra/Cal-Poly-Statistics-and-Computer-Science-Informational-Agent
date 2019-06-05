@@ -93,9 +93,8 @@ class QueryScanner:
 
     def answer_question(self, query, answer):
         user_variables = self.find_variables(query)
-        print
         return self.clean_response_query(answer, user_variables)
 
-question_scanner = QueryScanner()
-print(question_scanner.clean_user_question("What are the CSC courses?"))
+# question_scanner = QueryScanner()
+# print(question_scanner.clean_user_question("What are the CSC courses?"))
 
