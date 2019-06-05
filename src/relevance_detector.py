@@ -95,8 +95,6 @@ class TestRelevanceDetector(unittest.TestCase):
 
     def test_failure(self):
         # Replace this with actual tests
-        relevance_det = RelevanceDetector()
-        print(relevance_det.most_relevant_query("What are the CSC courses?"))
         self.assertEqual(True, False)
 
 
