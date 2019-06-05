@@ -65,7 +65,7 @@ class QueryScanner:
 
     def clean_response_query(self, response_text, user_variables=None):
         clean_response_text = self.clean_response_user_variables(response_text, user_variables)
-        query_variables = re.findall(r'\[(.*?)\]', clean_response_text)
+        query_variables = self.find_within_brackets(clean_response_text)
         if query_variables:
             for query_var in query_variables:
                 query_sub = self.response_variables_queries[query_var]
@@ -77,6 +77,15 @@ class QueryScanner:
                 clean_response_text = self.replace_variable(clean_response_text, query_var, query_response)
 
         return clean_response_text
+
+    def find_within_brackets(self, text):
+        """
+
+        :param text:
+        :return: A list of variable names that are inside of brackets in text.
+        """
+        return re.findall(r'\[(.*?)\]', text)
+
 
     def replace_variable(self, text, variable_name, substitution):
         variable_re_string = r'\[{}\]'.format(variable_name).replace("'", "")

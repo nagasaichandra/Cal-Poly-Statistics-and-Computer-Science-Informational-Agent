@@ -69,17 +69,34 @@ class RelevanceDetector:
 
     def __init__(self):
         self.questions = get_questions()
+        self.query_scanner = QueryScanner()
+
+    def get_subset_questions_list(self, variables_query):
+        """
+
+        :param query: User's input question.
+        :return: Subset of questions with the same variables as the query.
+        """
+        variables_questions = [(question[0], question[1], self.query_scanner.find_within_brackets(question[0])) for question in self.questions]
+        final_list = list(filter(lambda x: self.match_variables(variables_query, x[2]), variables_questions))
+        return [(question[0], question[1]) for question in final_list]
+
+    def match_variables(self, variables_query, variables_question):
+        return set(variables_query.keys()) >= set(variables_question)
 
     def most_relevant_query(self, query):
-        query_scanner = QueryScanner()
-        reformat_query = query_scanner.clean_user_question(query)[0]
-        return max(self.questions, key=lambda question: sentence_similarity(reformat_query, question[0]))
+        reformat_query = self.query_scanner.clean_user_question(query)
+        subset_questions = self.get_subset_questions_list(reformat_query[1])
+
+        return max(subset_questions, key=lambda question: sentence_similarity(reformat_query[0], question[0]))
 
 
 class TestRelevanceDetector(unittest.TestCase):
 
     def test_failure(self):
         # Replace this with actual tests
+        relevance_det = RelevanceDetector()
+        print(relevance_det.most_relevant_query("What are the CSC courses?"))
         self.assertEqual(True, False)
 
 
