@@ -1,19 +1,19 @@
 from .catalogue_scraper import scrape_catalog
-from .scrapeChangeMajor import scrapeChangeMajor
-from .scrapeCSMinor import scrapecsminor
-from .scrapeMasters import scrapeMasters
-from .scrapeObjectivesandMissions import scrapeObjectivesandMissions
-from .scrapeTransfer import scrapeTransfer
+from .scrape_change_major import scrape_change_major
+from .scrape_cs_minor import scrape_cs_minor
+from .scrape_masters import scrape_masters
+from .scrape_objectives_and_missions import scrapeObjectivesandMissions
+from .scrape_transfer import scrape_transfer
 
 
 def scrape_all():
     """ Scrapes all the data sources and puts the data into the database """
     scrape_catalog()
-    scrapeChangeMajor()
-    scrapecsminor()
-    scrapeMasters()
+    scrape_change_major()
+    scrape_cs_minor()
+    scrape_masters()
     scrapeObjectivesandMissions()
-    scrapeTransfer()
+    scrape_transfer()
 
 
 if __name__ == '__main__':

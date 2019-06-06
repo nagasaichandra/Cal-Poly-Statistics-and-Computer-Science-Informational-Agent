@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd450db3-4d96-4ace-98ce-26b7ce64c7ba" name="Default Changelist" comment="Fixed typos and formatting issues.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli_chat_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli_chat_interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/discord_chat_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/discord_chat_interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/non_native_responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/non_native_responder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/query_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/query_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/relevance_detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/relevance_detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scrapers/catalogue_scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/scrapers/catalogue_scraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scrapers/scrapeChangeMajor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/scrapers/scrapeChangeMajor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scrapers/scrapeCSMinor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/scrapers/scrapeCSMinor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,15 +42,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scrapers/scrapeChangeMajor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sql/createTables.sql">
           <provider selected="true" editor-type-id="text-editor">
@@ -100,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/parse_questions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1462">
-              <caret line="88" column="33" lean-forward="true" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
+            <state relative-caret-position="1496">
+              <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -127,7 +111,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/questions.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="206">
@@ -136,10 +120,22 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/scrapers/scrapeCSMinor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="710">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scrapers/catalogue_scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="17">
               <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
@@ -175,6 +171,7 @@
         <option value="$PROJECT_DIR$/src/scrapers/scrapeChangeMajor.py" />
         <option value="$PROJECT_DIR$/src/scrapers/catalogue_scraper.py" />
         <option value="$PROJECT_DIR$/questions.txt" />
+        <option value="$PROJECT_DIR$/src/scrapers/scrapeCSMinor.py" />
       </list>
     </option>
   </component>
@@ -200,6 +197,12 @@
               <item name="CSC-466-Project-3" type="b2602c69:ProjectViewProjectNode" />
               <item name="CSC-466-Project-3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CSC-466-Project-3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CSC-466-Project-3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="scrapers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -308,6 +311,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.scrape_all" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python tests.Unittests in cli_chat_interface.py" />
       <item itemvalue="Python tests.Unittests in discord_chat_interface.py" />
@@ -334,6 +338,7 @@
       <workItem from="1559251098233" duration="958000" />
       <workItem from="1559326534280" duration="70000" />
       <workItem from="1559330000468" duration="774000" />
+      <workItem from="1559765639071" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed typos and formatting issues.">
       <created>1559241564076</created>
@@ -361,13 +366,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8604000" />
+    <option name="totallyTimeSpent" value="8612000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18336888" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18550107" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -483,13 +488,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scrapers/scrapeChangeMajor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scrapers/scrapeChangeMajor.py" />
     <entry file="file://$PROJECT_DIR$/src/sql/createTables.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -523,8 +522,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/parse_questions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="88" column="33" lean-forward="true" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
+        <state relative-caret-position="1496">
+          <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -538,13 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scrapers/catalogue_scraper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/query_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -552,10 +544,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/scrapers/catalogue_scraper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/questions.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
           <caret line="162" selection-start-line="162" selection-end-line="253" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scrapers/scrapeCSMinor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

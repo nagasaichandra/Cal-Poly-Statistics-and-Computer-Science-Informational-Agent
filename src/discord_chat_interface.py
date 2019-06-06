@@ -28,7 +28,7 @@ class DiscordChatInterface(discord.Client):
         for callback in self.on_message_callbacks:
             res = callback(message)
             if res:
-                return res
+                return res[:2000]
         return 'Sorry, I did not understand that.'
 
     def add_message_receiver(self, callback):

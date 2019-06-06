@@ -3,6 +3,7 @@ import unittest
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import wordnet as wn
 from .questions import get_questions, get_variable_values
+from .query_scanner import QueryScanner
 
 def penn_to_wn(tag):
     """ Convert between a Penn Treebank tag to a simplified Wordnet tag """
@@ -68,9 +69,28 @@ class RelevanceDetector:
 
     def __init__(self):
         self.questions = get_questions()
+        self.query_scanner = QueryScanner()
+
+    def get_subset_questions_list(self, variables_query):
+        """
+
+        :param query: User's input question.
+        :return: Subset of questions with the same variables as the query.
+        """
+        variables_questions = [(question[0], question[1], self.query_scanner.find_within_brackets(question[0])) for question in self.questions]
+        final_list = list(filter(lambda x: self.match_variables(variables_query, x[2]), variables_questions))
+        return [(question[0], question[1]) for question in final_list]
+
+    def match_variables(self, variables_query, variables_question):
+        return set(variables_query.keys()) >= set(variables_question)
 
     def most_relevant_query(self, query):
-        return max(self.questions, key=lambda question: sentence_similarity(query, question[0]))
+        reformatted_query, variables = self.query_scanner.clean_user_question(query)
+        subset_questions = self.get_subset_questions_list(variables)
+        print('matching', reformatted_query)
+        best = max(subset_questions, key=lambda question: sentence_similarity(reformatted_query, question[0]))
+
+        return best[0], best[1], sentence_similarity(reformatted_query, best[0]), variables
 
 
 class TestRelevanceDetector(unittest.TestCase):
