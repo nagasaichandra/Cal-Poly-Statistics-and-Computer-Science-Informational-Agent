@@ -72,7 +72,11 @@ class QueryScanner:
                 # First clean query.
                 clean_query = self.clean_response_user_variables(query_sub, user_variables)
                 query_response_list = self.execute_query(clean_query)
-                query_response = ', '.join(query_response_list)
+
+                if query_response_list:
+                    query_response = ', '.join(query_response_list)
+                else:
+                    query_response = "(could not find %s)"%(query_var)
 
                 clean_response_text = self.replace_variable(clean_response_text, query_var, query_response)
 
@@ -97,8 +101,20 @@ class QueryScanner:
             response_list = cursor.fetchall()
             connection.commit()
         tuple_response = [list(response.values())[0] for response in response_list]
-        return tuple_response
+        if len(tuple_response) > 0:
+            return tuple_response
+        else:
+            return False
 
     def answer_question(self, query, answer):
         user_variables = self.find_variables(query)
         return self.clean_response_query(answer, user_variables)
+
+
+query_scanner = QueryScanner()
+print(query_scanner.answer_question("What are the CE courses?", "The [major] courses are [major-courses]."))
+
+
+"CSC"
+"C.S."
+"CS"
