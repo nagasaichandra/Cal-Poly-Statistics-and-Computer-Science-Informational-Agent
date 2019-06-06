@@ -4,7 +4,7 @@ import urllib3
 import re
 
 
-def scrapeContact():
+def scrape_contact():
 	"""
 		https://statistics.calpoly.edu/data-science-minor ===> DATA SCIENCE MINOR
 		CSC Minor advisors contact available in a pdf at https://csc.calpoly.edu/static/media/uploads/computer_science_&_software_engineering_faculty_advisor_list_8-28-14.pdf
@@ -40,5 +40,5 @@ def scrapeContact():
 	 
 	
 if __name__ == "__main__":
-	scrapeContact()
+	scrape_contact()
 
