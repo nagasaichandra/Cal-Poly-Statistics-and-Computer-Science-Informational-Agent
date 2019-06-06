@@ -2,11 +2,11 @@ from .database_connection import connection
 import re
 import json
 
+
 class QueryScanner:
     def __init__(self):
         self.user_variables_regex = self.read_json("user_variables.json")
         self.response_variables_queries = self.read_json("response_variables.json")
-
 
     def read_json(self, filename):
         """ Reads the json files in the top directory and returns them as dictionary objects. """
@@ -32,7 +32,8 @@ class QueryScanner:
         :param question: A string of the user's input question.
         :return:
         """
-        vars_dictionary = {var: self.search_user_variable(var, question) for var in self.user_variables_regex.keys() if self.search_user_variable(var, question)}
+        vars_dictionary = {var: self.search_user_variable(var, question) for var in self.user_variables_regex.keys() if
+                           self.search_user_variable(var, question)}
         return vars_dictionary
 
     def clean_user_question(self, question):
@@ -42,13 +43,12 @@ class QueryScanner:
         question_clean = question
         user_variables = self.find_variables(question)
         for key, val in user_variables.items():
-            replace_string = "%s"%(val)
-            new_string = "[%s]"%(key)
+            replace_string = "%s" % (val)
+            new_string = "[%s]" % (key)
             question_clean = question_clean.replace(replace_string, new_string)
         return question_clean, user_variables
 
-
-    def clean_response_user_variables(self, response_text, user_variables = False):
+    def clean_response_user_variables(self, response_text, user_variables=False):
         """
 
         :param response_text: The matched response to a user's question.
@@ -86,7 +86,6 @@ class QueryScanner:
         """
         return re.findall(r'\[(.*?)\]', text)
 
-
     def replace_variable(self, text, variable_name, substitution):
         variable_re_string = r'\[{}\]'.format(variable_name).replace("'", "")
         clean_text = re.sub(r'' + variable_re_string, substitution, text)
@@ -103,6 +102,3 @@ class QueryScanner:
     def answer_question(self, query, answer):
         user_variables = self.find_variables(query)
         return self.clean_response_query(answer, user_variables)
-
-
-

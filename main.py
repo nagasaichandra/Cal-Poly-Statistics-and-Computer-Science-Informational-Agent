@@ -2,17 +2,23 @@ from src.discord_chat_interface import DiscordChatInterface
 from src.cli_chat_interface import CliChatInterface
 from src.relevance_detector import RelevanceDetector
 from src.database_connection import connection
+from src.query_scanner import QueryScanner
 import time
 
 import sys
 
 rd = RelevanceDetector()
+qs = QueryScanner()
 
 
 def answer_query(query):
     start_time = time.time()
-    matched_question, matched_answer = rd.most_relevant_query(query)
+    matched_question, matched_answer, score, vars = rd.most_relevant_query(query)
     print("Matched question in", time.time() - start_time)
+
+    print(matched_answer)
+    print(score, vars, qs.find_within_brackets(matched_answer))
+
     start_time = time.time()
     with connection.cursor() as cursor:
         cursor.execute("""INSERT INTO user_query (query_text, matched_question)
@@ -23,7 +29,7 @@ def answer_query(query):
     WHERE question.question_text = %s;""", (query, matched_question))
         connection.commit()
     print("Saved query in", time.time() - start_time)
-    return matched_answer
+    return qs.answer_question(query, matched_answer)
 
 
 def get_feedback(query):

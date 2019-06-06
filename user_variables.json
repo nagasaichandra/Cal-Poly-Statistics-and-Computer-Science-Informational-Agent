@@ -9,7 +9,7 @@
   "gpa": "",
   "gpa-number":"",
   "honor-name": "",
-  "major":"(CSSE|CompSci|Computer Science|SE|CSC|CS)",
+  "major":"\\s+(CSSE|CompSci|Computer Science|SE|CSC|CS|CE)\\s+",
   "minor": "",
   "num-units":"",
   "season": "(fall|winter|spring|summer)",

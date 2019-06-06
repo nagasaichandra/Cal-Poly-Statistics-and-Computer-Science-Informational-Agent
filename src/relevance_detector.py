@@ -85,10 +85,12 @@ class RelevanceDetector:
         return set(variables_query.keys()) >= set(variables_question)
 
     def most_relevant_query(self, query):
-        reformat_query = self.query_scanner.clean_user_question(query)
-        subset_questions = self.get_subset_questions_list(reformat_query[1])
+        reformatted_query, variables = self.query_scanner.clean_user_question(query)
+        subset_questions = self.get_subset_questions_list(variables)
+        print('matching', reformatted_query)
+        best = max(subset_questions, key=lambda question: sentence_similarity(reformatted_query, question[0]))
 
-        return max(subset_questions, key=lambda question: sentence_similarity(reformat_query[0], question[0]))
+        return best[0], best[1], sentence_similarity(reformatted_query, best[0]), variables
 
 
 class TestRelevanceDetector(unittest.TestCase):
