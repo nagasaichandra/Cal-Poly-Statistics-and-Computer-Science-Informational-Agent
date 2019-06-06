@@ -36,7 +36,7 @@
   "icma-conditions" : "",
   "independent-study-courses" : "",
   "major-course-alternatives-list" : "",
-  "major-course-names-of-units" : "",
+  "major-course-names-of-units" : "SELECT course_name FROM course WHERE course_units = \"[course-units]\";",
   "major-courses" : "SELECT course_name FROM course WHERE course_area like \"%[major]\";",
   "major-ge-units" : "",
   "major-learning-outcomes-list" : "",
