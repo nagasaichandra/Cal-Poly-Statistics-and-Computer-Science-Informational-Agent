@@ -22,9 +22,9 @@ class QueryScanner:
         """
         matched_term = re.search(r'%s' % self.user_variables_regex[variable_name], question, flags=re.I)
         if matched_term:
-            return matched_term.group(0)
-        else:
-            return False
+            if len(matched_term.group()) > 0:
+                return matched_term.group(1)
+        return False
 
     def find_variables(self, question):
         """
@@ -71,6 +71,7 @@ class QueryScanner:
                 query_sub = self.response_variables_queries[query_var]
                 # First clean query.
                 clean_query = self.clean_response_user_variables(query_sub, user_variables)
+                print("-----", clean_query)
                 query_response_list = self.execute_query(clean_query)
 
                 if query_response_list:
@@ -111,10 +112,3 @@ class QueryScanner:
         return self.clean_response_query(answer, user_variables)
 
 
-query_scanner = QueryScanner()
-print(query_scanner.answer_question("What are the CE courses?", "The [major] courses are [major-courses]."))
-
-
-"CSC"
-"C.S."
-"CS"

@@ -4,6 +4,7 @@ import re
 from ..database_connection import connection
 
 
+
 def parse_course(course_tag):
     ''' This function requires a tag for each class block and it returns
     a dictionary of the attributes of the class passed.'''
