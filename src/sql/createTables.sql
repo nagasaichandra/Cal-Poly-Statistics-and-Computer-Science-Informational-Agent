@@ -55,3 +55,9 @@ CREATE TABLE offered_in (
     quarter_id        VARCHAR(4),
     PRIMARY KEY (course_number, course_area, quarter_id)
 );
+
+CREATE TABLE flowchart_links (
+    major                VARCHAR(15),
+    year_range           VARCHAR(15),
+    flowchart_link       VARCHAR(100)
+);

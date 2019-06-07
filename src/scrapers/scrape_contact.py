@@ -11,7 +11,6 @@ def scrape_contact():
 		Scrapes variables [[department-contact-info], [phone-number], [minor-advisors]]
 	"""
 
-	
 	urllib3.disable_warnings()
 	
 	url1 = "https://csc.calpoly.edu/contact/"
@@ -26,7 +25,7 @@ def scrape_contact():
 	match = re.search(r'Contact Information\n(.*)\n(.*)', soup1.get_text())
 	department_contact = match.group(1)
 	department_office_hours = match.group(2)
-	match = re.search(r'Phone: (\d\d\d\-\d\d\d\-\d\d\d\d) ', department_contact)
+	match = re.search(r'Phone: (\d\d\d-\d\d\d-\d\d\d\d) ', department_contact)
 	final_dict['phone-number'] = match.group(1)
 	final_dict['department-contact-info'] = department_contact
 	final_dict['department-office-hours'] = department_office_hours
@@ -37,8 +36,8 @@ def scrape_contact():
 	match = re.search(r'Minor Advising\n(.*)', soup2.get_text())
 	minor_advisors['ds-minor'] = match.group(1)
 	final_dict['minor-advisors'] = minor_advisors
-	 
+	return final_dict
 	
 if __name__ == "__main__":
-	scrape_contact()
+	print(scrape_contact())
 
