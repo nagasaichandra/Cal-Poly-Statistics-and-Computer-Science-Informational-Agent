@@ -33,6 +33,12 @@ def parse_course(course_tag):
     if course_desc_tag:
         course_dict['course_desc'] = course_desc_tag.text.replace('\n', '')
 
+    course_offered_tag = course_tag.find('p', attrs={'class': 'noindent'})
+    if course_offered_tag:
+        course_offered_text = course_offered_tag.text
+        course_offered_list = re.findall(r'(F|W|SP|SU|TBD)[,]?', course_offered_text)
+        course_dict['offered_in'] = course_offered_list
+
     return course_dict
 
 
@@ -55,11 +61,21 @@ def ingest_courses(courses):
                                                                                int(course_dict['units'])))
         connection.commit()
 
+def ingest_offered_in(courses):
+    with connection.cursor() as cursor:
+        for course in courses:
+            if course['offered_in']:
+                for quarter in course['offered_in']:
+                    cursor.execute(
+                        '''INSERT INTO offered_in VALUES (%s, "%s", "%s");''' % (course['course_num'], 'CSC', quarter,))
+        connection.commit()
+
 
 def remove_content():
     '''Removes all rows from the courses table.  '''
     with connection.cursor() as cursor:
-        cursor.execute('''DELETE FROM course;''')
+        cursor.execute('''TRUNCATE TABLE course;''')
+        cursor.execute('''TRUNCATE TABLE offered_in;''')
         connection.commit()
 
 
@@ -67,6 +83,8 @@ def scrape_catalog():
     courses = parse_courses()
     remove_content()
     ingest_courses(courses)
+    ingest_offered_in(courses)
+
 
 
 if __name__ == '__main__':

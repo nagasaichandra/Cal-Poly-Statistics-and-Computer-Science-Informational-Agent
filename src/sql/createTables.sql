@@ -52,6 +52,6 @@ CREATE TABLE quarter (
 CREATE TABLE offered_in (
     course_number     SMALLINT REFERENCES course(course_number),
     course_area       VARCHAR(4) REFERENCES course(course_area),
-    quarter_id        INT,
+    quarter_id        VARCHAR(4),
     PRIMARY KEY (course_number, course_area, quarter_id)
 );
