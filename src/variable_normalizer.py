@@ -1,7 +1,7 @@
 import re
 
-"""
-Use this script to normalize the variables a user provides in order to match them with the database values.
+"""Use this script to normalize the variables a user provides in order to match them with the database values.
+
 """
 
 def normalize_major(major_input):

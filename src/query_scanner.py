@@ -119,5 +119,5 @@ class QueryScanner:
         return self.clean_response_query(answer, user_variables)
 
 
-query_scanner = QueryScanner()
-query_scanner.answer_question("What C.S. courses are there in winter?", "The [major] courses in [season] are [season-course-names].")
+#query_scanner = QueryScanner()
+#query_scanner.answer_question("What C.S. courses are there in winter?", "The [major] courses in [season] are [season-course-names].")
