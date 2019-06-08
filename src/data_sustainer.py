@@ -9,11 +9,16 @@ class DataSustainer:
         pass
 
     @staticmethod
-    def create_tables():
+    def create_tables(filename='createTables.sql'):
+        """
+
+        :param filename: The name of the .sql file under src/sql which creates the table. Default: createTables.
+        :return:
+        """
         with make_connection() as connection:
             try:
                 with connection.cursor() as cursor:
-                    cursor.execute(open('src/sql/createTables.sql').read())
+                    cursor.execute(open('src/sql/%s'%filename).read())
                     connection.commit()
             finally:
                 connection.close()

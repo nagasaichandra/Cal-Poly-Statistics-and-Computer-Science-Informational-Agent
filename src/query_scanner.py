@@ -1,12 +1,15 @@
+from src import variable_normalizer
 from .database_connection import connection
 import re
 import json
+from .variable_normalizer import normalize_variables
 
 
 class QueryScanner:
     def __init__(self):
         self.user_variables_regex = self.read_json("user_variables.json")
         self.response_variables_queries = self.read_json("response_variables.json")
+        self.user_query_variables_regex = self.read_json("user_query_variables.json")
 
     def read_json(self, filename):
         """ Reads the json files in the top directory and returns them as dictionary objects. """
@@ -48,19 +51,23 @@ class QueryScanner:
             question_clean = question_clean.replace(replace_string, new_string)
         return question_clean, user_variables
 
-    def clean_response_user_variables(self, response_text, user_variables=False):
+    def clean_response_user_variables(self, response_text, user_variables=False, query_response = False):
         """
 
         :param response_text: The matched response to a user's question.
-        :param user_variables: The varia
+        :param user_variables: A dictionary of the variables found in a user's question. [variable-name] : user-variable.
         :return:
         """
         clean_response_text = response_text
         if user_variables:
             var_names = list(user_variables.keys())
             for var_name in var_names:
-                var_subs = user_variables[var_name]
-                clean_response_text = self.replace_variable(clean_response_text, var_name, var_subs)
+                if query_response:
+                    var_replacement = normalize_variables(user_variables[var_name], var_name)
+                else:
+                    var_replacement = user_variables[var_name]
+                print("Variable replacement: %s"%var_replacement)
+                clean_response_text = self.replace_variable(clean_response_text, var_name, var_replacement)
         return clean_response_text
 
     def clean_response_query(self, response_text, user_variables=None):
@@ -70,8 +77,7 @@ class QueryScanner:
             for query_var in query_variables:
                 query_sub = self.response_variables_queries[query_var]
                 # First clean query.
-                clean_query = self.clean_response_user_variables(query_sub, user_variables)
-                print("-----", clean_query)
+                clean_query = self.clean_response_user_variables(query_sub, user_variables, query_response = True)
                 query_response_list = self.execute_query(clean_query)
 
                 if query_response_list:
@@ -80,6 +86,7 @@ class QueryScanner:
                     query_response = "(could not find %s)"%(query_var)
 
                 clean_response_text = self.replace_variable(clean_response_text, query_var, query_response)
+        print(clean_response_text)
 
         return clean_response_text
 
@@ -112,3 +119,5 @@ class QueryScanner:
         return self.clean_response_query(answer, user_variables)
 
 
+#query_scanner = QueryScanner()
+#query_scanner.answer_question("What C.S. courses are there in winter?", "The [major] courses in [season] are [season-course-names].")

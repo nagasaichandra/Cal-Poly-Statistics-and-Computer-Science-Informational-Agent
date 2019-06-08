@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import urllib3
 import re
 from ..database_connection import connection
+import bleach
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def scrape_contact_main():
@@ -11,7 +13,6 @@ def scrape_contact_main():
     Scrapes variables [[department-contact-info], [phone-number], [minor-advisors]]
     """
     global i
-    urllib3.disable_warnings()
     url1 = "https://csc.calpoly.edu/contact/"
     myRequest1 = requests.get(url1, verify=False)
     soup1 = BeautifulSoup(myRequest1.text,"html.parser")
@@ -36,6 +37,42 @@ def scrape_contact_main():
     final_dict['minor-advisors'] = minor_advisors
     # print(final_dict)
     return final_dict
+
+
+def clean_html(string):
+    return bleach.clean(string, tags=[], strip=True)
+
+
+def scrape_level():
+	url = "http://catalog.calpoly.edu/academicstandardsandpolicies/otherinformation/#AcademicMinors"
+	my_request = requests.get(url, verify=False)
+	soup = BeautifulSoup(my_request.text, "html.parser")
+	final_dict = {}
+	
+
+	level_html = soup.find_all('p', attrs={"style": "margin-left:40px"})
+	level = clean_html(level_html)
+	level_list = (level.replace(',', '\n')).split('\n')
+	print(level_list)
+	
+	for entry in level_list:
+		if entry.startswith(' Freshman'):
+			matchObj = re.search(r'Freshman ................... (.*)', entry)
+			final_dict['freshman'] = matchObj.group(1)
+		elif entry.startswith('Sophomore'):
+			matchObj = re.search(r'Sophomore................. (.*)', entry)
+			final_dict['sophomore'] = matchObj.group(1)
+		elif entry.startswith(' Junior'):
+			matchObj = re.search(r' Junior ......................... (.*)', entry)
+			final_dict['junior'] = matchObj.group(1)
+		elif entry.startswith('Senior'):
+			matchObj = re.search(r'Senior......................... (.*)\]$', entry)
+			final_dict['senior'] = matchObj.group(1)
+
+	# print(final_dict)
+	# TODO: add to database
+	return final_dict
+		
 
 
 def ingest_contact_basic(contacts):
@@ -69,5 +106,6 @@ def scrape_contact():
     remove_content()
 
 if __name__ == "__main__":
-    scrape_contact()
+	scrape_level()
+    # scrape_contact()
 

@@ -3,6 +3,7 @@ import re
 import bleach
 import urllib3
 from bs4 import BeautifulSoup
+from ..database_connection import connection
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -18,7 +19,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 def get_tag(row, string):
     ret_list = []
     for single in row:
-        if single.find(string) != None and single.find(string) != -1:
+        if single.find(string) is not None and single.find(string) != -1:
             ret_list.append(single.find(string))
     return ret_list
 
@@ -26,7 +27,7 @@ def get_tag(row, string):
 def get_tag_attrs(row, string, attr, field):
     ret_list = []
     for single in row:
-        if single.find(string, attrs={str(attr): str(field)}) != None and single.find(string, attrs={
+        if single.find(string, attrs={str(attr): str(field)}) is not None and single.find(string, attrs={
             str(attr): str(field)}) != -1:
             ret_list.append(single.find(string, attrs={str(attr): str(field)}))
     return ret_list
@@ -58,9 +59,9 @@ def scrape_transfer():
     # clean up and split courses
     articulates = "\n".join(list(map(clean_html, articulates_html)))
     articulates = re.split(
-        r"Major Related 1\*", str(articulates))
+        r'Major Related 1\*', str(articulates))
 
-    match_obj = re.search(r"(Selection.*alone\.)",
+    match_obj = re.search(r'(Selection.*alone\.)',
                           "\n".join(list(map(clean_html, general_guides_html))))
 
     final_dict['transfer-min-units'] = clean_html(transfer_units_html[0])
@@ -71,7 +72,29 @@ def scrape_transfer():
     return final_dict
 
 
+def ingest_transfer(transfer):
+    with connection.cursor() as cursor:
+        for transfer_dict in transfer:
+            cursor.execute(
+                'INSERT INTO transfers VALUES (%s, "%s", "%s", "%s");' % (transfer_dict['transfer-min-units'],
+                                                                          transfer_dict[
+                                                                              'transfer-articulate-courses'],
+                                                                          transfer_dict['CSSE-transfer-guidelines'],
+                                                                          transfer_dict[
+                                                                              'major-transfer-course-list']))
+        connection.commit()
+
+
+def remove_content():
+    '''Removes all rows from the courses table.  '''
+    with connection.cursor() as cursor:
+        cursor.execute('''DELETE FROM transfers;''')
+        connection.commit()
+
+
 if __name__ == "__main__":
     # print(scrape_transfer())
     final = scrape_transfer()
-    print(final['CSSE-transfer-guidelines'])
+    # print(final)
+    remove_content()
+    ingest_transfer(final)
