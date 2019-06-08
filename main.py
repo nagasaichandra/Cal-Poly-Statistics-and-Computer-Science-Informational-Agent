@@ -3,6 +3,9 @@ from src.cli_chat_interface import CliChatInterface
 from src.relevance_detector import RelevanceDetector
 from src.database_connection import make_connection
 from src.query_scanner import QueryScanner
+from src.scrapers.scrape_all import scrape_all
+from datetime import timedelta, datetime
+from threading import Timer
 import time
 
 import sys
@@ -32,7 +35,7 @@ def answer_query(query):
             connection.commit()
     finally:
         connection.close()
-    
+
     print("Saved query in", time.time() - start_time)
     return qs.answer_question(query, matched_answer)
 
@@ -61,11 +64,24 @@ def get_feedback(query):
         return "Ops. Sorry about that. I will try to do better in the future. Thanks for the feedback."
 
 
+def start_periodic_scraping(scraping_function, wait_time):
+    """ Reruns the scraper once a day """
+
+    def to_run():
+        scraping_function()
+        start_periodic_scraping(scraping_function, wait_time)
+
+    Timer(wait_time.total_seconds(), to_run).start()
+
+
 def main():
     args = sys.argv[1:]
 
     if args and args[0] == "--cli":
         client = CliChatInterface()
+    elif args and args[0] == "--scrape":
+        scrape_all()
+        sys.exit(0)
     else:
         client = DiscordChatInterface()
 
@@ -76,6 +92,7 @@ def main():
         client.get_message()
     else:
         client.run('NTgyNzk1NjcxOTY3NDk4MjUx.XOzByQ.TWGoeHzh5i-LI4dVLWUFmrMmJ5w')
+        start_periodic_scraping(scrape_all, timedelta(days=1))
 
 
 if __name__ == '__main__':
