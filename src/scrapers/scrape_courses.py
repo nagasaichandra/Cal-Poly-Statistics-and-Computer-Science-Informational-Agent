@@ -5,8 +5,11 @@ from ..database_connection import make_connection
 
 
 def parse_course(course_tag):
-    ''' This function requires a tag for each class block and it returns
-    a dictionary of the attributes of the class passed.'''
+    """
+
+    :param course_tag:
+    :return:
+    """
     course_dict = {}
     class_tag = course_tag.find('p', attrs={'class': 'courseblocktitle'})
     course_complete = class_tag.find('strong').text
