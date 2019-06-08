@@ -8,9 +8,14 @@ class DataSustainer:
     def __init__(self):
         pass
 
-    def create_tables(self):
+    def create_tables(self, filename='createTables.sql'):
+        """
+
+        :param filename: The name of the .sql file under src/sql which creates the table. Default: createTables.
+        :return:
+        """
         with connection.cursor() as cursor:
-            cursor.execute(open('src/sql/createTables.sql').read())
+            cursor.execute(open('src/sql/%s'%filename).read())
             connection.commit()
 
     def delete_all_tables(self):
