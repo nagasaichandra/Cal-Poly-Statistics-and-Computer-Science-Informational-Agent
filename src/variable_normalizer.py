@@ -3,37 +3,49 @@ import re
 """Use this script to normalize the variables a user provides in order to match them with the database values.
 
 """
+class NormalizeUserInput():
+    def __init__(self):
+        pass
 
-def normalize_major(major_input):
-    """
+    def normalize_major(self, input_text):
+        """
 
-    :param major_input: The user variable that is matched as 'major'.
-    :return: The formatted name of the major in order for it the match the database's major categories.
-    """
-    if re.match(r'C\.?S\.?C\.?|CS|Computer Science|SE|C\.?S\.?', major_input, flags=re.I):
-        return "CSC"
-    else:
-        print("Could not find %s in major."%(major_input))
+        :param input_text: A user's question.
+        :return: A tuple indicating: (variable-db-name, user's-variable-name)
+        """
+        major_re = re.compile(r'\s(C\.?S\.?C\.?|CS|Computer Science|SE|C\.?S\.?)[ ?]', flags=re.I)
+        major_search = re.search(major_re, input_text)
+        if major_search:
+            major_match = major_search.group(1)
+            return "CSC", major_match
+        return False
 
-def normalize_season(season_input):
-    """
+    def normalize_season(self, input_text):
+        seasons_re = re.compile(r'\s(fall|winter|spring|summer)', flags = re.I)
+        seasons_search = re.search(seasons_re, input_text)
+        seasons = {"fall": "F", "winter": "W", "spring": "Sp", "summer": "Su"}
+        if seasons_search:
+            season_match = seasons_search.group(1)
+            return seasons[season_match], season_match
+        return False
 
-    :param season_input: The user variable that is matched as 'season'.
-    :return: The formatted season name in order to match with the database's season categories.
-    """
-    season_dictionary = {"fall": "F", "winter": "W", "spring": "Sp", "summer": "Su"}
-    lower_case_input = season_input.lower()
-    return season_dictionary[lower_case_input]
+    def search_variables(self, input_text):
+        """
 
-def normalize_variables(user_variable, variable_name):
-    """
+        :param input_text: The user's question.
+        :return: A dictionary contains the variable-names found as keys and
+        (variable-db-name, user's-variable-name) as values.
+        """
+        user_variables = {}
+        normalized_major = self.normalize_major(input_text)
+        normalized_season = self.normalize_season(input_text)
 
-    :param user_variable: The user's matched input to a variable.
-    :param variable_name: The name of the variable which user variable matched to.
-    :return:
-    """
-    if variable_name == "major":
-        return normalize_major(user_variable)
-    elif variable_name == "season":
-        return normalize_season(user_variable)
+        if normalized_major:
+            user_variables['major'] = normalized_major
+        if normalized_season:
+            user_variables['season'] = normalized_season
 
+        return user_variables
+
+normalize_input = NormalizeUserInput()
+print(normalize_input.search_variables("Hello c.s. fall"))
