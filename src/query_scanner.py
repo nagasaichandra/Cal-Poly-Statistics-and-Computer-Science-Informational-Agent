@@ -18,9 +18,11 @@ class QueryScanner:
 
     def search_user_variable(self, variable_name, question):
         """
-        Searches for a variable in a user's question.
-        Requires the name of a variable and the question the user gives.
-        If the variable name is not present in the question, returns False.
+
+        :param variable_name: The variable name to search for in the question.
+        Variable name must match a key in self.user_variables_regex .
+        :param question: The user's input question.
+        :return:
         """
         matched_term = re.search(r'%s' % self.user_variables_regex[variable_name], question, flags=re.I)
         if matched_term:
