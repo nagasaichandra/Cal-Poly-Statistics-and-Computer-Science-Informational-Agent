@@ -15,11 +15,11 @@ def scrape_contact_main():
     """
     global i
     url1 = "https://csc.calpoly.edu/contact/"
-    myRequest1 = requests.get(url1, verify=False)
-    soup1 = BeautifulSoup(myRequest1.text, "html.parser")
+    my_request1 = requests.get(url1, verify=False)
+    soup1 = BeautifulSoup(my_request1.text, "html.parser")
     url2 = "https://statistics.calpoly.edu/data-science-minor"
-    myRequest2 = requests.get(url2, verify=False)
-    soup2 = BeautifulSoup(myRequest2.text, "html.parser")
+    my_request2 = requests.get(url2, verify=False)
+    soup2 = BeautifulSoup(my_request2.text, "html.parser")
     final_dict = {}
     match = re.search(r'Contact Information\n(.*)\n(.*)', soup1.get_text())
     department_contact = match.group(1)
@@ -58,17 +58,17 @@ def scrape_level():
 
     for entry in level_list:
         if entry.startswith(' Freshman'):
-            matchObj = re.search(r'Freshman ................... (.*)', entry)
-            final_dict['freshman'] = matchObj.group(1)
+            match_obj = re.search(r'Freshman ................... (.*)', entry)
+            final_dict['freshman'] = match_obj.group(1)
         elif entry.startswith('Sophomore'):
-            matchObj = re.search(r'Sophomore................. (.*)', entry)
-            final_dict['sophomore'] = matchObj.group(1)
+            match_obj = re.search(r'Sophomore................. (.*)', entry)
+            final_dict['sophomore'] = match_obj.group(1)
         elif entry.startswith(' Junior'):
-            matchObj = re.search(r' Junior ......................... (.*)', entry)
-            final_dict['junior'] = matchObj.group(1)
+            match_obj = re.search(r' Junior ......................... (.*)', entry)
+            final_dict['junior'] = match_obj.group(1)
         elif entry.startswith('Senior'):
-            matchObj = re.search(r'Senior......................... (.*)\]$', entry)
-            final_dict['senior'] = matchObj.group(1)
+            match_obj = re.search(r'Senior......................... (.*)\]$', entry)
+            final_dict['senior'] = match_obj.group(1)
 
     # print(final_dict)
     # TODO: add to database
