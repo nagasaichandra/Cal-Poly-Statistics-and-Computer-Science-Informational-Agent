@@ -16,4 +16,5 @@ connection = pymysql.connect(host=config['host'],
                              password=config['password'],
                              db=config['db'],
                              charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
+                             cursorclass=pymysql.cursors.DictCursor,
+                             max_allowed_packet=56777216)

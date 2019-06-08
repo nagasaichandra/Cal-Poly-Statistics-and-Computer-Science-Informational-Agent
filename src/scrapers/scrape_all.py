@@ -1,4 +1,4 @@
-from .catalogue_scraper import scrape_catalog
+from .scrape_courses import scrape_catalog
 from .scrape_change_major import scrape_change_major
 from .scrape_cs_minor import scrape_cs_minor
 from .scrape_masters import scrape_masters
