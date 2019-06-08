@@ -49,6 +49,11 @@ def scrape_probation():
 
     final_dict['probation-criteria'] = match_probation.group(1)
     final_dict['disqualification-criteria'] = match_disqualification.group(1) + "\n" + probation_limits
+
+    # commit to db
+    remove_probation()
+    ingest_probation(final_dict)
+
     return final_dict
 
 
@@ -79,5 +84,5 @@ if __name__ == "__main__":
     final = scrape_probation()
     # data_sustainer = DataSustainer()
     # data_sustainer.create_tables(filename="createTableProbation.sql")
-    remove_probation()
-    ingest_probation(final)
+    # remove_probation()
+    # ingest_probation(final)

@@ -56,10 +56,11 @@ def ingest_courses(courses):
         with connection.cursor() as cursor:
             for course_dict in courses:
                 cursor.execute(
-                    '''INSERT INTO course VALUES (%s, "%s", "%s", "%s", %s);''' % (int(course_dict['course_num']),
+                    '''INSERT INTO course (course_number, course_area, course_name, 
+                    course_description, course_units) VALUES (%s, %s, %s, %s, %s);''', (int(course_dict['course_num']),
                                                                                    'CSC', course_dict['course_name'],
                                                                                    course_dict['course_desc'],
-                                                                                   int(course_dict['units'])))
+                                                                                   int(course_dict['units']),))
             connection.commit()
     finally:
         connection.close()
@@ -73,8 +74,8 @@ def ingest_offered_in(courses):
                 if course['offered_in']:
                     for quarter in course['offered_in']:
                         cursor.execute(
-                            '''INSERT INTO offered_in VALUES (%s, "%s", "%s");''' % (
-                                course['course_num'], 'CSC', quarter,))
+                            '''INSERT INTO offered_in (course_number, course_area, quarter_id) VALUES (%s, %s, %s);''',
+                            (course['course_num'], 'CSC', quarter,))
             connection.commit()
     finally:
         connection.close()
