@@ -6,6 +6,7 @@ from .scrape_objectives_and_missions import scrapeObjectivesandMissions
 from .scrape_transfer import scrape_transfer
 from .scrape_masters import scrape_blended
 from .scrape_contact import scrape_contact
+from .scrape_probation import scrape_probation
 
 def scrape_all():
     """ Scrapes all the data sources and puts the data into the database """
@@ -17,6 +18,8 @@ def scrape_all():
     scrape_transfer()
     scrape_blended()
     scrape_contact()
+    scrape_probation()
+
 
 if __name__ == '__main__':
     scrape_all()

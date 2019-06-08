@@ -55,16 +55,3 @@ CREATE TABLE offered_in (
     quarter_id        INT,
     PRIMARY KEY (course_number, course_area, quarter_id)
 );
-
--- CREATE TABLE transfers
--- (
---     transfer_min_units VARCHAR(255),
---     transfer_articulate_courses VARCHAR(255),
---     CSSE_transfer_guidelines VARCHAR(255),
---     major_transfer_course_list VARCHAR(255)
--- );
-
--- CREATE TABLE probation (
---     probation_criteria VARCHAR(255),
---     disqualification_criteria VARCHAR(255)
--- );
