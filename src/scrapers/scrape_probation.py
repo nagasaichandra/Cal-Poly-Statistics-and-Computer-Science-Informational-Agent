@@ -3,7 +3,9 @@ import re
 import bleach
 import urllib3
 from bs4 import BeautifulSoup
-# from ..database_connection import connection
+from ..database_connection import connection
+from ..data_sustainer import DataSustainer
+
 
 
 # from ..database_connection import connection
@@ -50,19 +52,19 @@ def scrape_probation():
     return final_dict
 
 
-# def ingest_probation(probation):
-#     with connection.cursor() as cursor:
-#         for probation_dict in probation:
-#             cursor.execute(
-#                 '''INSERT INTO probation VALUES (%s, "%s");''' % (probation_dict['probation-criteria'], probation_dict['disqualification-criteria']))
-#         connection.commit()
+def ingest_probation(probation):
+    with connection.cursor() as cursor:
+        for probation_dict in probation:
+            cursor.execute(
+                '''INSERT INTO probation VALUES (%s, "%s");''' % (probation_dict['probation-criteria'], probation_dict['disqualification-criteria']))
+        connection.commit()
 
 
-# def remove_probation():
-#     '''Removes all rows from the courses table.  '''
-#     with connection.cursor() as cursor:
-#         cursor.execute('''DELETE FROM probation;''')
-#         connection.commit()
+def remove_probation():
+    '''Removes all rows from the courses table.  '''
+    with connection.cursor() as cursor:
+        cursor.execute('''DELETE FROM probation;''')
+        connection.commit()
 
 
 if __name__ == "__main__":
