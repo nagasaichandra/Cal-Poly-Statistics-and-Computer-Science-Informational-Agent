@@ -1,4 +1,5 @@
 import re
+import unittest
 
 
 class VariableNormalizer:
@@ -66,4 +67,14 @@ class VariableNormalizer:
             if result:
                 user_variables[path_name] = result
         return user_variables
+
+class TestVariableNormalizer(unittest.TestCase):
+    def setUp(self):
+        self.normalizer = VariableNormalizer()
+
+    def test_callbacks(self):
+        units, user_input = self.normalizer.normalize_num_units("8 units")
+        self.assertEqual(units, 8)
+        self.assertEqual(user_input, "8 units")
+
 
