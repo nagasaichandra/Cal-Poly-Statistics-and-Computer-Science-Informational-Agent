@@ -3,6 +3,8 @@ import re
 """Use this script to normalize the variables a user provides in order to match them with the database values.
 
 """
+
+
 class NormalizeUserInput():
     def __init__(self):
         pass
@@ -21,7 +23,7 @@ class NormalizeUserInput():
         return False
 
     def normalize_season(self, input_text):
-        seasons_re = re.compile(r'\s(fall|winter|spring|summer)', flags = re.I)
+        seasons_re = re.compile(r'\s(fall|winter|spring|summer)', flags=re.I)
         seasons_search = re.search(seasons_re, input_text)
         seasons = {"fall": "F", "winter": "W", "spring": "Sp", "summer": "Su"}
         if seasons_search:
@@ -37,15 +39,17 @@ class NormalizeUserInput():
         (variable-db-name, user's-variable-name) as values.
         """
         user_variables = {}
-        normalized_major = self.normalize_major(input_text)
-        normalized_season = self.normalize_season(input_text)
+        normalization_paths = [
+            ('major', self.normalize_major),
+            ('season', self.normalize_season)
+        ]
 
-        if normalized_major:
-            user_variables['major'] = normalized_major
-        if normalized_season:
-            user_variables['season'] = normalized_season
-
+        for path_name, normalizer_function in normalization_paths:
+            result = normalizer_function(input_text)
+            if result:
+                user_variables[path_name] = result
         return user_variables
+
 
 normalize_input = NormalizeUserInput()
 print(normalize_input.search_variables("Hello c.s. fall"))
