@@ -1,5 +1,8 @@
 import requests, re, bleach, urllib3
 from bs4 import BeautifulSoup
+
+from src.database_connection import make_connection
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
@@ -19,10 +22,23 @@ def filter_process(line):
         return False
 
 
+def ingest_change_major(data):
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute('''DELETE FROM change_major_info;''')
+            cursor.execute(
+                '''INSERT INTO change_major_info (criteria, steps, minimum_gpa) VALUES ("%s", "%s", %s);''',
+                (data['change-major-criteria'],
+                 data['change-major-steps'],
+                 float(data['minimum-gpa-change-major'])))
+            connection.commit()
+    finally:
+        connection.close()
+
+
 def scrape_change_major():
     final_dict = {}
-    min_standards_list = []
-    process_list = []
     initial_list = []
 
     # obtain the content of the URL in HTML
@@ -48,7 +64,7 @@ def scrape_change_major():
         filter_min_standards, min_standards_list.splitlines())
     process_list = filter(
         filter_process, process_list.splitlines())
-    
+
     temp_list = '\n'.join(list(process_list))
     match_obj = re.search(r"\(all GPAs at least a (\d+\.\d+)\)", temp_list)
 
@@ -57,8 +73,8 @@ def scrape_change_major():
     final_dict['change-major-steps'] = temp_list
     final_dict['minimum-gpa-change-major'] = match_obj.group(1)
 
-    return final_dict
+    ingest_change_major(final_dict)
 
 
 if __name__ == "__main__":
-    print(scrape_change_major())
+    scrape_change_major()
