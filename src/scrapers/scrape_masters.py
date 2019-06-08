@@ -128,6 +128,9 @@ def scrape_blended():
     match = re.search(r"Blended Bachelor's \+ Master's Programs\nOverview\n(.*\n.*\n.*\n)Eligibility", soup2.get_text())
     final_dict['blended-description'] = (match.group(1))
 
+    remove_blended()
+    ingest_blended(final_dict)
+
     return final_dict
 
 
@@ -202,5 +205,5 @@ if __name__ == "__main__":
 
     # remove_masters()
     # ingest_masters(masters)
-    remove_blended()
-    ingest_blended(blended)
+    # remove_blended()
+    # ingest_blended(blended)
