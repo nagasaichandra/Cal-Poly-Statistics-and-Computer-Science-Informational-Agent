@@ -3,7 +3,7 @@ import re
 import bleach
 import urllib3
 from bs4 import BeautifulSoup
-from ..database_connection import connection
+from ..database_connection import make_connection
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -73,23 +73,34 @@ def scrape_transfer():
 
 
 def ingest_transfer(transfer):
-    with connection.cursor() as cursor:
-        for transfer_dict in transfer:
-            cursor.execute(
-                'INSERT INTO transfers VALUES (%s, "%s", "%s", "%s");' % (transfer_dict['transfer-min-units'],
-                                                                          transfer_dict[
-                                                                              'transfer-articulate-courses'],
-                                                                          transfer_dict['CSSE-transfer-guidelines'],
-                                                                          transfer_dict[
-                                                                              'major-transfer-course-list']))
-        connection.commit()
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            for transfer_dict in transfer:
+                cursor.execute(
+                    'INSERT INTO transfers VALUES (%s, "%s", "%s", "%s");' %
+                    (transfer_dict['transfer-min-units'],
+                     transfer_dict[
+                         'transfer-articulate-courses'],
+                     transfer_dict[
+                         'CSSE-transfer-guidelines'],
+                     transfer_dict[
+                         'major-transfer-course-list']))
+            connection.commit()
+    finally:
+        connection.close()
+
 
 
 def remove_content():
-    '''Removes all rows from the courses table.  '''
-    with connection.cursor() as cursor:
-        cursor.execute('''DELETE FROM transfers;''')
-        connection.commit()
+    """Removes all rows from the courses table.  """
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute('''DELETE FROM transfers;''')
+            connection.commit()
+    finally:
+        connection.close()
 
 
 if __name__ == "__main__":

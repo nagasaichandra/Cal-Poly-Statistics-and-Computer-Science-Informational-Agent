@@ -1,6 +1,6 @@
 import re
 import sys
-from .database_connection import connection
+from .database_connection import make_connection
 
 variable_regex = re.compile(r'\[([^\]]+)\]')
 question_regex = re.compile('(?:[0-9]+\.\s*)?([^\n\|]+(?:\|\s*[^\n\|]+)+)')
@@ -77,11 +77,15 @@ def diversify_questions(questions):
 
 def ingest_questions(questions):
     """ Stores a list of questions in the database """
-    with connection.cursor() as cursor:
-        rows = [q.split('|') for q in questions]
-        for row in rows:
-            cursor.execute("INSERT INTO question (question_text, response) VALUES (%s, %s);", row)
-        connection.commit()
+    connection = make_connection()
+    try:
+        with connection.cusor() as cursor:
+            rows = [q.split('|') for q in questions]
+            for row in rows:
+                cursor.execute("INSERT INTO question (question_text, response) VALUES (%s, %s);", row)
+            connection.commit()
+    finally:
+        connection.close()
 
 
 def main():

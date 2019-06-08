@@ -1,7 +1,7 @@
 from src.discord_chat_interface import DiscordChatInterface
 from src.cli_chat_interface import CliChatInterface
 from src.relevance_detector import RelevanceDetector
-from src.database_connection import connection
+from src.database_connection import make_connection
 from src.query_scanner import QueryScanner
 import time
 
@@ -20,14 +20,19 @@ def answer_query(query):
     print(score, vars, qs.find_within_brackets(matched_answer))
 
     start_time = time.time()
-    with connection.cursor() as cursor:
-        cursor.execute("""INSERT INTO user_query (query_text, matched_question)
-    SELECT
-        %s AS query_text,
-        question.id AS matched_question
-    FROM question 
-    WHERE question.question_text = %s;""", (query, matched_question))
-        connection.commit()
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("""INSERT INTO user_query (query_text, matched_question)
+            SELECT
+                %s AS query_text,
+                question.id AS matched_question
+            FROM question 
+            WHERE question.question_text = %s;""", (query, matched_question))
+            connection.commit()
+    finally:
+        connection.close()
+    
     print("Saved query in", time.time() - start_time)
     return qs.answer_question(query, matched_answer)
 
@@ -36,15 +41,23 @@ def get_feedback(query):
     feedback_query = "UPDATE user_query SET correct = %s ORDER BY time_asked DESC LIMIT 1;"
     query = query.lower().strip('.')
     if query == "yes" or query == "correct" or query == "right" or query == "good bot":
-        with connection.cursor() as cursor:
-            cursor.execute(feedback_query, True)
-            connection.commit()
+        connection = make_connection()
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(feedback_query, True)
+                connection.commit()
+        finally:
+            connection.close()
         return "Thanks for the feedback."
 
     if query == "no" or query == "false" or query == "wrong" or query == "bad bot":
-        with connection.cursor() as cursor:
-            cursor.execute(feedback_query, False)
-            connection.commit()
+        connection = make_connection()
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(feedback_query, False)
+                connection.commit()
+        finally:
+            connection.close()
         return "Ops. Sorry about that. I will try to do better in the future. Thanks for the feedback."
 
 

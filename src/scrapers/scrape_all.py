@@ -8,6 +8,7 @@ from .scrape_masters import scrape_blended
 from .scrape_contact import scrape_contact
 from .scrape_probation import scrape_probation
 
+
 def scrape_all():
     """ Scrapes all the data sources and puts the data into the database """
     scrape_catalog()

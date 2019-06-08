@@ -1,4 +1,4 @@
-from ..database_connection import connection
+from ..database_connection import make_connection
 
 
 def links_dict():
@@ -22,18 +22,27 @@ def links_dict():
 
 
 def ingest_flowcharts(links):
+    connection = make_connection()
+    try:
         with connection.cursor() as cursor:
             for major in links:
                 for i in major:
                     cursor.execute('''INSERT INTO flowchart_links VALUES ("%s", "%s", "%s");''' % (major,
                                                                                                    i[0], i[1]))
             connection.commit()
+    finally:
+        connection.close()
 
 
 def remove_content():
     '''Removes all rows from the flowchart_links table '''
-    with connection.cursor() as cursor:
-        cursor.execute('''TRUNCATE TABLE flowchart_links;''')
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT question_text, response FROM question;")
+            connection.commit()
+    finally:
+        connection.close()
 
 
 def flowchart_links():
