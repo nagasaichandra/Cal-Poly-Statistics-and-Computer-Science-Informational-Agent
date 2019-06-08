@@ -1,12 +1,27 @@
-# [ms-learning-objectives], [required-ms-units], [ms-total-units], [approved-ms-elective-units],[thesis-ms-units], [graduate-ms-units]
 import requests
 import re
 import bleach
 import urllib3
 from bs4 import BeautifulSoup
+from ..database_connection import make_connection
+from ..data_sustainer import DataSustainer
+
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-ms_url ="http://catalog.calpoly.edu/collegesandprograms/collegeofengineering/computersciencesoftwareengineering/mscomputerscience/"
+
+
+"""
+    Scrapes:
+    [ms-learning-objectives]
+    [required-ms-units]
+    [ms-total-units]
+    [approved-ms-elective-units]
+    [thesis-ms-units]
+    [graduate-ms-units]
+    ['blended-benefits']
+    ['blended-requirements']
+    ['blended-description']
+"""
 
 
 def get_courses(course_names):
@@ -26,6 +41,7 @@ def get_courses(course_names):
 
 
 def scrape_masters():
+    ms_url = '''http://catalog.calpoly.edu/collegesandprograms/collegeofengineering/computersciencesoftwareengineering/mscomputerscience/'''
     final_dict = {}
     learn_objectives = []
     units = []
@@ -67,7 +83,10 @@ def scrape_masters():
     final_dict['approved-ms-elective-units'] = match_elective_units.group(1)
     final_dict['thesis-ms-units'] = thesis_units.group(1)
     final_dict['graduate-ms-units'] = match_units.group(1)
-    final_dict['ms-course-names'] = course_names
+    final_dict['ms-course-names'] = ', '.join(course_names)
+
+    remove_masters()
+    ingest_masters(final_dict)
 
     return final_dict
 
@@ -109,10 +128,82 @@ def scrape_blended():
     match = re.search(r"Blended Bachelor's \+ Master's Programs\nOverview\n(.*\n.*\n.*\n)Eligibility", soup2.get_text())
     final_dict['blended-description'] = (match.group(1))
 
+    remove_blended()
+    ingest_blended(final_dict)
+
     return final_dict
 
 
+def ingest_masters(masters):
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                'INSERT INTO masters VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s");',
+                (masters['ms-learning-objectives'],
+                    masters[
+                        'required-ms-units'],
+                    masters[
+                        'ms-total-units'],
+                    masters[
+                        'approved-ms-elective-units'],
+                    masters[
+                        'thesis-ms-units'],
+                    masters[
+                        'graduate-ms-units'],
+                    masters[
+                        'ms-course-names']))
+            connection.commit()
+    finally:
+        connection.close()
+
+def ingest_blended(blended):
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                'INSERT INTO blended VALUES ("%s", "%s", "%s");',
+                (blended['blended-benefits'],
+                    blended[
+                        'blended-requirements'],
+                    blended[
+                        'blended-description']))
+            connection.commit()
+    finally:
+        connection.close()
+
+
+def remove_masters():
+    """Removes all rows from the courses table.  """
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute('''TRUNCATE TABLE masters;''')
+            # cursor.execute('''TRUNCATE TABLE blended;''')
+            connection.commit()
+    finally:
+        connection.close()
+
+
+def remove_blended():
+    """Removes all rows from the courses table.  """
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            # cursor.execute('''TRUNCATE TABLE masters;''')
+            cursor.execute('''TRUNCATE TABLE blended;''')
+            connection.commit()
+    finally:
+        connection.close()
+
+
 if __name__ == "__main__":
-    print(scrape_masters())
-    # scrapeMasters()
-    print(scrape_blended())
+    masters = scrape_masters()
+    blended = scrape_blended()
+    # data_sustainer = DataSustainer()
+    # data_sustainer.create_tables(filename="createTableBlended.sql")
+
+    # remove_masters()
+    # ingest_masters(masters)
+    # remove_blended()
+    # ingest_blended(blended)

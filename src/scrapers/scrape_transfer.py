@@ -10,10 +10,10 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 """
     Scrapes:
-        transfer-min-units
-        transfer-articulate-courses
-        CSSE-transfer-guidelines
-        major-transfer-course-list
+        [transfer-min-units]
+        [transfer-articulate-courses]
+        [CSSE-transfer-guidelines]
+        [major-transfer-course-list]
 """
 
 
