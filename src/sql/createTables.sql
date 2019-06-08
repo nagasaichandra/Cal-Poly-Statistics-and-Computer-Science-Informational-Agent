@@ -4,8 +4,8 @@
 /* One of the questions we know how to answer */
 CREATE TABLE question (
     id            INT AUTO_INCREMENT PRIMARY KEY,
+    team_code      VARCHAR(2),
     question_text TEXT,
-    area          TEXT,
     response      TEXT
 );
 
