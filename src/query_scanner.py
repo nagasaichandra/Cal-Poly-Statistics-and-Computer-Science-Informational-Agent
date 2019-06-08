@@ -2,12 +2,12 @@ from src import variable_normalizer
 from .database_connection import make_connection
 import re
 import json
-from .variable_normalizer import NormalizeUserInput
+from .variable_normalizer import VariableNormalizer
 
 
 class QueryScanner:
     def __init__(self):
-        self.normalize_input = NormalizeUserInput()
+        self.normalize_input = VariableNormalizer()
         self.response_variables_queries = self.read_json("response_variables.json")
 
     def read_json(self, filename):
@@ -31,8 +31,9 @@ class QueryScanner:
     def clean_response_user_variables(self, response_text, user_variables, query_response=False):
         """
 
-        :param response_text: The matched response to a user's question.
+        :param response_text: The matched response to a user's question or the raw query if query_response = True.
         :param user_variables: A dictionary of the variables found in a user's question. [variable-name] : (variable-db-name, user's-variable-name)
+        :param query_response: Boolean, indicate whether we want to substitute variables in a query.
         :return:
         """
         clean_response_text = response_text
@@ -43,7 +44,7 @@ class QueryScanner:
             else:
                 var_replacement = user_variables[var_name][1]
             clean_response_text = self.replace_variable(clean_response_text, var_name, var_replacement)
-        print("---- clean response text: ",clean_response_text)
+
         return clean_response_text
 
     def clean_response_query(self, response_text, user_variables=None):
@@ -82,7 +83,7 @@ class QueryScanner:
         connection = make_connection()
         with connection.cursor() as cursor:
             try:
-                cursor.execute('''%s''' % query)
+                cursor.execute('''%s'''% query)
                 response_list = cursor.fetchall()
                 connection.commit()
                 tuple_response = [list(response.values())[0] for response in response_list]
@@ -97,5 +98,3 @@ class QueryScanner:
         user_variables = self.normalize_input.search_variables(query)
         return self.clean_response_query(answer, user_variables)
 
-query_scanner = QueryScanner()
-print(query_scanner.answer_question("What C.S. courses in fall?", "The [major] courses are [season-course-names]."))
