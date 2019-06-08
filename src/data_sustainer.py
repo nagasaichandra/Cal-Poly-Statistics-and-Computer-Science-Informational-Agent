@@ -1,5 +1,5 @@
 import unittest
-from .database_connection import connection
+from .database_connection import make_connection
 
 
 class DataSustainer:
@@ -8,26 +8,37 @@ class DataSustainer:
     def __init__(self):
         pass
 
-    def create_tables(self):
-        with connection.cursor() as cursor:
-            cursor.execute(open('src/sql/createTables.sql').read())
-            connection.commit()
+    @staticmethod
+    def create_tables():
+        with make_connection() as connection:
+            try:
+                with connection.cursor() as cursor:
+                    cursor.execute(open('src/sql/createTables.sql').read())
+                    connection.commit()
+            finally:
+                connection.close()
 
-    def delete_all_tables(self):
-        with connection.cursor() as cursor:
-            cursor.execute("""SELECT
-                    table_name
-                FROM
-                    information_schema.tables
-                WHERE
-                    table_schema = 'project3';""")
-            table_names = [row['TABLE_NAME'] for row in cursor.fetchall()]
-            deletors = ['DROP TABLE IF EXISTS {};'.format(table_name) for table_name in table_names]
-            query = """SET FOREIGN_KEY_CHECKS = 0;
-            {}
-            SET FOREIGN_KEY_CHECKS = 1;""".format('\n'.join(deletors))
-            cursor.execute(query)
-            connection.commit()
+    @staticmethod
+    def delete_all_tables():
+        with make_connection() as connection:
+            try:
+                with connection.cursor() as cursor:
+                    cursor.execute("""SELECT
+                            table_name
+                        FROM
+                            information_schema.tables
+                        WHERE
+                            table_schema = 'project3';""")
+                    table_names = [row['TABLE_NAME'] for row in cursor.fetchall()]
+                    deletors = ['DROP TABLE IF EXISTS {};'.format(table_name) for table_name in table_names]
+                    query = """SET FOREIGN_KEY_CHECKS = 0;
+                    {}
+                    SET FOREIGN_KEY_CHECKS = 1;""".format('\n'.join(deletors))
+                    cursor.execute(query)
+                    connection.commit()
+            finally:
+                connection.close()
+
 
 
 class TestDataSustainer(unittest.TestCase):
