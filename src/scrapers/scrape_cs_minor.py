@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import urllib3
 import re
+from src.database_connection import make_connection
 
 
 def scrape_cs_minor():
@@ -34,7 +35,6 @@ def scrape_cs_minor():
 
     a_matches = soup_obj.find('a', string="CSC Minor Interest Form")
     final_dict['minor-application-link'] = a_matches['href']
-    print(soup_obj.get_text())
 
     match = re.search(r'Required Courses \(([0-9][0-9]) units\)', soup_obj.get_text())
     final_dict['minor-required-units'] = match.group(1)
@@ -42,7 +42,7 @@ def scrape_cs_minor():
     match = re.search(r'Approved Electives \(([0-9][0-9]) units\)', soup_obj.get_text())
     final_dict['minor-approved-elective-units'] = match.group(1)
 
-    url2 = "http://catalog.calpoly.edu/academicstandardsandpolicies/otherinformation/#AcademicMinors"
+    url2 = "http://catalog.calpoly.edu/academicstandardsandpolicies/otherinformation/"
     my_request2 = requests.get(url2, verify=False)
     soup_obj2 = BeautifulSoup(my_request2.text, "html.parser")
     match = re.search(r'Requirements for the minor:\n\n(.*)\n(.*)\n(.*)\n(.*)', soup_obj2.get_text())
@@ -54,7 +54,20 @@ def scrape_cs_minor():
     final_dict['minor-general-requirements'] = general_requirements
     final_dict['minor-flowchart-link'] = 'https://flowcharts.calpoly.edu/'
 
-    return final_dict
+    ingest_cs_minors(final_dict)
+
+
+def ingest_cs_minors(data):
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute('TRUNCATE TABLE cs_minor_info;')
+            cursor.execute('''INSERT INTO cs_minor_info (division_units, minor_general_requirements, minor_flowchart_link) 
+                VALUES ("%s", "%s", "%s");''', (data['division-units'], data['minor-general-requirements'],
+                                                data['minor-flowchart-link']))
+            connection.commit()
+    finally:
+        connection.close()
 
 
 if __name__ == "__main__":
