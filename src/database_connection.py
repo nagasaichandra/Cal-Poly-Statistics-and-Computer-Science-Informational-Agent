@@ -9,11 +9,12 @@ with open('db_config.json') as json_file:
         sys.exit(1)
     config = json.loads(json_file.read())
 
-connection = pymysql.connect(host=config['host'],
-                             user=config['user'],
-                             ssl={'ca': './cacert.pem'},
-                             password=config['password'],
-                             db=config['db'],
-                             charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor,
-                             max_allowed_packet=66777216)
+
+def make_connection():
+    return pymysql.connect(host=config['host'],
+                           user=config['user'],
+                           ssl={'ca': './cacert.pem'},
+                           password=config['password'],
+                           db=config['db'],
+                           charset='utf8mb4',
+                           cursorclass=pymysql.cursors.DictCursor)

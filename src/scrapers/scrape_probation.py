@@ -21,7 +21,7 @@ def clean_html(string):
     return bleach.clean(string, tags=[], strip=True)
 
 
-def scrape_transfer():
+def scrape_probation():
     final_dict = {}
     probation_html = []
 
@@ -66,6 +66,6 @@ def scrape_transfer():
 
 
 if __name__ == "__main__":
-    final = scrape_transfer()
+    final = scrape_probation()
     print(final['disqualification-criteria'])
     # ingest_courses(final)
