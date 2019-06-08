@@ -52,24 +52,19 @@ CREATE TABLE quarter (
 CREATE TABLE offered_in (
     course_number     SMALLINT REFERENCES course(course_number),
     course_area       VARCHAR(4) REFERENCES course(course_area),
-    quarter_id        VARCHAR(4),
+    quarter_id        INT,
     PRIMARY KEY (course_number, course_area, quarter_id)
 );
 
-CREATE TABLE flowchart_links (
-    major                VARCHAR(15),
-    year_range           VARCHAR(15),
-    flowchart_link       VARCHAR(100)
-);
+-- CREATE TABLE transfers
+-- (
+--     transfer_min_units VARCHAR(255),
+--     transfer_articulate_courses VARCHAR(255),
+--     CSSE_transfer_guidelines VARCHAR(255),
+--     major_transfer_course_list VARCHAR(255)
+-- );
 
-CREATE TABLE contact_basic (
-    phone_number                 VARCHAR(14),
-    department_contact_info      VARCHAR(600),
-    contact_info                 VARCHAR(600),
-    department_office_hours      VARCHAR(600),
-)
-
-CREATE TABLE contact_minor_advisors (
-    minor                      VARCHAR(10),
-    minor_advisors             VARCHAR(500)
-)
+-- CREATE TABLE probation (
+--     probation_criteria VARCHAR(255),
+--     disqualification_criteria VARCHAR(255)
+-- );

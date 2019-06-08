@@ -5,6 +5,9 @@ import urllib3
 from bs4 import BeautifulSoup
 # from ..database_connection import connection
 
+
+# from ..database_connection import connection
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 """
@@ -13,23 +16,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     [disqualification-criteria]
 """
 
-
-# def ingest_probation(transfer):
-#     with connection.cursor() as cursor:
-#         for transfer_dict in transfer:
-#             cursor.execute(
-#                 '''INSERT INTO transfers VALUES (%s, "%s", "%s", "%s");''' % (transfer_dict['transfer-min-units'],
-#                                                                               transfer_dict['transfer-articulate-courses'],
-#                                                                               transfer_dict['CSSE-transfer-guidelines'],
-#                                                                               transfer_dict['major-transfer-course-list']))
-#         connection.commit()
-
-
-# def remove_probation():
-#     '''Removes all rows from the courses table.  '''
-#     with connection.cursor() as cursor:
-#         cursor.execute('''DELETE FROM transfers;''')
-#         connection.commit()
 
 def clean_html(string):
     return bleach.clean(string, tags=[], strip=True)
@@ -52,10 +38,10 @@ def scrape_transfer():
         disqualificaiton_html = probation_row.find_all('td')
         probation_html.append(probation_row)
 
-    match_probation = re.search(r"What is academic probation\?\n(.*)",
-                          clean_html(probation_html[0]))
-    match_disqualification = re.search(r"What is disqualification\?\n(.*)",
-                          clean_html(probation_html[0]))
+    match_probation = re.search(r'What is academic probation\?\n(.*)',
+                                clean_html(probation_html[0]))
+    match_disqualification = re.search(r'What is disqualification\?\n(.*)',
+                                       clean_html(probation_html[0]))
 
     probation_limits = "\n".join(list(map(clean_html, disqualificaiton_html)))
 
@@ -64,7 +50,22 @@ def scrape_transfer():
     return final_dict
 
 
+# def ingest_probation(probation):
+#     with connection.cursor() as cursor:
+#         for probation_dict in probation:
+#             cursor.execute(
+#                 '''INSERT INTO probation VALUES (%s, "%s");''' % (probation_dict['probation-criteria'], probation_dict['disqualification-criteria']))
+#         connection.commit()
+
+
+# def remove_probation():
+#     '''Removes all rows from the courses table.  '''
+#     with connection.cursor() as cursor:
+#         cursor.execute('''DELETE FROM probation;''')
+#         connection.commit()
+
+
 if __name__ == "__main__":
     final = scrape_transfer()
     print(final['disqualification-criteria'])
-    # ingest_courses(final)    
+    # ingest_courses(final)
