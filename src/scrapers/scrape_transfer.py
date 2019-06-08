@@ -4,6 +4,7 @@ import bleach
 import urllib3
 from bs4 import BeautifulSoup
 from ..database_connection import make_connection
+from ..data_sustainer import DataSustainer
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -69,6 +70,10 @@ def scrape_transfer():
     final_dict['CSSE-transfer-guidelines'] = match_obj.group(1)
     # + "\n" + clean_html(bullets_html)
     final_dict['major-transfer-course-list'] = "Major Related 1*\n" + articulates[0]
+    
+    remove_content()
+    ingest_transfer(final_dict)
+
     return final_dict
 
 
@@ -76,16 +81,15 @@ def ingest_transfer(transfer):
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
-            for transfer_dict in transfer:
-                cursor.execute(
-                    'INSERT INTO transfers VALUES (%s, "%s", "%s", "%s");' %
-                    (transfer_dict['transfer-min-units'],
-                     transfer_dict[
-                         'transfer-articulate-courses'],
-                     transfer_dict[
-                         'CSSE-transfer-guidelines'],
-                     transfer_dict[
-                         'major-transfer-course-list']))
+            cursor.execute(
+                'INSERT INTO transfers VALUES ("%s", "%s", "%s", "%s");' %
+                (transfer['transfer-min-units'],
+                    transfer[
+                        'transfer-articulate-courses'],
+                    transfer[
+                        'CSSE-transfer-guidelines'],
+                    transfer[
+                        'major-transfer-course-list']))
             connection.commit()
     finally:
         connection.close()
@@ -97,15 +101,19 @@ def remove_content():
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
-            cursor.execute('''DELETE FROM transfers;''')
+            cursor.execute('''TRUNCATE TABLE transfers;''')
             connection.commit()
     finally:
         connection.close()
 
 
 if __name__ == "__main__":
-    # print(scrape_transfer())
-    final = scrape_transfer()
-    # print(final)
-    remove_content()
-    ingest_transfer(final)
+    scrape_transfer()
+    # print(final['transfer-min-units'])
+    # print(final['transfer-articulate-courses'])
+    # print(final['CSSE-transfer-guidelines'])
+    # print(final['major-transfer-course-list'])
+    # data_sustainer = DataSustainer()
+    # data_sustainer.create_tables(filename="createTableTransfer.sql")
+    # remove_content()
+    # ingest_transfer(final)
