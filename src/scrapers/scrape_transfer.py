@@ -82,7 +82,7 @@ def ingest_transfer(transfer):
     try:
         with connection.cursor() as cursor:
             cursor.execute(
-                'INSERT INTO transfers VALUES ("%s", "%s", "%s", "%s");' %
+                'INSERT INTO transfers VALUES ("%s", "%s", "%s", "%s");',
                 (transfer['transfer-min-units'],
                     transfer[
                         'transfer-articulate-courses'],
