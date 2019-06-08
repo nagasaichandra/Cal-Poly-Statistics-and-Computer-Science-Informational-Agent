@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import urllib3
 import re
-# from ..database_connection import connection
+from ..database_connection import connection
 import bleach
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
