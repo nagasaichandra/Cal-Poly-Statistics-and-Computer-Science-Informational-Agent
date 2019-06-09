@@ -62,7 +62,13 @@ class QueryScanner:
             clean_query_text = self.replace_variable(clean_query_text, var_name, var_replacement)
         return clean_query_text
 
-    def clean_response_query(self, response_text, user_variables=None):
+    def clean_response_query(self, response_text, user_variables):
+        """
+
+        :param response_text: The response text with user-variables and response-variables in brackets.
+        :param user_variables:
+        :return:
+        """
         clean_response_text = self.clean_response_user_variables(response_text, user_variables)
         query_variables = self.find_within_brackets(clean_response_text)
         if query_variables:
