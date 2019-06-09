@@ -39,7 +39,7 @@ def remove_content():
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
-            cursor.execute("SELECT question_text, response FROM question;")
+            cursor.execute("TRUNCATE TABLE flowchart_links;")
             connection.commit()
     finally:
         connection.close()
