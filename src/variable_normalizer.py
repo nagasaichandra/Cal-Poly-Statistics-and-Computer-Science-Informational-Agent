@@ -66,7 +66,26 @@ class VariableNormalizer:
             division_match = division_search.group(1)
             return (division_match, division_match)
 
+    def normalize_support_elective(self, input_text):
+        life_science = re.compile(r'(life sciences?)', flags=re.I)
+        math_stat = re.compile(r'(\bmath|\bstat|\bstatistics|\bmathematics)', flags=re.I)
+        physical_science = re.compile(r'(physical science)', flags=re.I)
+        additional_science = re.compile(r'(additional science)', flags=re.I)
+        support_courses = re.compile(r'(support courses?)', flags=re.I)
 
+        normalization_support_paths = [
+            ("Life Science Support Elective", life_science),
+            ("Mathematics/Statistics Support elective", math_stat),
+            ("Additional Science Support Elective 6", additional_science),
+            ("Physical Science Support Elective", physical_science),
+            ("SUPPORT COURSES", support_courses)
+        ]
+
+        for path, regex_compile in normalization_support_paths:
+            user_search = re.search(regex_compile, input_text)
+            if user_search:
+                user_match = user_search.group(1)
+                return (path, user_match)
 
 
     def search_variables(self, input_text):
@@ -80,7 +99,8 @@ class VariableNormalizer:
         normalization_paths = [
             ('major', self.normalize_major),
             ('season', self.normalize_season),
-            ('num-units', self.normalize_num_units)
+            ('num-units', self.normalize_num_units),
+            ('elective-type', self.normalize_support_elective)
         ]
 
         for path_name, normalizer_function in normalization_paths:

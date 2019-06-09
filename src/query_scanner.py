@@ -120,6 +120,8 @@ class QueryScanner:
                     return tuple_response
                 else:
                     return False
+            except:
+                print("here")
             finally:
                 connection.close()
 
