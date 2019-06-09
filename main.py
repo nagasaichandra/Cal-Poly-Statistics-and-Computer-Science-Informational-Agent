@@ -92,7 +92,7 @@ def main():
         run_tests(True)
         sys.exit(0)
     elif args and args[0] == "--init":
-        DataSustainer.initlize_database()
+        DataSustainer.initialize_database()
         sys.exit(0)
     elif args and args[0] == "--scrape":
         scrape_all()

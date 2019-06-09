@@ -1,4 +1,5 @@
-from .database_connection import make_connection
+from sys import stderr
+from src.database_connection import make_connection
 
 
 def get_questions():
@@ -8,6 +9,10 @@ def get_questions():
         with connection.cursor() as cursor:
             cursor.execute("SELECT question_text, response FROM question;")
             return [(row['question_text'], row['response']) for row in cursor.fetchall()]
+    except:
+        print("Warning, could not load questions from database.",
+              "If the database hasn't be initialized please do so with python main.py --init", file=stderr)
+        return []
     finally:
         connection.close()
 

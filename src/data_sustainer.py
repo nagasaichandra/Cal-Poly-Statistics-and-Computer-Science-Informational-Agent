@@ -1,5 +1,5 @@
 import unittest
-from .database_connection import make_connection
+from .database_connection import make_connection, config
 from src.parse_questions import ingest_file_questions
 from src.scrapers.scrape_all import scrape_all
 
@@ -11,13 +11,14 @@ class DataSustainer:
         pass
 
     @staticmethod
-    def initlize_database():
+    def initialize_database():
         """
 
         :param filename: The name of the .sql file under src/sql which creates the table. Default: createTables.
         :return:
         """
         DataSustainer.delete_all_tables()
+
         DataSustainer.create_tables('createTableBlended.sql')
         DataSustainer.create_tables('createTableChangeMajor.sql')
         DataSustainer.create_tables('createTableMasters.sql')
@@ -55,8 +56,8 @@ class DataSustainer:
                FROM
                    information_schema.tables
                WHERE
-                   table_schema = 'project3';""")
-                table_names = [row['TABLE_NAME'] for row in cursor.fetchall()]
+                   table_schema = '{}';""".format(config['db']))
+                table_names = [row['table_name'] for row in cursor.fetchall()]
                 deletors = ['DROP TABLE IF EXISTS {};'.format(table_name) for table_name in table_names]
                 query = """SET FOREIGN_KEY_CHECKS = 0;
                                    {}
