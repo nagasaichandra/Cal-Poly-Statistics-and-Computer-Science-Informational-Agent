@@ -46,7 +46,28 @@ class VariableNormalizer:
         units_search = re.search(units_re, input_text)
         if units_search:
             units_match = int(units_search.group(1))
-            return units_match, units_match
+            if units_match == 1:
+                user_units = "%s unit"%units_match
+            else:
+                user_units = "%s units"%units_match
+            return units_match, user_units
+        return False
+
+    def normalize_division_level(self, input_text):
+        """
+
+        :param input_text: A user's question.
+        :return: A tuple indicating: (variable-db-name, user's-variable-name) if "division-level" in input_text.
+        Else returns False.
+        """
+        division_re = re.compile(r'(upper|lower) ?\blevel\b|\bdivision\b', flags=re.I)
+        division_search = division_re.search(division_re, input_text)
+        if division_search:
+            division_match = division_search.group(1)
+            return (division_match, division_match)
+
+
+
 
     def search_variables(self, input_text):
         """
@@ -68,13 +89,24 @@ class VariableNormalizer:
                 user_variables[path_name] = result
         return user_variables
 
+
 class TestVariableNormalizer(unittest.TestCase):
     def setUp(self):
         self.normalizer = VariableNormalizer()
 
-    def test_callbacks(self):
+    def test_num_units(self):
         units, user_input = self.normalizer.normalize_num_units("8 units")
         self.assertEqual(units, 8)
         self.assertEqual(user_input, "8 units")
 
+        units, user_input = self.normalizer.normalize_num_units("4 units?")
+        self.assertEqual(units, 4)
+        self.assertEqual(user_input, "4 units")
 
+        units, user_input = self.normalizer.normalize_num_units("1unit")
+        self.assertEqual(units, 1)
+        self.assertEqual(user_input, "1 unit")
+
+
+if __name__ == "__main__":
+    unittest.main()
