@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import urllib3
 import re
 from src.database_connection import make_connection
-from ..data_sustainer import DataSustainer
 
 
 def scrape_cs_minor():
