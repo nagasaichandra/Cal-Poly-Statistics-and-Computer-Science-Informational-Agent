@@ -95,7 +95,8 @@ class QueryScanner:
         """
         return re.findall(r'\[(.*?)\]', text)
 
-    def replace_variable(self, text, variable_name, substitution):
+    @staticmethod
+    def replace_variable(text, variable_name, substitution):
         """
 
         :param text: A text with the variable-name in brackets.
