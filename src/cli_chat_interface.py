@@ -4,6 +4,7 @@ import unittest
 class CliChatInterface:
     def __init__(self):
         self.name = 'StaCIA'
+        self.on_message_callbacks = []
 
     def send_message(self, message):
         print(message)
