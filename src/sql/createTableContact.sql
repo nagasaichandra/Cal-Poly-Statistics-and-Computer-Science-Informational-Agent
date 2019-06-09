@@ -13,4 +13,4 @@ CREATE TABLE contact_minor_advisors (
 CREATE TABLE class_level_units (
     class_level                 TEXT,
     class_level_units           TEXT
-)
+);

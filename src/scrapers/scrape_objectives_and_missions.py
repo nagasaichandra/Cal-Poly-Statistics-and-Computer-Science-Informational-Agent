@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import urllib3
 import re
+from ..database_connection import make_connection
 
 
 def scrapeObjectivesandMissions():
@@ -78,5 +79,47 @@ def scrapeObjectivesandMissions():
     return final_dict
 
 
+def ingest_objectives_and_missions(objectives):
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                '''INSERT INTO mission_statement VALUES ("%s");''',
+                (objectives['csse-mission-statement']))
+            for major in objectives['major-learning-outcomes-list']:
+                cursor.execute(
+                    '''INSERT INTO major_learning_outcomes VALUES ("%s", "%s");''',
+                    (major, objectives['major-learning-outcomes-list'][major]))
+            for major in objectives['major-peos']:
+                cursor.execute(
+                    '''INSERT INTO major_peos VALUES ("%s", "%s");''',
+                    (major, objectives['major-peos'][major]))
+            cursor.execute('''INSERT INTO ge_learning_outcomes VALUES ("%s");''',
+                           objectives['ge-learning-outcomes'])
+            connection.commit()
+    finally:
+        connection.close()
+
+
+def remove_contents():
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute('''TRUNCATE TABLE mission_statement;''')
+            cursor.execute('''TRUNCATE TABLE major_learning_outcomes;''')
+            cursor.execute('''TRUNCATE TABLE major_peos;''')
+            cursor.execute('''TRUNCATE TABLE ge_learning_outcomes;''')
+            connection.commit()
+    finally:
+        connection.close()
+
+
+def scraper():
+    remove_contents()
+    objectives = scrapeObjectivesandMissions()
+    ingest_objectives_and_missions(objectives)
+
+
 if __name__ == "__main__":
-    print(scrapeObjectivesandMissions())
+    scraper()
+    # print(scrapeObjectivesandMissions())
