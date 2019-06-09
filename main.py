@@ -3,8 +3,9 @@ from src.cli_chat_interface import CliChatInterface
 from src.relevance_detector import RelevanceDetector
 from src.database_connection import make_connection
 from src.query_scanner import QueryScanner
+from src.data_sustainer import DataSustainer
 from src.scrapers.scrape_all import scrape_all
-from src.test_queries import  test_all_queries
+from src.test_queries import test_all_queries
 from datetime import timedelta, datetime
 from threading import Timer
 import time
@@ -89,6 +90,9 @@ def main():
         sys.exit(0)
     elif args and args[0] == "--test-verbose":
         run_tests(True)
+        sys.exit(0)
+    elif args and args[0] == "--init":
+        DataSustainer.initlize_database()
         sys.exit(0)
     elif args and args[0] == "--scrape":
         scrape_all()

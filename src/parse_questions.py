@@ -88,15 +88,19 @@ def ingest_questions(questions):
         connection.close()
 
 
+def ingest_file_questions(file_name):
+    file_text = open(file_name).read()
+    questions = get_all_questions(file_text)
+    ingest_questions(questions)
+
+
 def main():
     args = sys.argv[1:]
     if not args or len(args) < 2:
         print("usage: inputfile outputfile")
         sys.exit(1)
     if args[0] == "--ingest":
-        file_text = open(args[1]).read()
-        questions = get_all_questions(file_text)
-        ingest_questions(questions)
+        ingest_file_questions(args[1])
     else:
         reformat_file(args[0], args[1])
 

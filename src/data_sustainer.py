@@ -1,5 +1,7 @@
 import unittest
 from .database_connection import make_connection
+from src.parse_questions import ingest_file_questions
+from src.scrapers.scrape_all import scrape_all
 
 
 class DataSustainer:
@@ -7,6 +9,26 @@ class DataSustainer:
 
     def __init__(self):
         pass
+
+    @staticmethod
+    def initlize_database():
+        """
+
+        :param filename: The name of the .sql file under src/sql which creates the table. Default: createTables.
+        :return:
+        """
+        DataSustainer.delete_all_tables()
+        DataSustainer.create_tables('createTableBlended.sql')
+        DataSustainer.create_tables('createTableChangeMajor.sql')
+        DataSustainer.create_tables('createTableMasters.sql')
+        DataSustainer.create_tables('createTableMinor.sql')
+        DataSustainer.create_tables('createTableProbation.sql')
+        DataSustainer.create_tables('createTableTransfer.sql')
+        DataSustainer.create_tables('createTables.sql')
+
+        ingest_file_questions('questions.txt')
+        scrape_all()
+
 
     @staticmethod
     def create_tables(filename='createTables.sql'):
