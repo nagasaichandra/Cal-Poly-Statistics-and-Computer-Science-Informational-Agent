@@ -54,7 +54,7 @@ def scrape_level():
     level_html = soup.find_all('p', attrs={"style": "margin-left:40px"})
     level = clean_html(level_html)
     level_list = (level.replace(',', '\n')).split('\n')
-    print(level_list)
+    # print(level_list)
 
     for entry in level_list:
         if entry.startswith(' Freshman'):
@@ -70,9 +70,24 @@ def scrape_level():
             match_obj = re.search(r'Senior......................... (.*)\]$', entry)
             final_dict['senior'] = match_obj.group(1)
 
-    # print(final_dict)
+    print(final_dict)
     # TODO: add to database
     return final_dict
+
+
+def ingest_level_units(level_units):
+    connection = make_connection()
+    try:
+        with connection.cursor() as cursor:
+            for level in level_units:
+                cursor.execute(
+                    '''INSERT INTO class_level_units VALUES ("%s", "%s");''' %
+                    (level,
+                     level_units[level])
+                )
+            cursor.commit()
+    finally:
+        connection.close()
 
 
 def ingest_contact_basic(contacts):
@@ -112,6 +127,7 @@ def remove_content():
         with connection.cursor() as cursor:
             cursor.execute('''TRUNCATE TABLE contact_basic''')
             cursor.execute('''TRUNCATE TABLE contact_minor_advisors''')
+            cursor.execute('''TRUNCATE TABLE class_level_units''')
             cursor.commit()
     finally:
         connection.close()
@@ -119,12 +135,14 @@ def remove_content():
 
 # scrape_contact_main()
 def scrape_contact():
+    remove_content()
     contacts = scrape_contact_main()
     ingest_contact_basic(contacts)
     ingest_contact_minor_advisors(contacts)
-    remove_content()
+    level_units = scrape_level()
+    ingest_level_units(level_units)
 
 
 if __name__ == "__main__":
-    scrape_level()
-# scrape_contact()
+    # scrape_level()
+    scrape_contact()
