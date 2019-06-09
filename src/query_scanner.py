@@ -66,7 +66,7 @@ class QueryScanner:
         """
 
         :param response_text: The response text with user-variables and response-variables in brackets.
-        :param user_variables:
+        :param user_variables:  A dictionary of {variable-name: (variable-db-name, user-variable),..}
         :return:
         """
         clean_response_text = self.clean_response_user_variables(response_text, user_variables)
