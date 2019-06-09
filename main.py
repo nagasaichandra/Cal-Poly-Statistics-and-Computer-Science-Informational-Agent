@@ -4,6 +4,7 @@ from src.relevance_detector import RelevanceDetector
 from src.database_connection import make_connection
 from src.query_scanner import QueryScanner
 from src.scrapers.scrape_all import scrape_all
+from src.test_queries import  test_all_queries
 from datetime import timedelta, datetime
 from threading import Timer
 import time
@@ -74,11 +75,21 @@ def start_periodic_scraping(scraping_function, wait_time):
     Timer(wait_time.total_seconds(), to_run).start()
 
 
+def run_tests(verbose):
+    test_all_queries(verbose)
+
+
 def main():
     args = sys.argv[1:]
 
     if args and args[0] == "--cli":
         client = CliChatInterface()
+    elif args and args[0] == "--test":
+        run_tests(False)
+        sys.exit(0)
+    elif args and args[0] == "--test-verbose":
+        run_tests(True)
+        sys.exit(0)
     elif args and args[0] == "--scrape":
         scrape_all()
         sys.exit(0)
