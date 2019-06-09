@@ -62,13 +62,23 @@ def ingest_cs_minors(data):
     try:
         with connection.cursor() as cursor:
             cursor.execute('TRUNCATE TABLE cs_minor_info;')
-            cursor.execute('''INSERT INTO cs_minor_info (division_units, minor_general_requirements, minor_flowchart_link) 
-                VALUES ("%s", "%s", "%s");''', (data['division-units'], data['minor-general-requirements'],
-                                                data['minor-flowchart-link']))
+            cursor.execute('''INSERT INTO cs_minor_info (division_units, minor_general_requirements, minor_flowchart_link,required_courses,steps,minimum_gpa,prerequisites,application_link,required_units,approved_elective_units) 
+                VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s");''', (data['division-units'], data['minor-general-requirements'],
+                                                data['minor-flowchart-link'],
+                                                data['required-minor-courses'],
+                                                data['minor-steps'],
+                                                data['minimum-gpa-minor'],
+                                                data['minor-prerequisites'],
+                                                data['minor-application-link'],
+                                                data['minor-required-units'],
+                                                data['minor-approved-elective-units']))
             connection.commit()
     finally:
         connection.close()
 
 
 if __name__ == "__main__":
-    print(scrape_cs_minor())
+    # data_sustainer = DataSustainer()
+    # data_sustainer.create_tables(filename="createTableMinor.sql")
+
+    scrape_cs_minor()

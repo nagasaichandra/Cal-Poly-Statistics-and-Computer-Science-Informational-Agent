@@ -4,12 +4,6 @@ import bleach
 import urllib3
 from bs4 import BeautifulSoup
 from ..database_connection import make_connection
-from ..data_sustainer import DataSustainer
-
-
-
-# from ..database_connection import connection
-
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 """

@@ -27,7 +27,7 @@ def ingest_flowcharts(links):
         with connection.cursor() as cursor:
             for major in links:
                 for i in major:
-                    cursor.execute('''INSERT INTO flowchart_links VALUES ("%s", "%s", "%s");''' % (major,
+                    cursor.execute('''INSERT INTO flowchart_links VALUES ("%s", "%s", "%s");''', (major,
                                                                                                    i[0], i[1]))
             connection.commit()
     finally:

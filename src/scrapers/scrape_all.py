@@ -1,4 +1,5 @@
 import time
+from sys import stderr
 from .scrape_courses import scrape_catalog
 from .scrape_change_major import scrape_change_major
 from .scrape_cs_minor import scrape_cs_minor
@@ -28,8 +29,9 @@ def scrape_all():
     for scraping_function in scraping_functions:
         try:
             scraping_function()
-        except:
-            print('Failed to run scrapper', scraping_function)
+        except Exception as exception:
+            print('Failed to run scrapper', scraping_function, file=stderr)
+            print(exception, file=stderr)
     print("Scraping finished in", time.time() - start_time, 'seconds.')
 
 
