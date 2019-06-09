@@ -61,7 +61,7 @@ def ingest_courses(courses):
                 cursor.execute(
                     '''INSERT INTO course (course_number, course_area, course_name, 
                     course_description, course_units) VALUES (%s, %s, %s, %s, %s);''', (int(course_dict['course_num']),
-                                                                                   'CSC', course_dict['course_name'],
+                                                                                   "CSC", course_dict['course_name'],
                                                                                    course_dict['course_desc'],
                                                                                    int(course_dict['units']),))
             connection.commit()
@@ -89,8 +89,11 @@ def remove_content():
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
+            cursor.execute("SET FOREIGN_KEY_CHECKS = 0;")
+            cursor.execute('''TRUNCATE TABLE course_types;''')
             cursor.execute('''TRUNCATE TABLE course;''')
             cursor.execute('''TRUNCATE TABLE offered_in;''')
+            cursor.execute("SET FOREIGN_KEY_CHECKS = 1;")
             connection.commit()
     finally:
         connection.close()

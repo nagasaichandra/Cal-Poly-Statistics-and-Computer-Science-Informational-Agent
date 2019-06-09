@@ -20,7 +20,7 @@
   "division-level-units" : "",
   "double-countable-classes" : "",
   "elective-is-double-countable" : "",
-  "elective-type-course-names" : "",
+  "elective-type-course-names" : "SELECT course_name FROM course_types WHERE course_type = \"[elective-type]\";",
   "elective-type-units" : "",
   "flowchart-link" : "",
   "ge-area-course-names" : "",
