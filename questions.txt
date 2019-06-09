@@ -35,7 +35,7 @@ F1|How many courses are present in both CSC and SE?|The number of courses that a
 F1|How many courses are present in both Computer Science and SE?|The number of courses that are common in both the departments are [overlapping-courses-list].
 F1|How many courses are present in both Computer Science and Software Engineering?|The number of courses that are common in both the departments are [overlapping-courses-list].
 F1|What are the graduate level courses?|The graduate level courses in CSC are [graduate-courses-list].
-F1|What are all the courses in [major] that are of [course-units] units?|The following courses count for [course-units] units: [major-course-names-of-units].
+F1|What are all the courses in [major] that are of [num-units] units?|The following courses count for [num-units] units: [major-course-names-of-units].
 F1|What is the CSSE mission statement?|The CSSE mission statement is [csse-mission-statement].
 F1|What is the computer science and software engineering mission statement?|The CSSE mission statement is [csse-mission-statement].
 F1|What are the program educational objectives for the [major]?|The program educational objectives for the [major] are [major-peos].
@@ -232,7 +232,6 @@ F1|What accreditation does the Computer Science program have?|The Computer Scien
 [ms-learning-objectives]: A list of learning objectives of Masters in CS program.
 [ms-total-units]: The total units that CS Masters program requires its students to take.
 [num-units]: The amount of units that a user specifies. 
-[course-units]: The number of units a course is listed for. 
 [minor-approved-electives-units]: The total number of approved elective units for a specific minor.
 [number-season-courses]: The number of CSSE courses typically offered in a specific quarter (fall, winter, spring or summer).
 [class-level-units]:The number of units a Cal Poly student has to take in order to be considered the class level (freshman, sophomore, junior or senior) that the user specified.
