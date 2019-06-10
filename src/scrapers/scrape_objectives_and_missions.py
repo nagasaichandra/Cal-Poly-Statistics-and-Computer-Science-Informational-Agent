@@ -84,17 +84,17 @@ def ingest_objectives_and_missions(objectives):
     try:
         with connection.cursor() as cursor:
             cursor.execute(
-                '''INSERT INTO mission_statement VALUES ("%s");''',
+                '''INSERT INTO mission_statement VALUES (%s);''',
                 (objectives['csse-mission-statement']))
             for major in objectives['major-learning-outcomes-list'].keys():
                 cursor.execute(
-                    '''INSERT INTO major_learning_outcomes VALUES (%s, "%s");''',
-                    (major, objectives['major-learning-outcomes-list'][major]))
+                    '''INSERT INTO major_learning_outcomes VALUES (%s, %s);''',
+                    (major, '\n'.join(objectives['major-learning-outcomes-list'][major])))
             for major in objectives['major-peos'].keys():
                 cursor.execute(
-                    '''INSERT INTO major_peos VALUES (%s, "%s");''',
-                    (major, objectives['major-peos'][major]))
-            cursor.execute('''INSERT INTO ge_learning_outcomes VALUES ("%s");''',
+                    '''INSERT INTO major_peos VALUES (%s, %s);''',
+                    (major, ','.join(objectives['major-peos'][major])))
+            cursor.execute('''INSERT INTO ge_learning_outcomes VALUES (%s);''',
                            ''.join(objectives['ge-learning-outcomes']))
             connection.commit()
     finally:
