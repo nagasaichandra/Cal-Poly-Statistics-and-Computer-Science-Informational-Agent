@@ -33,7 +33,7 @@ def scrapeObjectivesandMissions():
     cs_peo = list()
     for i in range(1, 5):
         cs_peo.append(match.group(i))
-    major_peos['cs-major'] = cs_peo
+    major_peos['CSC'] = cs_peo
 
     match = re.search(
         r'At the time of graduation, students who major in Computer Science have:\n\n(.*)\n(.*)\n(.*)\n(.*)\n(.*)\n(.*)\n(.*)\n(.*)\n(.*)\n(.*)\n(.*)',
@@ -41,13 +41,13 @@ def scrapeObjectivesandMissions():
     cs_learning_outcomes = list()
     for i in range(1, 12):
         cs_learning_outcomes.append(match.group(i))
-    major_learning_outcomes_list['cs-major'] = cs_learning_outcomes
+    major_learning_outcomes_list['CSC'] = cs_learning_outcomes
 
     match = re.search(r'(.*)\n(.*)\n(.*)\n(.*)\n\nSoftware Engineering Student Learning Outcomes', soup2.get_text())
     se_peo = list()
     for i in range(1, 5):
         se_peo.append(match.group(i))
-    major_peos['se-major'] = se_peo
+    major_peos['SE'] = se_peo
     se_learning_outcomes = list()
 
     match = re.search(
@@ -55,7 +55,7 @@ def scrapeObjectivesandMissions():
         soup2.get_text())
     for i in range(1, 12):
         se_learning_outcomes.append(match.group(i))
-    major_learning_outcomes_list['se-major'] = se_learning_outcomes
+    major_learning_outcomes_list['SE'] = se_learning_outcomes
     final_dict['major-learning-outcomes-list'] = major_learning_outcomes_list
     final_dict['major-peos'] = major_peos
 
@@ -83,19 +83,20 @@ def ingest_objectives_and_missions(objectives):
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
+            print(objectives)
             cursor.execute(
                 '''INSERT INTO mission_statement VALUES ("%s");''',
                 (objectives['csse-mission-statement']))
-            for major in objectives['major-learning-outcomes-list']:
+            for major in objectives['major-learning-outcomes-list'].keys():
                 cursor.execute(
-                    '''INSERT INTO major_learning_outcomes VALUES ("%s", "%s");''',
+                    '''INSERT INTO major_learning_outcomes VALUES (%s, "%s");''',
                     (major, objectives['major-learning-outcomes-list'][major]))
-            for major in objectives['major-peos']:
+            for major in objectives['major-peos'].keys():
                 cursor.execute(
-                    '''INSERT INTO major_peos VALUES ("%s", "%s");''',
+                    '''INSERT INTO major_peos VALUES (%s, "%s");''',
                     (major, objectives['major-peos'][major]))
             cursor.execute('''INSERT INTO ge_learning_outcomes VALUES ("%s");''',
-                           objectives['ge-learning-outcomes'])
+                           ''.join(objectives['ge-learning-outcomes']))
             connection.commit()
     finally:
         connection.close()

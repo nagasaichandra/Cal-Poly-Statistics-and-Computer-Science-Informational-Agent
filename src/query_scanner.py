@@ -79,7 +79,10 @@ class QueryScanner:
                 query_response_list = self.execute_query(clean_query)
 
                 if query_response_list:
-                    query_response = ', '.join(query_response_list)
+                    if len(query_response_list) == 1:
+                        query_response = str(query_response_list[0])
+                    else:
+                        query_response = ', '.join(query_response_list)
                 else:
                     query_response = "(could not find %s)" % (query_var)
 
@@ -116,12 +119,13 @@ class QueryScanner:
                 response_list = cursor.fetchall()
                 connection.commit()
                 tuple_response = [list(response.values())[0] for response in response_list]
+                print(tuple_response)
                 if len(tuple_response) > 0:
                     return tuple_response
                 else:
                     return False
             except:
-                print("here")
+                return False
             finally:
                 connection.close()
 

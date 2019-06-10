@@ -12,7 +12,6 @@ from .scrape_probation import scrape_probation
 from .scrape_courses_requirements import scrape_electives
 from .scrape_flowchart_links import flowchart_links
 
-#TODO: Fix scraper_ojectives.
 
 scraping_functions = [scrape_catalog,
     scrape_change_major,

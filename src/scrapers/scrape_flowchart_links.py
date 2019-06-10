@@ -15,8 +15,8 @@ def links_dict():
                 ('2017 - 2019', 'https://flowcharts.calpoly.edu/downloads/mymap/17-19.52SEBSU.pdf'),
                 ('2019 - 2020', 'https://flowcharts.calpoly.edu/downloads/mymap/19-20.52SEBSU.pdf')]
     flowchart_dict = dict()
-    flowchart_dict['cs-major'] = cs_links
-    flowchart_dict['se-major'] = se_links
+    flowchart_dict['CSC'] = cs_links
+    flowchart_dict['SE'] = se_links
 
     return flowchart_dict
 
