@@ -4,24 +4,27 @@ from .scrape_courses import scrape_catalog
 from .scrape_change_major import scrape_change_major
 from .scrape_cs_minor import scrape_cs_minor
 from .scrape_masters import scrape_masters
-from .scrape_objectives_and_missions import scrapeObjectivesandMissions
+from .scrape_objectives_and_missions import scraper_objectives
 from .scrape_transfer import scrape_transfer
 from .scrape_masters import scrape_blended
 from .scrape_contact import scrape_contact
 from .scrape_probation import scrape_probation
 from .scrape_courses_requirements import scrape_electives
+from .scrape_flowchart_links import flowchart_links
 
+#TODO: Fix scraper_ojectives.
 
 scraping_functions = [scrape_catalog,
     scrape_change_major,
     scrape_cs_minor,
     scrape_masters,
-    scrapeObjectivesandMissions,
+    scraper_objectives,
     scrape_transfer,
     scrape_blended,
     scrape_contact,
     scrape_probation,
-    scrape_electives]
+    scrape_electives,
+    flowchart_links]
 
 
 def scrape_all():

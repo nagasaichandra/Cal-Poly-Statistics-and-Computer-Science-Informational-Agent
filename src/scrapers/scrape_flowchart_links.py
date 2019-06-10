@@ -26,9 +26,9 @@ def ingest_flowcharts(links):
     try:
         with connection.cursor() as cursor:
             for major in links:
-                for i in major:
-                    cursor.execute('''INSERT INTO flowchart_links VALUES ("%s", "%s", "%s");''', (major,
-                                                                                                   i[0], i[1]))
+                for i in links[major]:
+                    #TODO: fix string index out of range
+                    cursor.execute('''INSERT INTO flowcharts VALUES ("%s", "%s", "%s");''', (major, i[0], i[1]))
             connection.commit()
     finally:
         connection.close()
@@ -39,7 +39,7 @@ def remove_content():
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
-            cursor.execute("TRUNCATE TABLE flowchart_links;")
+            cursor.execute("TRUNCATE TABLE flowcharts;")
             connection.commit()
     finally:
         connection.close()
@@ -48,6 +48,7 @@ def remove_content():
 def flowchart_links():
     remove_content()
     links = links_dict()
+
     ingest_flowcharts(links)
 
 

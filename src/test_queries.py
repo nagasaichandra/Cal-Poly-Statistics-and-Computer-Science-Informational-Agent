@@ -11,7 +11,9 @@ values = {
     'course-units': 2,
     'major': 'CSC',
     'season': 'Sp',
-    'elective-type': 'Life Science Support Elective'
+    'elective-type': 'Life Science Support Elective',
+    'year-range': '2019-2020',
+    'minor' : 'ds-minor'
 }
 
 

@@ -114,12 +114,12 @@ def remove_contents():
         connection.close()
 
 
-def scraper():
+def scraper_objectives():
     remove_contents()
     objectives = scrapeObjectivesandMissions()
     ingest_objectives_and_missions(objectives)
 
 
 if __name__ == "__main__":
-    scraper()
+    scraper_objectives()
     # print(scrapeObjectivesandMissions())
