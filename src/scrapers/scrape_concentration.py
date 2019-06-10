@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import urllib3
 import re
-#from ..database_connection import make_connection
+from ..database_connection import make_connection
 
 
 def scrapeConcentration():
@@ -26,9 +26,13 @@ def scrapeConcentration():
     return final_dict
 
 
+def ingest_concentration(concentration):
+    connection = ma
+
+
 
 def scraper():
-    scrapeConcentration()
+    concentration = scrapeConcentration()
 
 
 if __name__ == '__main__':
