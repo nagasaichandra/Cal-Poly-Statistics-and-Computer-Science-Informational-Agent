@@ -45,7 +45,7 @@ def ingest_degrees(degrees):
         with connection.cursor() as cursor:
             for program, link in degrees:
                 cursor.execute(
-                    'INSERT INTO degrees VALUES ("%s", "%s");',
+                    'INSERT INTO degrees VALUES (%s, %s);',
                     (program, link))
                 connection.commit()
     finally:
