@@ -22,7 +22,7 @@ def scrape_cs_minor():
             required_minor_courses.append(match[0])
     final_dict = {}
 
-    final_dict['required-minor-courses'] = required_minor_courses
+    final_dict['required-minor-courses'] = ", ".join(required_minor_courses)
 
     pars_in_page = soup_obj.find_all('h2')
     final_dict['minor-steps'] = re.findall(r'(Step [0-9]\: .*)', soup_obj.get_text())
@@ -54,7 +54,7 @@ def scrape_cs_minor():
     final_dict['minor-general-requirements'] = ', '.join(general_requirements)
     final_dict['minor-flowchart-link'] = 'https://flowcharts.calpoly.edu/'
 
-    print(final_dict['minor-general-requirements'])
+    # print(final_dict['required-minor-courses'])
 
     ingest_cs_minors(final_dict)
 
@@ -68,7 +68,7 @@ def ingest_cs_minors(data):
                 VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s");''', (data['division-units'], data['minor-general-requirements'],
                                                 data['minor-flowchart-link'],
                                                 data['required-minor-courses'],
-                                                data['minor-steps'],
+                                                ", ".join(data['minor-steps']),
                                                 data['minimum-gpa-minor'],
                                                 data['minor-prerequisites'],
                                                 data['minor-application-link'],
@@ -77,6 +77,10 @@ def ingest_cs_minors(data):
             connection.commit()
     finally:
         connection.close()
+
+
+
+
 
 
 if __name__ == "__main__":
