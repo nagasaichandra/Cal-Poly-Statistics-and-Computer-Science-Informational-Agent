@@ -89,11 +89,8 @@ def remove_content():
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
-            cursor.execute("SET FOREIGN_KEY_CHECKS = 0;")
-            cursor.execute('''TRUNCATE TABLE course_types;''')
             cursor.execute('''TRUNCATE TABLE course;''')
             cursor.execute('''TRUNCATE TABLE offered_in;''')
-            cursor.execute("SET FOREIGN_KEY_CHECKS = 1;")
             connection.commit()
     finally:
         connection.close()

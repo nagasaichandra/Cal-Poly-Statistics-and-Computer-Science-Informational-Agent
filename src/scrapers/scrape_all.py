@@ -9,6 +9,7 @@ from .scrape_transfer import scrape_transfer
 from .scrape_masters import scrape_blended
 from .scrape_contact import scrape_contact
 from .scrape_probation import scrape_probation
+from .scrape_courses_requirements import scrape_electives
 
 
 scraping_functions = [scrape_catalog,
@@ -19,7 +20,8 @@ scraping_functions = [scrape_catalog,
     scrape_transfer,
     scrape_blended,
     scrape_contact,
-    scrape_probation]
+    scrape_probation,
+    scrape_electives]
 
 
 def scrape_all():

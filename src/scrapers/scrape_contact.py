@@ -85,7 +85,7 @@ def ingest_level_units(level_units):
                     (level,
                      level_units[level])
                 )
-            cursor.commit()
+            connection.commit()
     finally:
         connection.close()
 
@@ -103,7 +103,7 @@ def ingest_contact_basic(contacts):
                      'department-contact-info'],
                  contacts[
                      'department-office-hours']))
-            cursor.commit()
+            connection.commit()
     finally:
         connection.close()
 
@@ -116,7 +116,7 @@ def ingest_contact_minor_advisors(contacts):
                 cursor.execute(
                     '''INSERT INTO contact_minor_advisors VALUES ("%s", "%s");''' % (
                         minor, contacts['minor-advisors'][minor]))
-                cursor.commit()
+                connection.commit()
     finally:
         connection.close()
 
@@ -125,10 +125,10 @@ def remove_content():
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
-            cursor.execute('''TRUNCATE TABLE contact_basic''')
-            cursor.execute('''TRUNCATE TABLE contact_minor_advisors''')
-            cursor.execute('''TRUNCATE TABLE class_level_units''')
-            cursor.commit()
+            cursor.execute('''TRUNCATE TABLE contact_basic;''')
+            cursor.execute('''TRUNCATE TABLE contact_minor_advisors;''')
+            cursor.execute('''TRUNCATE TABLE class_level_units;''')
+            connection.commit()
     finally:
         connection.close()
 

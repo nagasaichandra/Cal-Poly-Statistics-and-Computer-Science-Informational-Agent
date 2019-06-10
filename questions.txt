@@ -25,7 +25,7 @@ F1|What CSSE courses are offered in [season]?|The CSSE courses typically offered
 F1|What computer science and software engineering courses are offered in [season]?|The CSSE courses typically offered in [season] are [season-course-names].
 F1|How many CSSE courses will be available during the [season] quarter?|There are [number-season-courses] CSSE courses typically offered during [season] quarter.
 F1|How many computer science and software engineering courses will be available during the [season] quarter?|There are [number-season-courses] CSSE courses typically offered during [season] quarter.
-F1|What are the courses that are in both CSC and SE curriculum?|The courses that are common for both the departments are [overlapping-courses-list].
+F1|What are the courses that are in both CSC and SE?|The courses that are common for both the departments are [overlapping-courses-list].
 F1|What are the courses that are in both Computer Science and SE curriculum?|The courses that are common for both the departments are [overlapping-courses-list].
 F1|What are the courses that are in both Computer Science and Software Engineering curriculum?|The courses that are common for both the departments are [overlapping-courses-list].
 F1|What courses are cross listed as CSC and SE?|The courses that are common for both the departments are [overlapping-courses-list].

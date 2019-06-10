@@ -4,11 +4,15 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="4">
+          <list size="8">
             <item index="0" class="java.lang.String" itemvalue="discord" />
             <item index="1" class="java.lang.String" itemvalue="nltk" />
             <item index="2" class="java.lang.String" itemvalue="discord.py" />
             <item index="3" class="java.lang.String" itemvalue="PyMySQL" />
+            <item index="4" class="java.lang.String" itemvalue="BeautifulSoup4" />
+            <item index="5" class="java.lang.String" itemvalue="bleach" />
+            <item index="6" class="java.lang.String" itemvalue="requests" />
+            <item index="7" class="java.lang.String" itemvalue="urllib3" />
           </list>
         </value>
       </option>

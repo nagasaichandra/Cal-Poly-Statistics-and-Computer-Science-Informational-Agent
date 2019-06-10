@@ -10,7 +10,8 @@ connection = make_connection()
 values = {
     'course-units': 2,
     'major': 'CSC',
-    'season': 'Sp'
+    'season': 'Sp',
+    'elective-type': 'Life Science Support Elective'
 }
 
 

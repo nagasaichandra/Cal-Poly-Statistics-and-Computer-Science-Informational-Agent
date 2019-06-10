@@ -2,17 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import re
 from ..database_connection import make_connection
-import pymysql
-import warnings
-
-
-def parse_course(course_tag):
-    """
-
-    :param course_tag:
-    :return:
-    """
-
 
 def parse_courses():
     url = "http://catalog.calpoly.edu/collegesandprograms/collegeofengineering/computersciencesoftwareengineering/bscomputerscience/"
@@ -64,21 +53,34 @@ def ingest_course_types(course_types):
     try:
         with connection.cursor() as cursor:
             for course_type in course_types:
-                cursor.execute('''INSERT INTO course_types (course_area, course_number, course_type, course_name)
+                cursor.execute('''INSERT INTO course_types (course_area, course_number, course_name, support_type)
                                 VALUES (%s, %s, %s, %s);''', (course_type["course_area"],
                                                              course_type["course_number"],
-                                                             course_type["support_type"],
-                                                             course_type["course_name"]))
+                                                             course_type["course_name"],
+                                                             course_type["support_type"]))
             connection.commit()
     finally:
         connection.close()
 
+# def delete_ingest_support_types():
+#     support_reqs = [("Life Science Support Elective", 4), ("Mathematics/Statistics Support elective", 4),
+#                     ("Physical Science Support Elective", 12), ("Additional Science Support Elective 6", 4)]
+#     connection = make_connection()
+#     try:
+#         with connection.cursor() as cursor:
+#             cursor.execute('''INSERT INTO support_reqs (support_type, units_req) VALUES (Life Science Support Elective, 4)''')
+#             connection.commit()
+#     finally:
+#         connection.close()
 
 
-
-
+def scrape_electives():
+    delete_course_types()
+    list_courses = parse_courses()
+    ingest_course_types(list_courses)
 
 if __name__ == '__main__':
     delete_course_types()
     list_courses = parse_courses()
+    # print(list_courses)
     ingest_course_types(list_courses)
