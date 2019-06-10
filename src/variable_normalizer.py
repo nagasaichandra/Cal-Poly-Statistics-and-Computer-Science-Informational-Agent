@@ -74,7 +74,7 @@ class VariableNormalizer:
             return class_match, class_match + " class level "
 
     def normalize_ge_area(self, input_text):
-        ge_re = re.compile(r'ge area ([abcdef|ABCDEF])|ge ([abcdef|ABCDEF])', flags=re.I)
+        ge_re = re.compile(r'\bge area ([abcdef|ABCDEF])|\bge ([abcdef|ABCDEF])', flags=re.I)
         ge_search = re.search(ge_re, input_text)
         if ge_search:
             ge_match = ge_search.group(1)

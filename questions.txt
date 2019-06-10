@@ -1,10 +1,6 @@
 F1|How many GEs do I have to take in [major]?|You need to take [major-ge-units] units to graduate in [major].
 F1|How many general educations do I have to take in [major]?|You need to take [major-ge-units] units to graduate in [major].
 F1|How many general education classes do I have to take in [major]?|You need to take [major-ge-units] units to graduate in [major].
-F1|What GEs satisfy area [ge-area]?|GE area [ge-area] includes the following courses: [ge-area-course-names].
-F1|What general educations satisfy area [ge-area]?|GE area [ge-area] includes the following courses: [ge-area-course-names].
-F1|What courses are included in GE area [ge-area]?|GE area [ge-area] includes the following courses: [ge-area-course-names].
-F1|What courses are included in general education area [ge-area]?|GE area [ge-area] includes the following courses: [ge-area-course-names].
 F1|What is the subject of GE area [ge-area]?|The subject of GE area [ge-area] is [ge-area-subject].
 F1|What is the subject of general education area [ge-area]?|The subject of GE area [ge-area] is [ge-area-subject].
 F1|What are the general education areas?|The general education areas are [ge-area-list].
@@ -73,8 +69,8 @@ F1|What courses should I take each quarter for the [minor]?|In order to determin
 F1|How many units do I need to graduate?|You need [graduation-units] total units to graduate.
 F1|What are the mandatory classes that I have to take in order to graduate?|You need to take [all-required-course-list] to graduate.
 F1|What classes do I have to take in order to graduate?|You need to take [all-required-course-list] to graduate.
-F1|How many classes do I have to take for [major]?|You need to take [total-units] units worth of classes for [major]. The total number of classes may vary.
-F1|What is the total number of classes needed to graduate in [major]?|You need to take [total-units] units worth of classes for [major]. The total number of classes may vary.
+F1|How many classes do I have to take for [major]?|The BS in Computer Science requires about 180 - 181 total units while the BS in Software Engineering requires about 183-184 total units.
+F1|What is the total number of classes needed to graduate in [major]?|The BS in Computer Science requires about 180 - 181 total units while the BS in Software Engineering requires about 183-184 total units.
 F1|What concentrations are available?|The only concentration available in CSSE is the Interactive Entertainment Concentration.
 F1|How do I declare [concentration] concentration?|You need to complete the following steps [concentration-type-steps]
 F1|What are the required courses for the [concentration]?|The required courses for the [concentration] are [concentration-required-courses].
@@ -184,7 +180,6 @@ F1|What accreditation does the Computer Science program have?|The Computer Scien
 [elective-type-units]: Units that are acquired from electives from a certain type
 [flowchart-link]: A link to direct the user to a flowchart website that will contain the pdf
 [ge-area]: Areas within a GE’s such as area A, B, C
-[ge-area-course-names]: A list of course names that are contained within a certain area
 [ge-area-list]: A list of a single GE area such as area A, B, C
 [ge-area-subject]: The subject that belongs to a specific GE area such a Communication Courses (GE Area A), Science and Mathematics Courses (GE Area B), Arts and Humanities Courses (GE Area C)
 [ge-elective-units-major]: GE units that are needed for a specific major
@@ -238,7 +233,6 @@ F1|What accreditation does the Computer Science program have?|The Computer Scien
 [subject]: This variable is used to indicate a topic which the user inquires about which is outside the scope of our team’s topics. 
 [thesis-ms-units]: The number of thesis units required for students pursuing a Masters in Computer Science.
 [total-num-of-courses]: The total number of courses offered in Cal Poly that are considered part of the major which the user specified. 
-[total-units]: The total number of units required to obtain a degree in the major that the user specified at Cal Poly.
 [transfer-articulate-courses]: A list of courses that articulate for transfers into the CSSE department.
 [transfer-courses]: A list of courses that students who want to transfer into the CSSE department should take in order to maximize the chances of them being admitted into the department.
 [transfer-min-units]: The minimum number of units that Cal Poly students need to have taken in order to transfer into the CSSE department.
