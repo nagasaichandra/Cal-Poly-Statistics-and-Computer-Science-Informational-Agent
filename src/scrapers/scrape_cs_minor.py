@@ -51,8 +51,10 @@ def scrape_cs_minor():
     general_requirements = list()
     for i in range(1, 5):
         general_requirements.append(match.group(i))
-    final_dict['minor-general-requirements'] = general_requirements
+    final_dict['minor-general-requirements'] = ', '.join(general_requirements)
     final_dict['minor-flowchart-link'] = 'https://flowcharts.calpoly.edu/'
+
+    print(final_dict['minor-general-requirements'])
 
     ingest_cs_minors(final_dict)
 
