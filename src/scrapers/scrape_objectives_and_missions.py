@@ -83,7 +83,6 @@ def ingest_objectives_and_missions(objectives):
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
-            print(objectives)
             cursor.execute(
                 '''INSERT INTO mission_statement VALUES ("%s");''',
                 (objectives['csse-mission-statement']))

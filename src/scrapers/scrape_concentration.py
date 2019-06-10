@@ -41,19 +41,19 @@ def scrapeMinorCourses():
     soup3 = BeautifulSoup(myRequest3.text, "html.parser")
     # print(soup1.get_text())
     match = re.search(r'(Required Courses .*)', soup1.get_text())
-    print(match.group())
+    #print(match.group())
     cs_minor_courses = match.group()
     # print(soup2.get_text())
     match = re.search(r'(.* Total units\d\d)', soup2.get_text())
-    print(match.group())
+    #print(match.group())
     ds_minor_courses = match.group()
     # print(soup3.get_text())
     match = re.search(r'(Required Courses .*)', soup3.get_text())
-    print(match.group())
+    #print(match.group())
     ia_minor_courses = match.group()
-    final_dict['cs-minor'] = cs_minor_courses
-    final_dict['ds-minor'] = ds_minor_courses
-    final_dict['ia-minor'] = ia_minor_courses
+    final_dict['CS minor'] = cs_minor_courses
+    final_dict['Data Science minor'] = ds_minor_courses
+    final_dict['Computing for Interactive Arts minor'] = ia_minor_courses
 
     return final_dict
 
@@ -64,7 +64,7 @@ def ingest_minor_courses(minor_courses):
         with connection.cursor() as cursor:
             cursor.execute('TRUNCATE TABLE minor_courses;')
             for minor in minor_courses:
-                cursor.execute('''INSERT INTO minor_courses VALUES ("%s", "%s");''',
+                cursor.execute('''INSERT INTO minor_courses VALUES (%s, %s);''',
                                (minor, minor_courses[minor]))
                 connection.commit()
     finally:
@@ -78,7 +78,7 @@ def ingest_concentration(concentrations):
             cursor.execute('TRUNCATE TABLE concentration;')
             cursor.execute('INSERT INTO concentration '
                            '(concentration_required_courses, concentration_list)'
-                           ' VALUES ("%s", "%s")', (concentrations['concentration-required-courses'],
+                           ' VALUES (%s, %s)', (','.join(concentrations['concentration-required-courses']),
                                                     concentrations['concentration-list']))
             connection.commit()
     finally:
@@ -86,11 +86,11 @@ def ingest_concentration(concentrations):
 
 
 
-def scraper():
+def scrape_concentration():
     # scrapeConcentration()
     minor_courses = scrapeMinorCourses()
     ingest_minor_courses(minor_courses)
     ingest_concentration(scrapeConcentration())
 
 if __name__ == '__main__':
-    scraper()
+    scrape_concentration()

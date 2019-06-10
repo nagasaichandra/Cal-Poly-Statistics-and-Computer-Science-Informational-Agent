@@ -7,8 +7,9 @@ def parse_courses():
     url = "http://catalog.calpoly.edu/collegesandprograms/collegeofengineering/computersciencesoftwareengineering/bscomputerscience/"
     myRequest = requests.get(url)
     soup = BeautifulSoup(myRequest.text, "html.parser")
-    courses_table = soup.find('table', attrs={'class': re.compile(r'sc_courselist')})
-    courses_trs = courses_table.find_all('tr')
+    courses_tables = soup.find_all('table', attrs={'class': re.compile(r'sc_courselist')})
+
+    courses_trs = courses_tables[0].find_all('tr')
     course_type = ""
 
     courses_list = []
@@ -37,6 +38,7 @@ def parse_courses():
                 course_dict["course_number"] = course_number
 
                 courses_list.append(course_dict)
+
     return courses_list
 
 def delete_course_types():
@@ -62,16 +64,6 @@ def ingest_course_types(course_types):
     finally:
         connection.close()
 
-# def delete_ingest_support_types():
-#     support_reqs = [("Life Science Support Elective", 4), ("Mathematics/Statistics Support elective", 4),
-#                     ("Physical Science Support Elective", 12), ("Additional Science Support Elective 6", 4)]
-#     connection = make_connection()
-#     try:
-#         with connection.cursor() as cursor:
-#             cursor.execute('''INSERT INTO support_reqs (support_type, units_req) VALUES (Life Science Support Elective, 4)''')
-#             connection.commit()
-#     finally:
-#         connection.close()
 
 
 def scrape_electives():
@@ -82,5 +74,4 @@ def scrape_electives():
 if __name__ == '__main__':
     delete_course_types()
     list_courses = parse_courses()
-    # print(list_courses)
     ingest_course_types(list_courses)

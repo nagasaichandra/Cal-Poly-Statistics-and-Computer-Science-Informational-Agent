@@ -13,6 +13,8 @@ from .scrape_courses_requirements import scrape_electives
 from .scrape_flowchart_links import flowchart_links
 from .scrape_ge import scrape_ges
 from .scrape_icma import scrape_icma_honors
+from .scrape_concentration import scrape_concentration
+from .scrape_degrees import scrape_degrees
 
 
 scraping_functions = [scrape_catalog,
@@ -27,7 +29,9 @@ scraping_functions = [scrape_catalog,
     scrape_electives,
     flowchart_links,
     scrape_ges,
-    scrape_icma_honors]
+    scrape_icma_honors,
+    scrape_concentration,
+    scrape_degrees]
 
 
 def scrape_all():

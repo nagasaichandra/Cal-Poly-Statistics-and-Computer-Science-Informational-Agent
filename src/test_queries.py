@@ -13,7 +13,7 @@ values = {
     'season': 'Sp',
     'elective-type': 'Life Science Support Elective',
     'year-range': '2019 - 2020',
-    'minor' : 'ds-minor',
+    'minor' : 'Data Science minor',
     'class-level' : 'junior',
     'division-level' : 'upper',
     'ge-area' : 'A',

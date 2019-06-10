@@ -72,7 +72,7 @@ class VariableNormalizer:
         division_search = re.search(division_re, input_text)
         if division_search:
             division_match = division_search.group(1)
-            return division_match, division_match
+            return division_match, division_match + " division"
 
     def normalize_class_level(self, input_text):
         class_re = re.compile(r'(freshman|sophmore|junior|senior)', flags=re.I)
@@ -92,9 +92,19 @@ class VariableNormalizer:
 
     def normalize_minor(self, input_text):
         minor_ds_re = re.compile(r'data science minor|ds minor|data minor', flags=re.I)
-        minor_search = re.search(minor_ds_re, input_text)
-        if minor_search:
-            return 'ds-minor', 'Data Science minor'
+        minor_ds_search = re.search(minor_ds_re, input_text)
+
+        minor_cs_re = re.compile(r'cs\sminor|CSC\sminor|computer\sscience\sminor', flags=re.I)
+        minor_cs_search = re.search(minor_cs_re, input_text)
+
+        minor_art_re = re.compile(r'Computing\sfor\sInteractive\sArts\sminor')
+        minor_art_search = re.search(minor_art_re, input_text)
+        if minor_ds_search:
+            return 'Data Science minor', 'Data Science minor'
+        elif minor_cs_search:
+            return 'CS minor', 'CS minor'
+        elif minor_art_search:
+            return 'Computing for Interactive Arts minor', 'Computing for Interactive Arts minor'
 
     def normalize_year_range(self, input_text):
         year_re = re.compile(r' (20[12][0-9])-?')

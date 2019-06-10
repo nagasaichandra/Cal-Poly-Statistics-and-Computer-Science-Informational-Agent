@@ -35,7 +35,7 @@ def scrape_contact_main():
     for i in cs_advisors:
         cs_minor_string + i
     match = re.search(r'Minor Advising\n(.*)', soup2.get_text())
-    minor_advisors['ds-minor'] = match.group(1)
+    minor_advisors['Data Science minor'] = match.group(1)
     final_dict['minor-advisors'] = minor_advisors
     # print(final_dict)
     return final_dict
@@ -70,7 +70,6 @@ def scrape_level():
             match_obj = re.search(r'Senior......................... (.*)\]$', entry)
             final_dict['senior'] = match_obj.group(1)
 
-    print(final_dict)
     # TODO: add to database
     return final_dict
 
