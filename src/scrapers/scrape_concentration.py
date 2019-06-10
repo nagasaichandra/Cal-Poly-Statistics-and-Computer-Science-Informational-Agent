@@ -19,7 +19,7 @@ def scrapeConcentration():
         a_matches = match.find_all('a')
         for a_match in a_matches:
             courses.append(a_match['title'].replace(u'\xa0', ' '))
-    print(courses)
+
     concentration_list = ['Interactive Entertainment Concentration']
     final_dict['concentration-required-courses'] = courses
     final_dict['concentration-list'] = concentration_list
