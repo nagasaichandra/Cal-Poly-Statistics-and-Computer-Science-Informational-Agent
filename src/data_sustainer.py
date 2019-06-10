@@ -26,6 +26,9 @@ class DataSustainer:
         DataSustainer.create_tables('createTableProbation.sql')
         DataSustainer.create_tables('createTableTransfer.sql')
         DataSustainer.create_tables('createTables.sql')
+        DataSustainer.create_tables('createTableContact.sql')
+        DataSustainer.create_tables('createTableObjectives.sql')
+        DataSustainer.create_tables('createTableFlowchartLinks')
 
         ingest_file_questions('questions.txt')
         scrape_all()
