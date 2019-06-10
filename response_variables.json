@@ -15,7 +15,6 @@
   "csse-transfer-guidelines" : "SELECT csse_transfer_guidelines  FROM transfers;",
   "department-contact-info" : "SELECT `department_contact_info` FROM `project3`.`contact_basic`;",
   "disqualification-criteria" : "SELECT disqualification_criteria FROM probation;",
-  "division-ge-area-list" : "",
   "division-level-units" : "SELECT num_units_lower, num_units_upper FROM division_levels WHERE division_level = \"[division-level]\";",
   "elective-type-course-names" : "SELECT course_name FROM course_types WHERE support_type = \"[elective-type]\";",
   "elective-type-units" : "",

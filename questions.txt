@@ -10,8 +10,6 @@ F1|What is the subject of general education area [ge-area]?|The subject of GE ar
 F1|What are the general education areas?|The general education areas are [ge-area-list].
 F1|What are the GE requirements?|The GE requirements are the following: [ge-requirements].
 F1|What are the general education requirements?|The GE requirements are the following: [ge-requirements].
-F1|What GE areas are considered [division-level]?|The following GE areas are considered [division-level]: [division-ge-area-list].
-F1|What general education areas are considered [division-level]?|The following GE areas are considered [division-level]: [division-ge-area-list].
 F1|How many units of electives do I need for [major]?|You need [ge-elective-units-major] of electives to graduate in [major].
 F1|What is the total number of units of electives needed to graduate in [major]?|You need [ge-elective-units-major] of electives to graduate in [major].
 F1|How many approved electives do I have to take for the [minor]?|You have to take [minor-approved-electives-units] approved electives for the [minor].
@@ -178,7 +176,6 @@ F1|What accreditation does the Computer Science program have?|The Computer Scien
 [csse-transfer-guidelines]: The guidelines to transfer into the CSSE department
 [department-contact-info]: Contact info for the department office.
 [disqualification-criteria]: The criteria that defines the disqualification of a student from cal poly
-[division-ge-area-list]: A list of areas within GE’s such as area upper/lower division A, B, C
 [division-level]: describes levels such as upper or lower division
 [double-countable-classes]: Classes that count for more than one graduation requirement at a time
 [elective-name]: The name of a specific elective

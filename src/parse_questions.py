@@ -80,6 +80,9 @@ def ingest_questions(questions):
     connection = make_connection()
     try:
         with connection.cursor() as cursor:
+            cursor.execute('''TRUNCATE TABLE question;''')
+            connection.commit()
+        with connection.cursor() as cursor:
             rows = [q.split('|') for q in questions]
             for row in rows:
                 cursor.execute("INSERT INTO question (team_code, question_text, response) VALUES (%s, %s, %s);", row)
