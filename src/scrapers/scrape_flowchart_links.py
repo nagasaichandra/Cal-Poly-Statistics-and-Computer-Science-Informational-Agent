@@ -28,7 +28,7 @@ def ingest_flowcharts(links):
             for major in links:
                 for i in links[major]:
                     #TODO: fix string index out of range
-                    cursor.execute('''INSERT INTO flowcharts VALUES ("%s", "%s", "%s");''', (major, i[0], i[1]))
+                    cursor.execute('''INSERT INTO flowcharts VALUES (%s, %s, %s);''', (major, i[0], i[1]))
             connection.commit()
     finally:
         connection.close()

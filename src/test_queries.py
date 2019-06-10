@@ -12,8 +12,12 @@ values = {
     'major': 'CSC',
     'season': 'Sp',
     'elective-type': 'Life Science Support Elective',
-    'year-range': '2019-2020',
-    'minor' : 'ds-minor'
+    'year-range': '2019 - 2020',
+    'minor' : 'ds-minor',
+    'class-level' : 'junior',
+    'division-level' : 'upper',
+    'ge-area' : 'A',
+    'num-units' : 4
 }
 
 
