@@ -13,11 +13,19 @@ class VariableNormalizer:
         :return: A tuple indicating: (variable-db-name, user's-variable-name) if "major" in input_text.
         Else returns False.
         """
-        major_re = re.compile(r'\s(C\.?S\.?C\.?|CS|Computer Science|SE|C\.?S\.?)[ ?]', flags=re.I)
-        major_search = re.search(major_re, input_text)
-        if major_search:
-            major_match = major_search.group(1)
+        major_re = [re.compile(r'\s(C\.?S\.?C\.?|CS|Computer Science|C\.?S\.?)[ ?]', flags=re.I),
+                    re.compile(r'\s(SE|software engineering|software)[ ?]', flags=re.I)]
+
+        csc_search = re.search(major_re[0], input_text)
+        if csc_search:
+            major_match = csc_search.group(1)
             return "CSC", major_match
+
+        csc_search = re.search(major_re[1], input_text)
+        if csc_search:
+            major_match = csc_search.group(1)
+            return "SE", major_match
+
         return False
 
     def normalize_season(self, input_text):
@@ -71,14 +79,16 @@ class VariableNormalizer:
         class_search = re.search(class_re, input_text)
         if class_search:
             class_match = class_search.group(1)
-            return class_match, class_match + " class level "
+            return class_match, class_match + " student"
 
     def normalize_ge_area(self, input_text):
-        ge_re = re.compile(r'\bge area ([abcdef|ABCDEF])|\bge ([abcdef|ABCDEF])', flags=re.I)
-        ge_search = re.search(ge_re, input_text)
-        if ge_search:
-            ge_match = ge_search.group(1)
-            return ge_match, "GE AREA {}".format(ge_match)
+        ge_re = [re.compile(r'ge area ([abcdef|ABCDEF])', flags=re.I),
+                 re.compile(r'ge ([abcdef|ABCDEF])', flags=re.I)]
+        for search_term in ge_re:
+            ge_search = re.search(search_term, input_text)
+            if ge_search:
+                ge_match = ge_search.group(1)
+                return ge_match.capitalize(), "GE AREA {}".format(ge_match)
 
     def normalize_minor(self, input_text):
         minor_ds_re = re.compile(r'data science minor|ds minor|data minor', flags=re.I)
@@ -86,8 +96,33 @@ class VariableNormalizer:
         if minor_search:
             return 'ds-minor', 'Data Science minor'
 
-    def normalize_year_range(self, year_range):
-        pass
+    def normalize_year_range(self, input_text):
+        year_re = re.compile(r' (20[12][0-9])-?')
+        year_search = re.search(year_re, input_text)
+        if year_search:
+            year_match = int(year_search.group(1))
+            if year_match >= 2011 and year_match < 2013:
+                return '2011 - 2013', '2011 - 2013'
+            elif year_match >= 2013 and year_match < 2015:
+                return '2013 - 2015', '2013 - 2015'
+            elif year_match >= 2015 and year_match < 2017:
+                return '2015 - 2017', '2015 - 2017'
+            elif year_match >= 2017 and year_match < 2019:
+                return '2017 - 2019', '2017 - 2019'
+            elif year_match >= 2019 and year_match <= 2020:
+                return '2019 - 2020', '2019 - 2020'
+
+
+
+    def normalize_gpa(self, input_text):
+        gpa_re = [re.compile(r'gpa of ([0-4]\.?[0-9]?[0-9]?)', flags=re.I),
+                 re.compile(r'gpa ([0-4]\.?[0-9]?[0-9]?)', flags=re.I),
+                 re.compile(r'([0-4]\.?[0-9]?[0-9]?) gpa', flags=re.I)]
+        for search_term in gpa_re:
+            gpa_search = re.search(search_term, input_text)
+            if gpa_search:
+                gpa_match = gpa_search.group(1)
+                return (float(gpa_match), float(gpa_match))
 
 
 
@@ -129,7 +164,8 @@ class VariableNormalizer:
             ('division-level', self.normalize_division_level),
             ('class-level', self.normalize_class_level),
             ('ge-area', self.normalize_ge_area),
-            ('minor', self.normalize_minor)
+            ('minor', self.normalize_minor),
+            ('year-range', self.normalize_year_range)
         ]
 
         for path_name, normalizer_function in normalization_paths:
