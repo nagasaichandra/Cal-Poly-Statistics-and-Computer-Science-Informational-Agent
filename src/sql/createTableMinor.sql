@@ -10,3 +10,13 @@ CREATE TABLE cs_minor_info (
     required_units TEXT,
     approved_elective_units TEXT
 );
+
+CREATE TABLE minor_courses(
+minor                   TEXT,
+minor_courses           TEXT
+);
+
+CREATE TABLE concentration(
+concentration_required_courses          TEXT,
+concentration_list                      TEXT
+);
