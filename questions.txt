@@ -86,7 +86,7 @@ F1|If my GPA is [gpa], can I transfer into [major]?|[minimum-gpa-change-major] i
 F1|What are the minimum requirements if I want to change into CSSE?|[minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
 F1|What are the minimum requirements if I want to change into [major]?|[minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE.
 F1|What is the flowchart for [major] in [year-range]?|In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
-F1|Where can I get the flowchart for [major]?| In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
+F1|Where can I get the flowchart for [major]?| In order to view the flowchart for [major], visit the following link: [flowchart-link].
 F1|Who is eligible for the Blended BS + MS program?|You must be one of the following [blended-requirements].
 F1|Who is eligible for the Blended BS + Masters program?|You must be one of the following [blended-requirements].
 F1|Who is eligible for the Blended Bachelors Degree + Masters Degree program?|You must be one of the following [blended-requirements].
@@ -122,7 +122,7 @@ F1|What classes are included in the [minor]?|The classes involved in [minor] are
 F1|What programs does the CSSE have?|The programs that the CSSE department includes are [csse-programs].
 F1|What classes are included in the [minor]?|The classes included in the minor are [minor-courses].
 F1|What majors are included in CSSE?|The majors included in CSSE are CSC and SE.
-F1|What are the courses for a masters in computer science?|The MS in Computer Science includes the following courses: [ms-course-names].
+F1|What are the courses for a masters in [major]?|The MS in Computer Science includes the following courses: [ms-course-names].
 
 [all-required-course-list]: A list of courses required for a major
 [approved-ms-elective-units]: A list of electives which count towards a masters degree
