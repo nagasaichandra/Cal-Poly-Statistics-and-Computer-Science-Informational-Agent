@@ -110,8 +110,8 @@ F1|Who is eligible for the Blended Bachelors Degree + Masters Degree Computer Sc
 F1|What do I need to get into the Blended BS + MS Computer Science Program?|You must be one of the following [blended-requirements].
 F1|What do I need to get into the Blended BS + Masters Degree Computer Science Program?|You must be one of the following [blended-requirements].
 F1|What do I need to get into the Blended Bachelors Degree + Masters Degree Computer Science Program?|You must be one of the following [blended-requirements].
-F1|What is the Blended BS + MS Computer Science Program?|The Blended BS + MS Computer Science Program is [blended-description].
-F1|What is the Blended BS + Masters Degree Computer Science Program?|The Blended BS + MS Computer Science Program is [blended-description].
+F1|What is the Blended program?|The Blended BS + MS Computer Science Program is [blended-description].
+F1|What is the Blended program?|The Blended BS + MS Computer Science Program is [blended-description].
 F1|What is the Blended Bachelors Degree + Masters Degree Computer Science Program?|The Blended BS + MS Computer Science Program is [blended-description].
 F1|Why should I take the Blended Program in Computer Science?|The B.S. and M.S. program offers the following benefits: [blended-benefits].
 F1|What are some of the benefits from the Blended Program? |The B.S. and M.S. program offers the following benefits: [blended-benefits].

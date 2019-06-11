@@ -125,7 +125,7 @@ def scrape_blended():
     final_dict['blended-requirements'] = blended_requirements
 
     match = re.search(r"Blended Bachelor's \+ Master's Programs\nOverview\n(.*\n.*\n.*\n)Eligibility", soup2.get_text())
-    final_dict['blended-description'] = (match.group(1))
+    final_dict['blended-description'] = match.group(1)
 
     remove_blended()
     ingest_blended(final_dict)
@@ -138,7 +138,7 @@ def ingest_masters(masters):
     try:
         with connection.cursor() as cursor:
             cursor.execute(
-                'INSERT INTO masters VALUES ("%s", "%s", "%s", "%s", "%s", "%s", "%s");',
+                'INSERT INTO masters VALUES (%s, %s, %s, %s, %s, %s, %s);',
                 (masters['ms-learning-objectives'],
                     masters[
                         'required-ms-units'],
@@ -161,8 +161,8 @@ def ingest_blended(blended):
     try:
         with connection.cursor() as cursor:
             cursor.execute(
-                'INSERT INTO blended VALUES ("%s", "%s", "%s");',
-                (blended['blended-benefits'],
+                'INSERT INTO blended VALUES (%s, %s, %s);',
+                ('\n'.join(blended['blended-benefits']),
                     blended[
                         'blended-requirements'],
                     blended[
