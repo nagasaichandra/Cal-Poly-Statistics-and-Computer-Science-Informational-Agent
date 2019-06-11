@@ -108,7 +108,7 @@ class QueryScanner:
         :return: The cleaned text, with [variable-name] substituted with substition.
         """
         variable_re_string = r'\[{}\]'.format(variable_name).replace("'", "")
-        clean_text = re.sub(r'' + variable_re_string, substitution, text)
+        clean_text = re.sub(r'' + variable_re_string, str(substitution), text)
         return clean_text
 
     def execute_query(self, query):
