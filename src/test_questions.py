@@ -20,7 +20,8 @@ values = {
     'class-level': 'junior',
     'division-level': 'upper',
     'ge-area': 'A',
-    'num-units': 4
+    'num-units': 4,
+    'gpa': 3
 }
 
 
@@ -31,39 +32,35 @@ def sub_in_variables(question):
 
 
 def test_all_question(questions, verbose=False):
-    try:
-        with connection.cursor() as cursor:
-            for question, answer in questions:
-
-                try:
-                    subed_question = sub_in_variables(question)
-                    matched_question, matched_answer, score, vars = rd.most_relevant_query(subed_question)
-                    response = answer_query(sub_in_variables(question), False)
-                    if matched_question != question:
-                        print(
-                            "------------------------------------------------------------------------------------",
-                            file=sys.stderr)
-                        print("Question '{}'".format(subed_question), file=sys.stderr)
-                        print("Returned matched wrong question '{}' with score {} (should have matched '{}')".format(matched_question, score, question), file=sys.stderr)
-                    elif 'could not find' in response:
-                        print(
-                            "------------------------------------------------------------------------------------",
-                            file=sys.stderr)
-                        print("Question '{}'".format(subed_question), file=sys.stderr)
-                        print("Returned no results", file=sys.stderr)
-                    elif verbose:
-                        print(
-                            "------------------------------------------------------------------------------------")
-                        print("Question '{}'".format(subed_question))
-                        print("Returned results", response)
-                except Exception as exception:
-                    print("------------------------------------------------------------------------------------",
-                          file=sys.stderr)
-                    print("Query '{}'".format(subed_question), file=sys.stderr)
-                    print("Raised an exception", exception, '&', file=sys.stderr)
-                    traceback.print_exc()
-    finally:
-        connection.close()
+    for question, answer in questions:
+        try:
+            subed_question = sub_in_variables(question)
+            matched_question, matched_answer, score, vars = rd.most_relevant_query(subed_question)
+            response = answer_query(sub_in_variables(question), False)
+            if matched_question != question:
+                print(
+                    "------------------------------------------------------------------------------------",
+                    file=sys.stderr)
+                print("Question '{}'".format(subed_question), file=sys.stderr)
+                print("Returned matched wrong question '{}' with score {} (should have matched '{}')".format(
+                    matched_question, score, question), file=sys.stderr)
+            elif 'could not find' in response:
+                print(
+                    "------------------------------------------------------------------------------------",
+                    file=sys.stderr)
+                print("Question '{}'".format(subed_question), file=sys.stderr)
+                print("Returned no results", file=sys.stderr)
+            elif verbose:
+                print(
+                    "------------------------------------------------------------------------------------")
+                print("Question '{}'".format(subed_question))
+                print("Returned results", response)
+        except Exception as exception:
+            print("------------------------------------------------------------------------------------",
+                  file=sys.stderr)
+            print("Query '{}'".format(subed_question), file=sys.stderr)
+            print("Raised an exception", exception, '&', file=sys.stderr)
+            traceback.print_exc()
 
 
 test_all_question(get_questions(), False)
