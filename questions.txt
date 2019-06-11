@@ -117,12 +117,15 @@ F1|What is the difference between academic probation and academic disqualificati
 F1|What accreditation does the program have?|The Computer Science program is accredited by the Computer Accreditation Commission of ABET. To read more, visit the following website:  http://www.abet.org/.
 F1|What is the [major] flowchart for [year-range]?|You can visit the [major] flowchart for [year-range] in the following link: [flowchart-link].
 F1|What are the possible minors in CSSE?|The minors in CSSE are [possible-minors].
-F1|What are minors are there in CSSE?|The minors in CSSE are [possible-minors].
+F1|What are minors are there?|The minors in CSSE are [possible-minors].
 F1|What classes are included in the [minor]?|The classes involved in [minor] are [minor-courses].
-F1|What programs does the CSSE have?|The programs that the CSSE department includes are [csse-programs].
+F1|What programs does the CSSE have?|The programs that the CSSE department has are [csse-programs].
+F1|What programs are offered?|The programs that the CSSE department offers are [csse-programs].
+F1|What degrees are offered?|The programs that the CSSE department offers are [csse-programs].
 F1|What classes are included in the [minor]?|The classes included in the minor are [minor-courses].
 F1|What majors are included in CSSE?|The majors included in CSSE are CSC and SE.
 F1|What are the courses for a masters in [major]?|The MS in Computer Science includes the following courses: [ms-course-names].
+F1|What is the curriculum for [major]?|In order to learn more about the [major] curriculum, ask me about [major] curriculum flowchart.
 
 [all-required-course-list]: A list of courses required for a major
 [approved-ms-elective-units]: A list of electives which count towards a masters degree
