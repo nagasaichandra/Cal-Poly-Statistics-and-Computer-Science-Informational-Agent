@@ -46,13 +46,11 @@ F1|What classes do I have to take in order to graduate?|You need to take [all-re
 F1|How many classes do I have to take for [major]?|The BS in Computer Science requires about 180 - 181 total units while the BS in Software Engineering requires about 183-184 total units.
 F1|What is the total number of classes needed to graduate in [major]?|The BS in Computer Science requires about 180 - 181 total units while the BS in Software Engineering requires about 183-184 total units.
 F1|What concentrations are available?|The only concentration available in CSSE is the Interactive Entertainment Concentration.
-F1|What are the required courses for the [concentration]?|The required courses for the [concentration] are [concentration-required-courses].
+F1|What are the required courses for the concentration?|The required courses for the Interactive Entertainment Concentration are [concentration-required-courses].
 F1|What GPA do I need to graduate?|You need a GPA of at least 2.0 to graduate as a CSSE major.
 F1|What is the minimum GPA?|You need a GPA of at least 2.0  to graduate as a CSSE major.
 F1|What GPA do I need to attain an honor?|The following Honors are available [honors-gpa-list].
 F1|What honors are available?|The following Honors are available [honors-gpa-list].
-F1|What GPA do I need to obtain [honor-name]?|The following Honors are available [honors-gpa-list].
-F1|What honor am I eligible for with a GPA of [gpa-number]?|The following Honors are available [honors-gpa-list].
 F1|Can I take classes as credit/no credit?|You may not take any major classes as credit/no credit.
 F1|Can I take classes as pass/no pass?|You may not take any major classes as credit/no credit.
 F1|How many units do I need to take to be considered a [class-level]?|In order to be considered a [class-level], you have to take [class-level-units].
@@ -67,7 +65,6 @@ F1|What are some general guidelines for a CSSE transfer student?|The general gui
 F1|What are some general guidelines for a computer science and software engineering transfer student?|The general guidelines are [csse-transfer-guidelines].
 F1|What is the minimum amount of transferable units required to transfer as a CSSSE major?|Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
 F1|What is the minimum amount of transferable units required to transfer as a CSSSoftware Engineering major?|Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
-F1|Where can I get more information on [subject]?|We don’t have information about [subject] but please refer to [bot-name].
 F1|How can I contact the CSSE department?|You can contact the CSSE department at [department-contact-info].
 F1|How can I contact the computer science and software engineering department?|You can contact the CSSE department at [department-contact-info].
 F1|What is the phone number of the CSSE department?|[phone-number] is the CSSE phone number
@@ -89,18 +86,17 @@ F1|If my GPA is [gpa], can I transfer into computer science and software enginee
 F1|What are the minimum requirements if I want to change into CSSE?|[minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
 F1|What are the minimum requirements if I want to change into computer science and software engineering?|[minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
 F1|What is the flowchart for [major] in [year-range]?|In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
-F1|According to the [year-range] flowchart, when should I take [course] for [major]?|In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
 F1|Where can I get the flowchart for [major]?| In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
-F1|Who is eligible for the Blended BS + MS Computer Science Program?|You must be one of the following [blended-requirements].
-F1|Who is eligible for the Blended BS + Masters Degree Computer Science Program?|You must be one of the following [blended-requirements].
-F1|Who is eligible for the Blended Bachelors Degree + Masters Degree Computer Science Program?|You must be one of the following [blended-requirements].
-F1|What do I need to get into the Blended BS + MS Computer Science Program?|You must be one of the following [blended-requirements].
-F1|What do I need to get into the Blended BS + Masters Degree Computer Science Program?|You must be one of the following [blended-requirements].
-F1|What do I need to get into the Blended Bachelors Degree + Masters Degree Computer Science Program?|You must be one of the following [blended-requirements].
-F1|What is the Blended program?|The Blended BS + MS Computer Science Program is [blended-description].
-F1|What is the Blended program?|The Blended BS + MS Computer Science Program is [blended-description].
+F1|Who is eligible for the Blended BS + MS program?|You must be one of the following [blended-requirements].
+F1|Who is eligible for the Blended BS + Masters program?|You must be one of the following [blended-requirements].
+F1|Who is eligible for the Blended Bachelors Degree + Masters Degree program?|You must be one of the following [blended-requirements].
+F1|What do I need to get into the Blended BS + MS program?|You must be one of the following [blended-requirements].
+F1|What do I need to get into the Blended BS + Masters Degree program?|You must be one of the following [blended-requirements].
+F1|What do I need to get into the Blended Bachelors Degree + Masters program?|You must be one of the following [blended-requirements].
+F1|What is the Blended program?|The Blended BS + MS Program is [blended-description].
+F1|What is the Blended program?|The Blended BS + MS Program is [blended-description].
 F1|What is the Blended Bachelors Degree + Masters Degree Computer Science Program?|The Blended BS + MS Computer Science Program is [blended-description].
-F1|Why should I take the Blended Program in Computer Science?|The B.S. and M.S. program offers the following benefits: [blended-benefits].
+F1|Why should I take the Blended Program?|The B.S. and M.S. program offers the following benefits: [blended-benefits].
 F1|What are some of the benefits from the Blended Program? |The B.S. and M.S. program offers the following benefits: [blended-benefits].
 F1|What benefits does the blended B.S. and M.S. program offer?|The B.S. and M.S. program offers the following benefits: [blended-benefits].
 F1|How many additional units does the MS in Computer Science require?|The MS degree requires at least [ms-total-units] units beyond the undergraduate degree. [required-ms-units] units are from a required list, [approved-ms-elective-units] units are from approved electives, and there are [thesis-ms-units] units of thesis and seminar.
@@ -137,10 +133,8 @@ F1|What are the courses for a masters in computer science?|The MS in Computer Sc
 [change-major-criteria]: A list of criteria to change to a given major.
 [change-major-steps]: A list of steps to change to a given major
 [class-level]: A level of student such as Freshmen, Sophomore, Junior or Senior.
-[concentration]: A concentration such as data science 
 [concentration-required-courses]: A list of courses required for a given concentration
 [contact-info]: The department contact info
-[course]: The name of a course
 [major-transfer-course-list]: A list of courses needed to transfer in a given major
 [major-course-names-of-units]: A list of courses in a given major with a specified number of units
 [csse-mission-statement]: The mission statement of the CSSE department.
@@ -164,7 +158,6 @@ F1|What are the courses for a masters in computer science?|The MS in Computer Sc
 [gpa-number]: Users grade point average
 [graduate-courses-list]: A list of graduate level courses 
 [graduate-ms-units]: Units that are to be acquired for a masters degree
-[honor-name]: Honor names such as Summa cum laude, Magna cum laude and Cum laude
 [honors-gpa-list]: A list of all honors that are available
 [icma-conditions]: Conditions that are to be met for the Individualized CHange of Major Agreement
 [independent-study-courses]: The courses involving individual research, project or thesis.
@@ -193,14 +186,12 @@ F1|What are the courses for a masters in computer science?|The MS in Computer Sc
 [number-season-courses]: The number of CSSE courses typically offered in a specific quarter (fall, winter, spring or summer).
 [class-level-units]:The number of units a Cal Poly student has to take in order to be considered the class level (freshman, sophomore, junior or senior) that the user specified.
 [division-level-units]: The number of units that a Cal Poly student has to take in order to be considered the division level (upper division or lower division) that the user specified. 
-[overlapping-courses-list]: A list of courses that count towards both a Computer Science degree and a Software Engineering degree.
 [phone-number]: The phone number provided in order to contact the CSSE department.
 [probation-criteria]: The conditions on which a student is placed on academic probation.
 [required-minor-courses]: A list of courses that are required for the completion of the minor which the user specified. 
 [required-ms-units]: The number of required masters units in order to complete the Masters of Computer Science program.
 [season]: Fall, Winter, Spring or Summer. 
 [season-course-names]: A list of course names offered in a specific quarter (fall, winter, spring or summer).
-[subject]: This variable is used to indicate a topic which the user inquires about which is outside the scope of our team’s topics. 
 [thesis-ms-units]: The number of thesis units required for students pursuing a Masters in Computer Science.
 [transfer-articulate-courses]: A list of courses that articulate for transfers into the CSSE department.
 [transfer-courses]: A list of courses that students who want to transfer into the CSSE department should take in order to maximize the chances of them being admitted into the department.
