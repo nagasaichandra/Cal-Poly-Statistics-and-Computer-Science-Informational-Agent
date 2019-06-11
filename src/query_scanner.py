@@ -119,7 +119,7 @@ class QueryScanner:
                 response_list = cursor.fetchall()
                 connection.commit()
                 tuple_response = [list(response.values())[0] for response in response_list]
-                print(tuple_response)
+                # print(tuple_response)
                 if len(tuple_response) > 0:
                     return tuple_response
                 else:

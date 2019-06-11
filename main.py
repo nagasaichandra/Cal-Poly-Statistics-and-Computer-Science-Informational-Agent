@@ -16,29 +16,31 @@ rd = RelevanceDetector()
 qs = QueryScanner()
 
 
-def answer_query(query):
+def answer_query(query, save=True):
     start_time = time.time()
     matched_question, matched_answer, score, vars = rd.most_relevant_query(query)
-    print("Matched question in", time.time() - start_time)
 
-    print(matched_answer)
-    print(score, vars, qs.find_within_brackets(matched_answer))
+    if save:
+        print("Matched question in", time.time() - start_time)
+        print(matched_answer)
+        print(score, vars, qs.find_within_brackets(matched_answer))
 
     start_time = time.time()
-    connection = make_connection()
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute("""INSERT INTO user_query (query_text, matched_question)
-            SELECT
-                %s AS query_text,
-                question.id AS matched_question
-            FROM question 
-            WHERE question.question_text = %s;""", (query, matched_question))
-            connection.commit()
-    finally:
-        connection.close()
 
-    print("Saved query in", time.time() - start_time)
+    if save:
+        connection = make_connection()
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute("""INSERT INTO user_query (query_text, matched_question)
+                SELECT
+                    %s AS query_text,
+                    question.id AS matched_question
+                FROM question 
+                WHERE question.question_text = %s;""", (query, matched_question))
+                connection.commit()
+        finally:
+            connection.close()
+        print("Saved query in", time.time() - start_time)
     return qs.answer_question(query, matched_answer)
 
 

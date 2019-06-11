@@ -59,6 +59,9 @@ def sentence_similarity(sentence1, sentence2):
             score += best_score
             count += 1
 
+    if count == 0:
+        return 0
+
     # Average the values
     score /= count
     return score
@@ -87,7 +90,6 @@ class RelevanceDetector:
     def most_relevant_query(self, query):
         reformatted_query, variables = self.query_scanner.clean_user_question(query)
         subset_questions = self.get_subset_questions_list(variables)
-        print('matching', reformatted_query)
         best = max(subset_questions, key=lambda question: sentence_similarity(reformatted_query, question[0]))
 
         return best[0], best[1], sentence_similarity(reformatted_query, best[0]), variables
