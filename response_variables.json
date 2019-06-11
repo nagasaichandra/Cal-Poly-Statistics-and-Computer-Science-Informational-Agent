@@ -26,7 +26,7 @@
   "icma-conditions" : "SELECT icma_conditions FROM icma;",
   "independent-study-courses" : "SELECT course_name\nFROM course \nWHERE course_number >= 490;",
   "major-course-names-of-units" : "SELECT course_name FROM course WHERE course_units = \"[num-units]\";",
-  "major-courses" : "SELECT course_name FROM course WHERE course_area like \"%[major]\";",
+  "major-courses" : "SELECT course_name FROM course;",
   "major-learning-outcomes-list" : "SELECT major_learning_outcomes FROM `project3`.`major_learning_outcomes` WHERE major = \"[major]\";",
   "major-peos" : "SELECT major_peos FROM `project3`.`major_peos` WHERE major = \"[major]\";",
   "major-transfer-course-list" : "SELECT major_transfer_course_list FROM project3.transfers;",

@@ -3,7 +3,6 @@ F1|What is the subject of general education area [ge-area]?|The subject of GE ar
 F1|What are the general education areas?|The general education areas are [ge-area-list].
 F1|What are the GE requirements?|The GE requirements are the following: [ge-requirements].
 F1|What are the general education requirements?|The GE requirements are the following: [ge-requirements].
-F1|How many approved electives do I have to take for the [minor]?|You have to take [minor-approved-electives-units] approved electives for the [minor].
 F1|What classes do I take for [minor]?|The [minor] has the following courses: [minor-courses].
 F1|What courses may I choose that satisfy the [elective-type] requirement?|In order to satisfy the [elective-type] requirement, you may choose from the following courses: [elective-type-course-names].
 F1|What are the courses that help me satisfy the [elective-type] requirements?|In order to satisfy the [elective-type] requirement, you may choose from the following courses: [elective-type-course-names].
@@ -81,10 +80,6 @@ F1|What are some general guidelines for a CSSE transfer student?|The general gui
 F1|What are some general guidelines for a computer science and software engineering transfer student?|The general guidelines are [csse-transfer-guidelines].
 F1|What is the minimum amount of transferable units required to transfer as a CSSSE major?|Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
 F1|What is the minimum amount of transferable units required to transfer as a CSSSoftware Engineering major?|Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
-F1|What courses are desired but not required if I want to transfer as a CSSE major?|If you want to transfer as a CSSE major the following classes are desired: [major-transfer-course-list]
-F1|What courses are desired but not required if I want to transfer as a computer science and software engineering major?|If you want to transfer as a CSSE major the following classes are desired: [major-transfer-course-list]
-F1|What courses are required If I want to transfer as a CSSE major?|If you want to transfer as a CSSE major you need the following course: [major-transfer-course-list]
-F1|What courses are required If I want to transfer as a computer science and software engineering major?|If you want to transfer as a CSSE major you need the following course: [major-transfer-course-list]
 F1|Where can I get more information on [subject]?|We don’t have information about [subject] but please refer to [bot-name].
 F1|How can I contact the CSSE department?|You can contact the CSSE department at [department-contact-info].
 F1|How can I contact the computer science and software engineering department?|You can contact the CSSE department at [department-contact-info].
@@ -140,8 +135,11 @@ F1|What accreditation does the Computer Science program have?|The Computer Scien
 F1|What is the [major] flowchart for [year-range]?|You can visit the [major] flowchart for [year-range] in the following link: [flowchart-link].
 F1|What are the possible minors in CSSE?|The minors in CSSE are [possible-minors].
 F1|What are minors are there in CSSE?|The minors in CSSE are [possible-minors].
-F1|What classes are in [minor]?|The classes involved in [minor] are [minor-courses].
+F1|What classes are included in the [minor]?|The classes involved in [minor] are [minor-courses].
 F1|What programs does the CSSE have?|The programs that the CSSE department includes are [csse-programs].
+F1|What classes are included in the [minor]?|The classes included in the minor are [minor-courses].
+F1|What majors are included in CSSE?|The majors included in CSSE are CSC and SE.
+F1|What are the courses for a masters in computer science?|The MS in Computer Science includes the following courses: [ms-course-names].
 
 [all-required-course-list]: A list of courses required for a major
 [approved-ms-elective-units]: A list of electives which count towards a masters degree
@@ -205,7 +203,6 @@ F1|What programs does the CSSE have?|The programs that the CSSE department inclu
 [ms-learning-objectives]: A list of learning objectives of Masters in CS program.
 [ms-total-units]: The total units that CS Masters program requires its students to take.
 [num-units]: The amount of units that a user specifies. 
-[minor-approved-electives-units]: The total number of approved elective units for a specific minor.
 [number-season-courses]: The number of CSSE courses typically offered in a specific quarter (fall, winter, spring or summer).
 [class-level-units]:The number of units a Cal Poly student has to take in order to be considered the class level (freshman, sophomore, junior or senior) that the user specified.
 [division-level-units]: The number of units that a Cal Poly student has to take in order to be considered the division level (upper division or lower division) that the user specified. 
