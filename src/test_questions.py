@@ -4,6 +4,7 @@ from src.questions import get_questions
 from src.relevance_detector import RelevanceDetector
 from main import answer_query
 import sys
+import traceback
 
 qs = QueryScanner()
 rd = RelevanceDetector()
@@ -55,11 +56,12 @@ def test_all_question(questions, verbose=False):
                             "------------------------------------------------------------------------------------")
                         print("Question '{}'".format(subed_question))
                         print("Returned results", response)
-                except:
+                except Exception as exception:
                     print("------------------------------------------------------------------------------------",
                           file=sys.stderr)
                     print("Query '{}'".format(subed_question), file=sys.stderr)
-                    print("Raised an exception", file=sys.stderr)
+                    print("Raised an exception", exception, '&', file=sys.stderr)
+                    traceback.print_exc()
     finally:
         connection.close()
 
