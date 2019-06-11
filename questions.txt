@@ -86,7 +86,9 @@ F1|If my GPA is [gpa], can I transfer into [major]?|[minimum-gpa-change-major] i
 F1|What are the minimum requirements if I want to change into CSSE?|[minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE. 
 F1|What are the minimum requirements if I want to change into [major]?|[minimum-gpa-change-major] is the minimum GPA that is required to change into CSSE.
 F1|What is the flowchart for [major] in [year-range]?|In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
-F1|Where can I get the flowchart for [major]?| In order to view the flowchart for [major], visit the following link: [flowchart-link].
+F1|Where can I get the flowchart for [major] in [year-range]?| In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
+F1|Where can I get the flowchart for [major] for [year-range]?| In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
+F1|Where can I get the flowchart for [major]?| In order to view the flowchart for [major], please ask me the same question and specify the year.
 F1|Who is eligible for the Blended BS + MS program?|You must be one of the following [blended-requirements].
 F1|Who is eligible for the Blended BS + Masters program?|You must be one of the following [blended-requirements].
 F1|Who is eligible for the Blended Bachelors Degree + Masters Degree program?|You must be one of the following [blended-requirements].
