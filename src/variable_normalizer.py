@@ -94,10 +94,10 @@ class VariableNormalizer:
         minor_ds_re = re.compile(r'data science minor|ds minor|data minor', flags=re.I)
         minor_ds_search = re.search(minor_ds_re, input_text)
 
-        minor_cs_re = re.compile(r'cs\sminor|CSC\sminor|computer\sscience\sminor', flags=re.I)
+        minor_cs_re = re.compile(r'cs\sminor|CSC\sminor|computer\sscience\sminor|c\.s\.c\sminor|c\.s\.\sminor', flags=re.I)
         minor_cs_search = re.search(minor_cs_re, input_text)
 
-        minor_art_re = re.compile(r'Computing\sfor\sInteractive\sArts\sminor')
+        minor_art_re = re.compile(r'Computing\sfor\sInteractive\sArts\sminor|interactive\sminor|interactive\sarts\sminor', flags=re.I)
         minor_art_search = re.search(minor_art_re, input_text)
         if minor_ds_search:
             return 'Data Science minor', 'Data Science minor'
@@ -167,7 +167,6 @@ class VariableNormalizer:
         """
         user_variables = {}
         normalization_paths = [
-            ('major', self.normalize_major),
             ('season', self.normalize_season),
             ('num-units', self.normalize_num_units),
             ('elective-type', self.normalize_support_elective),
@@ -175,6 +174,7 @@ class VariableNormalizer:
             ('class-level', self.normalize_class_level),
             ('ge-area', self.normalize_ge_area),
             ('minor', self.normalize_minor),
+            ('major', self.normalize_major),
             ('year-range', self.normalize_year_range)
         ]
 
@@ -182,6 +182,9 @@ class VariableNormalizer:
             result = normalizer_function(input_text)
             if result:
                 user_variables[path_name] = result
+        if "minor" in set(user_variables.keys()):
+            if "major" in set(user_variables.keys()):
+                user_variables.pop("major")
         return user_variables
 
 
