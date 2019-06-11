@@ -7,18 +7,9 @@ F1|What classes do I take for [minor]?|The [minor] has the following courses: [m
 F1|What courses may I choose that satisfy the [elective-type] requirement?|In order to satisfy the [elective-type] requirement, you may choose from the following courses: [elective-type-course-names].
 F1|What are the courses that help me satisfy the [elective-type] requirements?|In order to satisfy the [elective-type] requirement, you may choose from the following courses: [elective-type-course-names].
 F1|What CSSE courses are offered in [season]?|The CSSE courses typically offered in [season] are [season-course-names].
-F1|What computer science and software engineering courses are offered in [season]?|The CSSE courses typically offered in [season] are [season-course-names].
+F1|What [major] courses are offered in [season]?|The CSSE courses typically offered in [season] are [season-course-names].
 F1|How many CSSE courses will be available during the [season] quarter?|There are [number-season-courses] CSSE courses typically offered during [season] quarter.
-F1|How many computer science and software engineering courses will be available during the [season] quarter?|There are [number-season-courses] CSSE courses typically offered during [season] quarter.
-F1|What are the courses that are in both CSC and SE?|The courses that are common for both the departments are [overlapping-courses-list].
-F1|What are the courses that are in both Computer Science and SE curriculum?|The courses that are common for both the departments are [overlapping-courses-list].
-F1|What are the courses that are in both Computer Science and Software Engineering curriculum?|The courses that are common for both the departments are [overlapping-courses-list].
-F1|What courses are cross listed as CSC and SE?|The courses that are common for both the departments are [overlapping-courses-list].
-F1|What courses are cross listed as Computer Science and SE?|The courses that are common for both the departments are [overlapping-courses-list].
-F1|What courses are cross listed as Computer Science and Software Engineering?|The courses that are common for both the departments are [overlapping-courses-list].
-F1|How many courses are present in both CSC and SE?|The number of courses that are common in both the departments are [overlapping-courses-list].
-F1|How many courses are present in both Computer Science and SE?|The number of courses that are common in both the departments are [overlapping-courses-list].
-F1|How many courses are present in both Computer Science and Software Engineering?|The number of courses that are common in both the departments are [overlapping-courses-list].
+F1|How many [major] courses will be available during the [season] quarter?|There are [number-season-courses] CSSE courses typically offered during [season] quarter.
 F1|What are the graduate level courses?|The graduate level courses in CSC are [graduate-courses-list].
 F1|What are all the courses in [major] that are of [num-units] units?|The following courses count for [num-units] units: [major-course-names-of-units].
 F1|What is the CSSE mission statement?|The CSSE mission statement is [csse-mission-statement].
@@ -37,13 +28,9 @@ F1|What courses are important to transfer into Computer Science?|In order to max
 F1|What courses do I need to take to transfer into Computer Science?|In order to maximize your chance of election, you should take the following courses:    [transfer-courses].
 F1|What are the course numbers that are considered independent study in [major]?|The courses that are considered independent study are: [independent-study-courses].
 F1|What are some independent study course that I have available?|The courses that are considered independent study are: [independent-study-courses].
-F1|What is the minimum number of upper division units needed to graduate with a BS in Computer Science?|The minimum number of upper division units need to graduate with a BS in Computer Science are [minimum-upper-division-units].
 F1|What is the minimum number of upper division units needed to graduate with a Bachelors Degree in Computer Science?|SE majors must take 16 technical elective units selected from upper-division and graduate CSC and CPE courses and CS majors must take 24 technical elective units selected from upper-division and graduate CSC and CPE courses.
-F1|How many [division-level] units are required for a [minor]?|The [minor] requires [minor-division-units] [division-level] units.
-F1|How many [division-level] units does [minor] require?|The [minor] requires [minor-division-units] [division-level] units.
-F1|How many units does the [minor] require?|The [minor] requires [minor-required-units] required units and [minor-approved-elective-units] approved elective units.
 F1|How many units do I need for a [minor]?|The [minor] requires [minor-required-units] required units and [minor-approved-elective-units] approved elective units.
-F1|What are the general requirements for a minor at Cal Poly?|The general requirements for a minor at Cal Poly are [minor-general-requirements]. 
+F1|What are the general requirements for a minor at Cal Poly?|The general requirements for a minor at Cal Poly are [minor-general-requirements].
 F1|What are the steps to apply for the [minor]?|You need to take [minor-steps] to attain a  [minor].
 F1|How do I apply for a [minor]?|You need to take [minor-steps] to attain a [minor].
 F1|What are the required courses for the [minor]?|The required courses for the [minor] are: [required-minor-courses].
@@ -69,8 +56,8 @@ F1|What honor am I eligible for with a GPA of [gpa-number]?|The following Honors
 F1|Can I take classes as credit/no credit?|You may not take any major classes as credit/no credit.
 F1|Can I take classes as pass/no pass?|You may not take any major classes as credit/no credit.
 F1|How many units do I need to take to be considered a [class-level]?|In order to be considered a [class-level], you have to take [class-level-units].
-F1|If I have taken [num-units], what class level am I considered?|If you have taken [num-units], you are considered a [class-level-name-units] student.
-F1|If I have taken [num-units], what division level am I considered?|If you have taken [num-units], you would be considered a [division-level] student.
+F1|If I have taken [num-units], what class level am I considered?|If you have taken [num-units] units, you are considered a [class-level-name-units] student.
+F1|If I have taken [num-units], what division level am I considered?|If you have taken [num-units], you would be considered a [division-level-name-units] level student.
 F1|How many units do I need to take to be considered [division-level]?|In order for you to be considered [division-level], you must take [division-level-units].
 F1|How many units do transfer applicants need prior to transfer as a CSSE major?|Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.
 F1|How many units do transfer applicants need prior to transfer as a computer science and software engineering major?|Transfer applicants need a minimum of [transfer-min-units] completed prior to transfer.

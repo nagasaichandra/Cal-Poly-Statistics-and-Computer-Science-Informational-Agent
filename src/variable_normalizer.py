@@ -35,9 +35,9 @@ class VariableNormalizer:
         :return: A tuple indicating: (variable-db-name, user's-variable-name) if "season" in input_text.
         Else returns False.
         """
-        seasons_re = re.compile(r'\s(fall|winter|spring|summer)', flags = re.I)
+        seasons_re = re.compile(r'\s(fall|winter|spring|summer|sp)', flags = re.I)
         seasons_search = re.search(seasons_re, input_text)
-        seasons = {"fall": "F", "winter": "W", "spring": "Sp", "summer": "Su"}
+        seasons = {"fall": "F", "winter": "W", "spring": "Sp", "summer": "Su", "sp":"Sp"}
         if seasons_search:
             season_match = seasons_search.group(1)
             return seasons[season_match], season_match

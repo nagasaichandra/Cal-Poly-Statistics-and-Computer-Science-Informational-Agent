@@ -56,6 +56,7 @@
   "transfer-courses" : "SELECT major_transfer_course_list FROM project3.transfers;",
   "transfer-min-units" :  "SELECT transfer_min_units FROM project3.transfers;",
   "class-level-name-units" : "SELECT class_level FROM class_levels WHERE [num-units] > num_units_lower AND [num-units] < num_units_upper;",
+  "division-level-name-units": "SELECT division_level FROM division_levels WHERE [num-units] > num_units_lower AND [num-units] < num_units_upper;",
   "minor-courses" : "SELECT minor_courses FROM minor_courses WHERE minor = \"[minor]\";",
   "possible-minors" : "SELECT minor from minor_courses;",
   "csse-pograms" : "SELECT program FROM degrees;"
