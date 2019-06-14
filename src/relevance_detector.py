@@ -82,10 +82,16 @@ class RelevanceDetector:
         """
         variables_questions = [(question[0], question[1], self.query_scanner.find_within_brackets(question[0])) for question in self.questions]
         final_list = list(filter(lambda x: self.match_variables(variables_query, x[2]), variables_questions))
+        if len(final_list) < 1:
+            final_list = list(filter(lambda x: self.match_variables(variables_query, x[2], equal = False), variables_questions))
         return [(question[0], question[1]) for question in final_list]
 
-    def match_variables(self, variables_query, variables_question):
-        return set(variables_query.keys()) >= set(variables_question)
+    def match_variables(self, variables_query, variables_question, equal = True):
+        if equal:
+            return set(variables_query.keys()) == set(variables_question)
+        else:
+            return set(variables_query.keys()) >= set(variables_question)
+
 
     def most_relevant_query(self, query):
         reformatted_query, variables = self.query_scanner.clean_user_question(query)

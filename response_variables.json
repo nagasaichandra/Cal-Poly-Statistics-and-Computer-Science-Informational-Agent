@@ -61,5 +61,5 @@
   "possible-minors" : "SELECT minor from minor_courses;",
   "csse-programs" : "SELECT program FROM degrees;",
   "major-courses-elective" : "SELECT course_id \nFROM catalogues \nwhere course_type = \"[elective-type]\"\nand program_name = \"[major]\";",
-  "minor-course-elective" : "SELECT course_id \nFROM catalogues \nwhere course_type = \"[elective-type]\"\nand program_name = \"[minor]\";"
+  "minor-courses-elective" : "SELECT course_id \nFROM catalogues \nwhere course_type = \"[elective-type]\"\nand program_name = \"[minor]\";"
 }
