@@ -15,6 +15,7 @@ from .scrape_ge import scrape_ges
 from .scrape_icma import scrape_icma_honors
 from .scrape_concentration import scrape_concentration
 from .scrape_degrees import scrape_degrees
+from .scrape_catalogue_pages import scrape_catalogues
 
 
 scraping_functions = [scrape_catalog,
@@ -31,7 +32,8 @@ scraping_functions = [scrape_catalog,
     scrape_ges,
     scrape_icma_honors,
     scrape_concentration,
-    scrape_degrees]
+    scrape_degrees,
+    scrape_catalogues]
 
 
 def scrape_all():

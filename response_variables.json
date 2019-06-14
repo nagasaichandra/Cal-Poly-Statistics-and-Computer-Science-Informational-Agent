@@ -1,4 +1,4 @@
-{"all-required-course-list" : "SELECT course_name FROM course_types WHERE support_type = 'MAJOR COURSES';",
+{"all-required-course-list" : "SELECT course_id FROM catalogues WHERE course_type = 'Required Course' AND program_name = 'CSC';",
   "approved-ms-elective-units" : "SELECT approved_ms_elective_units FROM project3.masters;",
   "blended-benefits" : "SELECT blended_benefits FROM project3.blended;",
   "blended-description" : "SELECT `blended_description` FROM `project3`.`blended`;",
@@ -14,7 +14,7 @@
   "department-contact-info" : "SELECT `department_contact_info` FROM `project3`.`contact_basic`;",
   "disqualification-criteria" : "SELECT disqualification_criteria FROM probation;",
   "division-level-units" : "SELECT num_units_lower, num_units_upper FROM division_levels WHERE division_level = \"[division-level]\";",
-  "elective-type-course-names" : "SELECT course_name FROM course_types WHERE support_type = \"[elective-type]\";",
+  "elective-type-course-names" : "SELECT course_id FROM catalogues WHERE course_type = \"[elective-type]\" AND program_name = 'CSC';",
   "flowchart-link" : "SELECT flowchart_link FROM `project3`.`flowcharts` WHERE major = \"[major]\" AND year_range = \"[year-range]\";",
   "ge-area-list" : "SELECT ge_subject FROM ge_subjects;",
   "ge-area-subject" : "SELECT ge_subject FROM ge_subjects WHERE ge_letter = \"[ge-area]\";",
@@ -26,7 +26,7 @@
   "icma-conditions" : "SELECT icma_conditions FROM icma;",
   "independent-study-courses" : "SELECT course_name\nFROM course \nWHERE course_number >= 490;",
   "major-course-names-of-units" : "SELECT course_name FROM course WHERE course_units = \"[num-units]\";",
-  "major-courses" : "SELECT course_name FROM course;",
+  "major-courses" : "SELECT course_id FROM catalogues WHERE program_name = \"[major]\";",
   "major-learning-outcomes-list" : "SELECT major_learning_outcomes FROM `project3`.`major_learning_outcomes` WHERE major = \"[major]\";",
   "major-peos" : "SELECT major_peos FROM `project3`.`major_peos` WHERE major = \"[major]\";",
   "major-transfer-course-list" : "SELECT major_transfer_course_list FROM project3.transfers;",
@@ -48,7 +48,7 @@
   "overlapping-courses-list" : "SELECT course_name from course_types WHERE support_type = 'MAJOR COURSES';",
   "phone-number" : "SELECT phone_number FROM `project3`.`contact_basic`;",
   "probation-criteria" : "SELECT probation_criteria FROM project3.probation;",
-  "required-minor-courses" : "SELECT required_courses FROM project3.cs_minor_info;",
+  "required-minor-courses" : "SELECT course_id FROM catalogues WHERE program_name = \"[minor]\" AND course_type = 'Required Course';",
   "required-ms-units" : "SELECT required_ms_units FROM project3.masters;",
   "season-course-names" : "SELECT course_name\nFROM course\nWHERE course_number IN (SELECT course_number FROM offered_in WHERE quarter_id = \"[season]\")\nAND course_area IN (SELECT course_area FROM offered_in WHERE quarter_id = \"[season]\");",
   "thesis-ms-units" : "SELECT thesis_ms_units FROM project3.masters;",
@@ -57,7 +57,9 @@
   "transfer-min-units" :  "SELECT transfer_min_units FROM project3.transfers;",
   "class-level-name-units" : "SELECT class_level FROM class_levels WHERE [num-units] > num_units_lower AND [num-units] < num_units_upper;",
   "division-level-name-units": "SELECT division_level FROM division_levels WHERE [num-units] > num_units_lower AND [num-units] < num_units_upper;",
-  "minor-courses" : "SELECT minor_courses FROM minor_courses WHERE minor = \"[minor]\";",
+  "minor-courses" : "SELECT course_id \nFROM catalogues \nwhere program_name = \"[minor]\";",
   "possible-minors" : "SELECT minor from minor_courses;",
-  "csse-programs" : "SELECT program FROM degrees;"
-  }
+  "csse-programs" : "SELECT program FROM degrees;",
+  "major-courses-elective" : "SELECT course_id \nFROM catalogues \nwhere course_type = \"[elective-type]\"\nand program_name = \"[major]\";",
+  "minor-course-elective" : "SELECT course_id \nFROM catalogues \nwhere course_type = \"[elective-type]\"\nand program_name = \"[minor]\";"
+}

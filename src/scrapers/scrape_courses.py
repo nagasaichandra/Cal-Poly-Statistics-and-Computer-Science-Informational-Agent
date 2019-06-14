@@ -105,3 +105,5 @@ def scrape_catalog():
 
 if __name__ == '__main__':
     scrape_catalog()
+
+

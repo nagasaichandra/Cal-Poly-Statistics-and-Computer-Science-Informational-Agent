@@ -1,11 +1,19 @@
+F1|What courses are considered [elective-type] for [major]?|The courses considered as [elective-type] for [major] are [major-courses-elective].
+F1|What are the [elective-type] courses for [major]?|The courses considered as [elective-type] for [major] are [major-courses-elective].
+F1|What are the [elective-type] classes for [major]?|The courses considered as [elective-type] for [major] are [major-courses-elective].
+F1|What courses are [elective-type] for [major]?|The courses considered as [elective-type] for [major] are [major-courses-elective].
+F1|What classes are [elective-type] in [major]?|The courses considered as [elective-type] for [minor] are [minor-courses-elective].
+F1|What courses are considered [elective-type] for a [minor]?|The courses considered as [elective-type] for [minor] are [minor-courses-elective].
+F1|What courses satisfy the [elective-type] requirement for [major]?|The courses considered as [elective-type] for [major] are [major-courses-elective].
+F1|What courses satisfy the [elective-type] requirement for [minor]?|The courses considered as [elective-type] for [minor] are [minor-courses-elective].
+F1|What are the [elective-type] courses for [minor]?|The courses considered as [elective-type] for [minor] are [minor-courses-elective].
+F1|What are the [elective-type] classes for [minor]?|The courses considered as [elective-type] for [minor] are [minor-courses-elective].
 F1|What is the subject of GE area [ge-area]?|The subject of GE area [ge-area] is [ge-area-subject].
 F1|What is the subject of general education area [ge-area]?|The subject of GE area [ge-area] is [ge-area-subject].
 F1|What are the general education areas?|The general education areas are [ge-area-list].
 F1|What are the GE requirements?|The GE requirements are the following: [ge-requirements].
 F1|What are the general education requirements?|The GE requirements are the following: [ge-requirements].
 F1|What classes do I take for [minor]?|The [minor] has the following courses: [minor-courses].
-F1|What courses may I choose that satisfy the [elective-type] requirement?|In order to satisfy the [elective-type] requirement, you may choose from the following courses: [elective-type-course-names].
-F1|What are the courses that help me satisfy the [elective-type] requirements?|In order to satisfy the [elective-type] requirement, you may choose from the following courses: [elective-type-course-names].
 F1|What CSSE courses are offered in [season]?|The CSSE courses typically offered in [season] are [season-course-names].
 F1|What [major] courses are offered in [season]?|The CSSE courses typically offered in [season] are [season-course-names].
 F1|How many CSSE courses will be available during the [season] quarter?|There are [number-season-courses] CSSE courses typically offered during [season] quarter.
@@ -71,7 +79,7 @@ F1|What is the phone number of the CSSE department?|[phone-number] is the CSSE p
 F1|What is the phone number of the CSSEg department?|[phone-number] is the CSSE phone number
 F1|How can I contact the CSSE department?|[phone-number] is the CSSE phone number.
 F1|How can I contact the department?|[phone-number] is the CSSE phone number.
-F1|Who are the minor advisors for [minor]?|The minor advisors for [minor] are [minor-advisors]. 
+F1|Who are the minor advisors for [minor]?| The minor advisors for [minor] are [minor-advisors].
 F1|Who can I contact to get more information about the [minor]?|[minor-advisors] to learn more about [minor].
 F1|Who can I contact if I have questions about [minor]?|If you have questions about [minor], you may contact [contact-info].
 F1|Who will help me if I have doubts about [minor]?|If you have questions about [minor], you may contact [contact-info].

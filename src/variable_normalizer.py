@@ -6,27 +6,27 @@ class VariableNormalizer:
     def __init__(self):
         pass
 
-    def normalize_major(self, input_text):
-        """
-
-        :param input_text: A user's question.
-        :return: A tuple indicating: (variable-db-name, user's-variable-name) if "major" in input_text.
-        Else returns False.
-        """
-        major_re = [re.compile(r'\s(C\.?S\.?C\.?|CS|Computer Science|C\.?S\.?)[ ?]', flags=re.I),
-                    re.compile(r'\s(SE|software engineering|software)[ ?]', flags=re.I)]
-
-        csc_search = re.search(major_re[0], input_text)
-        if csc_search:
-            major_match = csc_search.group(1)
-            return "CSC", major_match
-
-        csc_search = re.search(major_re[1], input_text)
-        if csc_search:
-            major_match = csc_search.group(1)
-            return "SE", major_match
-
-        return False
+    # def normalize_major(self, input_text):
+    #     """
+    #
+    #     :param input_text: A user's question.
+    #     :return: A tuple indicating: (variable-db-name, user's-variable-name) if "major" in input_text.
+    #     Else returns False.
+    #     """
+    #     major_re = [re.compile(r'\s(C\.?S\.?C\.?|CS|Computer Science|C\.?S\.?)[ ?]', flags=re.I),
+    #                 re.compile(r'\s(SE|software engineering|software)[ ?]', flags=re.I)]
+    #
+    #     csc_search = re.search(major_re[0], input_text)
+    #     if csc_search:
+    #         major_match = csc_search.group(1)
+    #         return "CSC", major_match
+    #
+    #     csc_search = re.search(major_re[1], input_text)
+    #     if csc_search:
+    #         major_match = csc_search.group(1)
+    #         return "SE", major_match
+    #
+    #     return False
 
     def normalize_season(self, input_text):
         """
@@ -83,12 +83,24 @@ class VariableNormalizer:
 
     def normalize_ge_area(self, input_text):
         ge_re = [re.compile(r'ge area ([abcdef|ABCDEF])', flags=re.I),
-                 re.compile(r'ge ([abcdef|ABCDEF])', flags=re.I)]
+                 re.compile(r'ge ([abcdef|ABCDEF])', flags=re.I), re.compile(r'area ([abcdef|ABCDEF])[ ?]', flags=re.I)]
         for search_term in ge_re:
             ge_search = re.search(search_term, input_text)
             if ge_search:
                 ge_match = ge_search.group(1)
                 return ge_match.capitalize(), "GE AREA {}".format(ge_match)
+
+    def normalize_major(self, input_text):
+        bachelor_re = [re.compile(r'\s(C\.?S\.?C\.?|CS|Computer Science|C\.?S\.?)[ ?]', flags=re.I),
+                    re.compile(r'\s(SE|software\sengineering|software)[ ?]', flags=re.I)]
+
+        csc_search = re.search(bachelor_re[0], input_text)
+        se_search = re.search(bachelor_re[1], input_text)
+
+        if csc_search:
+            return "CSC", "CSC"
+        elif se_search:
+            return "SE", "SE"
 
     def normalize_minor(self, input_text):
         minor_ds_re = re.compile(r'data science minor|ds minor|data minor', flags=re.I)
@@ -97,14 +109,20 @@ class VariableNormalizer:
         minor_cs_re = re.compile(r'cs\sminor|CSC\sminor|computer\sscience\sminor|c\.s\.c\sminor|c\.s\.\sminor', flags=re.I)
         minor_cs_search = re.search(minor_cs_re, input_text)
 
-        minor_art_re = re.compile(r'Computing\sfor\sInteractive\sArts\sminor|interactive\sminor|interactive\sarts\sminor', flags=re.I)
+        minor_art_re = re.compile(r'Computing\sfor\sInteractive\sArts\sminor|interactive\sminor|interactive\sarts\sminor|CIA\s|interactive\sminor', flags=re.I)
         minor_art_search = re.search(minor_art_re, input_text)
+
+        ie_concentration_re = re.compile(r'Interactive\sEntertainment|\sIE\s|Interactive\sEnt', flags = re.I)
+        ie_concentration_search = re.search(ie_concentration_re, input_text)
+
         if minor_ds_search:
             return 'Data Science minor', 'Data Science minor'
         elif minor_cs_search:
-            return 'CS minor', 'CS minor'
+            return 'CSC minor', 'CSC minor'
         elif minor_art_search:
-            return 'Computing for Interactive Arts minor', 'Computing for Interactive Arts minor'
+            return 'CIA', 'Computing for Interactive Arts minor'
+        elif ie_concentration_search:
+            return 'IE', 'Interactive Entertainment Concentration'
 
     def normalize_year_range(self, input_text):
         year_re = re.compile(r' (20[12][0-9])-?')
@@ -137,18 +155,16 @@ class VariableNormalizer:
 
 
     def normalize_support_elective(self, input_text):
-        life_science = re.compile(r'(life sciences?)', flags=re.I)
-        math_stat = re.compile(r'(\bmath|\bstat|\bstatistics|\bmathematics)', flags=re.I)
-        physical_science = re.compile(r'(physical science)', flags=re.I)
-        additional_science = re.compile(r'(additional science)', flags=re.I)
-        support_courses = re.compile(r'(support courses?)', flags=re.I)
+        required = re.compile(r'(required?)', flags=re.I)
+        approved = re.compile(r'(approved\selectives?)', flags=re.I)
+        technical = re.compile(r'(technical)', flags=re.I)
+        support = re.compile(r'(support)', flags=re.I)
 
         normalization_support_paths = [
-            ("Life Science Support Elective", life_science),
-            ("Mathematics/Statistics Support elective", math_stat),
-            ("Additional Science Support Elective 6", additional_science),
-            ("Physical Science Support Elective", physical_science),
-            ("SUPPORT COURSES", support_courses)
+            ("Required Course", required),
+            ("Approved Elective", approved),
+            ("Technical Elective", technical),
+            ("Support Course", support)
         ]
 
         for path, regex_compile in normalization_support_paths:

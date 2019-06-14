@@ -11,7 +11,7 @@ values = {
     'course-units': 2,
     'major': 'CSC',
     'season': 'Sp',
-    'elective-type': 'Life Science Support Elective',
+    'elective-type': 'Required Course',
     'year-range': '2019 - 2020',
     'minor' : 'Data Science minor',
     'class-level' : 'junior',

@@ -25,36 +25,41 @@ def scrapeConcentration():
     final_dict['concentration-list'] = concentration_list
     return final_dict
 
+def scrape_minor(url):
+    myRequest1 = requests.get(url, verify=False)
+    soup = BeautifulSoup(myRequest1.text, "html.parser")
+
+    courses = []
+    matches = soup.find_all('td')
+    course_type = "Required Course"
+    for match in matches:
+        if match.find('span'):
+            type = match.find('span').text
+            if re.match(r'^Approved', type, flags = re.I):
+                course_type = "Approved Elective"
+            elif re.match(r'^Required', type, flags = re.I):
+                course_type = "Required Course"
+            elif re.match(r'^Technical', type, flags = re.I):
+                course_type = "Technical Elective"
+            elif re.match(r'^Free', type, flags = re.I):
+                course_type = "Free Elective"
+        a_matches = match.find_all('a')
+        for a_match in a_matches:
+            courses.append((a_match['title'].replace(u'\xa0', ' '), course_type))
+    return courses
+
+
 
 def scrapeMinorCourses():
     '''Variables: [minor-courses]'''
     final_dict = {}
-    urllib3.disable_warnings()
     url1 = "http://catalog.calpoly.edu/collegesandprograms/collegeofengineering/computersciencesoftwareengineering/computerscienceminor/"
-    myRequest1 = requests.get(url1, verify=False)
-    soup1 = BeautifulSoup(myRequest1.text, "html.parser")
     url2 = "http://www.catalog.calpoly.edu/collegesandprograms/collegeofsciencemathematics/statistics/crossdisciplinarystudiesminordatascience/"
-    myRequest2 = requests.get(url2, verify=False)
-    soup2 = BeautifulSoup(myRequest2.text, "html.parser")
     url3 = "http://catalog.calpoly.edu/collegesandprograms/collegeofengineering/computersciencesoftwareengineering/computingforinteractiveartsminor/"
-    myRequest3 = requests.get(url3, verify=False)
-    soup3 = BeautifulSoup(myRequest3.text, "html.parser")
-    # print(soup1.get_text())
-    match = re.search(r'(Required Courses .*)', soup1.get_text())
-    #print(match.group())
-    cs_minor_courses = match.group()
-    # print(soup2.get_text())
-    match = re.search(r'(.* Total units\d\d)', soup2.get_text())
-    #print(match.group())
-    ds_minor_courses = match.group()
-    # print(soup3.get_text())
-    match = re.search(r'(Required Courses .*)', soup3.get_text())
-    #print(match.group())
-    ia_minor_courses = match.group()
-    final_dict['CS minor'] = cs_minor_courses
-    final_dict['Data Science minor'] = ds_minor_courses
-    final_dict['Computing for Interactive Arts minor'] = ia_minor_courses
 
+    final_dict['CSC minor'] = ', '.join(scrape_minor(url1))
+    final_dict['Data Science minor'] = ', '.join(scrape_minor(url2))
+    final_dict['CIA'] = ', '.join(scrape_minor(url3))
     return final_dict
 
 
