@@ -96,9 +96,11 @@ F1|Where can I get the flowchart for [major] in [year-range]?| In order to view 
 F1|Where can I get the flowchart for [major] for [year-range]?| In order to view the [year-range] flowchart for [major], visit the following link: [flowchart-link].
 F1|Where can I get the flowchart for [major]?| In order to view the flowchart for [major], please ask me the same question and specify the year.
 F1|Who is eligible for the Blended BS + MS program?|You must be one of the following [blended-requirements].
+F1|Who is eligible for the Blended BS + MS [major] program?|You must be one of the following [blended-requirements].
 F1|Who is eligible for the Blended BS + Masters program?|You must be one of the following [blended-requirements].
 F1|Who is eligible for the Blended Bachelors Degree + Masters Degree program?|You must be one of the following [blended-requirements].
 F1|What do I need to get into the Blended BS + MS program?|You must be one of the following [blended-requirements].
+F1|What do I need to get into the Blended BS + MS [major] program?|You must be one of the following [blended-requirements].
 F1|What do I need to get into the Blended BS + Masters Degree program?|You must be one of the following [blended-requirements].
 F1|What do I need to get into the Blended Bachelors Degree + Masters program?|You must be one of the following [blended-requirements].
 F1|What is the Blended program?|The Blended BS + MS Program is [blended-description].
@@ -106,7 +108,9 @@ F1|What is the Blended program?|The Blended BS + MS Program is [blended-descript
 F1|What is the Blended Bachelors Degree + Masters Degree Program?|The Blended BS + MS Computer Science Program is [blended-description].
 F1|Why should I take the Blended Program?|The B.S. and M.S. program offers the following benefits: [blended-benefits].
 F1|What are some of the benefits from the Blended Program? |The B.S. and M.S. program offers the following benefits: [blended-benefits].
+F1|What are some of the benefits from the Blended [major] Program? |The B.S. and M.S. program offers the following benefits: [blended-benefits].
 F1|What benefits does the blended B.S. and M.S. program offer?|The B.S. and M.S. program offers the following benefits: [blended-benefits].
+F1|What benefits does the blended B.S. and M.S. [major] program offer?|The B.S. and M.S. program offers the following benefits: [blended-benefits].
 F1|How many additional units does the MS require?|The MS degree requires at least [ms-total-units] units beyond the undergraduate degree. [required-ms-units] units are from a required list, [approved-ms-elective-units] units are from approved electives, and there are [thesis-ms-units] units of thesis and seminar.
 F1|How many additional units does the Masters Degree in  require?|The MS degree requires at least [ms-total-units] units beyond the undergraduate degree. [required-ms-units] units are from a required list, [approved-ms-elective-units] units are from approved electives, and there are [thesis-ms-units] units of thesis and seminar.
 F1|How can I get a masters degree after satisfying the requirements of BS?|The MS degree requires at least [ms-total-units] units beyond the undergraduate degree. [required-ms-units] units are from a required list, [approved-ms-elective-units] units are from approved electives, and there are [thesis-ms-units] units of thesis and seminar.
