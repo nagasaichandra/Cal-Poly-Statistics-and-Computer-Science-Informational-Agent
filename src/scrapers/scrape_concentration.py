@@ -45,7 +45,7 @@ def scrape_minor(url):
                 course_type = "Free Elective"
         a_matches = match.find_all('a')
         for a_match in a_matches:
-            courses.append((a_match['title'].replace(u'\xa0', ' '), course_type))
+            courses.append(a_match['title'].replace(u'\xa0', ' '))
     return courses
 
 
