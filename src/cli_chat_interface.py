@@ -21,8 +21,6 @@ class CliChatInterface:
         return message[:len(self.name)] == self.name
 
     def _on_message_received(self, message):
-        print('*{}*'.format(message))
-        print(len(self.on_message_callbacks), )
         for callback in self.on_message_callbacks:
             res = callback(message)
             if res:
