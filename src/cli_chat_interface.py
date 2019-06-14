@@ -11,10 +11,7 @@ class CliChatInterface:
 
     def get_message(self):
         message = input()
-        if self._is_message_for_me(message):
-            content = message[len(self.name) + 1:].strip()
-            response = self._on_message_received(content)
-            self.send_message(response)
+        self.send_message(self._on_message_received(message))
         self.get_message()
 
     def _is_message_for_me(self, message):
