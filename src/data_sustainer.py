@@ -21,7 +21,7 @@ class DataSustainer:
 
         DataSustainer.create_tables('createTableBlended.sql')
         DataSustainer.create_tables('createTableCatalogue.sql')
-        DataSustainer.create_tables('createTableChangeMajors.sql')
+        DataSustainer.create_tables('createTableChangeMajor.sql')
         DataSustainer.create_tables('createTableContact.sql')
         DataSustainer.create_tables('createTableDegrees.sql')
         DataSustainer.create_tables('createTableFlowchartLinks.sql')
@@ -30,11 +30,11 @@ class DataSustainer:
         DataSustainer.create_tables('createTableMinor.sql')
         DataSustainer.create_tables('createTableObjectives.sql')
         DataSustainer.create_tables('createTableRequirements.sql')
-        DataSustainer.create_tables('createTablesContact.sql')
         DataSustainer.create_tables('createTablesHonors.sql')
         DataSustainer.create_tables('createTablesICMA.sql')
         DataSustainer.create_tables('createTablesLevels.sql')
         DataSustainer.create_tables('createTableTransfer.sql')
+        DataSustainer.create_tables('createTableProbation.sql')
         DataSustainer.create_tables('createTables.sql')
 
 
