@@ -41,8 +41,7 @@ F1|How many units do I need for a [minor]?|The [minor] requires [minor-required-
 F1|What are the general requirements for a minor at Cal Poly?|The general requirements for a minor at Cal Poly are [minor-general-requirements].
 F1|What are the steps to apply for the [minor]?|You need to take [minor-steps] to attain a  [minor].
 F1|How do I apply for a [minor]?|You need to take [minor-steps] to attain a [minor].
-F1|What are the required courses for the [minor]?|The required courses for the [minor] are: [required-minor-courses].
-F1|What is the minimum CGPA required to apply for minor in Computer Science?|You have to maintain a CGPA of [minimum-gpa-minor] or higher to apply for a minor in Computer Science. 
+F1|What is the minimum CGPA required to apply for minor in Computer Science?|You have to maintain a CGPA of [minimum-gpa-minor] or higher to apply for a minor in Computer Science.
 F1|What is the minimum Cumulative Grade Point Average required to apply for minor in Computer Science?|You have to maintain a CGPA of [minimum-gpa-minor] or higher to apply for a minor in Computer Science. 
 F1|What are the prerequisites for the [minor]?|You need to meet the following requirements to apply for the [minor]: [minor-prerequisites].
 F1|Where can I get the application for the [minor]?|You can access the application for the [minor] in the following link: [minor-application-link].
@@ -54,7 +53,6 @@ F1|What classes do I have to take in order to graduate?|You need to take [all-re
 F1|How many classes do I have to take for [major]?|The BS in Computer Science requires about 180 - 181 total units while the BS in Software Engineering requires about 183-184 total units.
 F1|What is the total number of classes needed to graduate in [major]?|The BS in Computer Science requires about 180 - 181 total units while the BS in Software Engineering requires about 183-184 total units.
 F1|What concentrations are available?|The only concentration available in CSSE is the Interactive Entertainment Concentration.
-F1|What are the required courses for the concentration?|The required courses for the Interactive Entertainment Concentration are [concentration-required-courses].
 F1|What GPA do I need to graduate?|You need a GPA of at least 2.0 to graduate as a CSSE major.
 F1|What is the minimum GPA?|You need a GPA of at least 2.0  to graduate as a CSSE major.
 F1|What GPA do I need to attain an honor?|The following Honors are available [honors-gpa-list].
