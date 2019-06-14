@@ -20,11 +20,6 @@ def answer_query(query, save=True):
     start_time = time.time()
     matched_question, matched_answer, score, vars = rd.most_relevant_query(query)
 
-    if save:
-        print("Matched question in", time.time() - start_time)
-        print(matched_answer)
-        print(score, vars, qs.find_within_brackets(matched_answer))
-
     start_time = time.time()
 
     if save:
@@ -40,7 +35,7 @@ def answer_query(query, save=True):
                 connection.commit()
         finally:
             connection.close()
-        print("Saved query in", time.time() - start_time)
+        #print("Saved query in", time.time() - start_time)
     return qs.answer_question(query, matched_answer)
 
 

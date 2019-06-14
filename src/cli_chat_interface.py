@@ -11,18 +11,13 @@ class CliChatInterface:
 
     def get_message(self):
         message = input()
-        if self._is_message_for_me(message):
-            content = message[len(self.name) + 1:].strip()
-            response = self._on_message_received(content)
-            self.send_message(response)
+        self.send_message(self._on_message_received(message))
         self.get_message()
 
     def _is_message_for_me(self, message):
         return message[:len(self.name)] == self.name
 
     def _on_message_received(self, message):
-        print('*{}*'.format(message))
-        print(len(self.on_message_callbacks), )
         for callback in self.on_message_callbacks:
             res = callback(message)
             if res:
